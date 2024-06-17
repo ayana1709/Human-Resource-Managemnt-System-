@@ -1,7 +1,6 @@
 <?php
 
 // app/Http/Controllers/CalendarEventController.php
-// app/Http/Controllers/CalendarEventController.php
 
 namespace App\Http\Controllers;
 
@@ -14,12 +13,12 @@ class CalendarEventController extends Controller
     public function index()
     {
         $events = CalendarEvent::all();
-        return Inertia::render('/Employee/Calendar/Index', ['events' => $events]);
+        return Inertia::render('Employee/Calendar/Index', ['events' => $events]);
     }
 
     public function create()
     {
-        return Inertia::render('/Admin/Calendar/Create');
+        return Inertia::render('Admin/Calendar/Create');
     }
 
     public function store(Request $request)
@@ -29,6 +28,7 @@ class CalendarEventController extends Controller
             'description' => 'nullable|string',
             'start' => 'required|date',
             'end' => 'nullable|date|after_or_equal:start',
+            'is_holiday' => 'boolean',
         ]);
 
         CalendarEvent::create($request->all());
@@ -38,7 +38,7 @@ class CalendarEventController extends Controller
 
     public function edit(CalendarEvent $calendarEvent)
     {
-        return Inertia::render('/Admin/Calendar/Edit', ['event' => $calendarEvent]);
+        return Inertia::render('Admin/Calendar/Edit', ['event' => $calendarEvent]);
     }
 
     public function update(Request $request, CalendarEvent $calendarEvent)
@@ -48,6 +48,7 @@ class CalendarEventController extends Controller
             'description' => 'nullable|string',
             'start' => 'required|date',
             'end' => 'nullable|date|after_or_equal:start',
+            'is_holiday' => 'boolean',
         ]);
 
         $calendarEvent->update($request->all());

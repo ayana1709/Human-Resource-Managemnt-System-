@@ -25,7 +25,7 @@ function SidebarEmployee() {
                         Leave Request
                     </li>
                 </Link>
-                <Link href={"/calendar-events"}>
+                <Link href={"/calendarevents"}>
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
                         calander

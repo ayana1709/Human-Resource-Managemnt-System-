@@ -12,7 +12,7 @@ class CalendarEvent extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'description', 'start', 'end',
+        'title', 'description', 'start', 'end', 'is_holiday',
     ];
 }
 

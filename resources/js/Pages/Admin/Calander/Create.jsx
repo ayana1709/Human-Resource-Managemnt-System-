@@ -2,14 +2,15 @@
 
 import React, { useState } from "react";
 import { useForm } from "@inertiajs/inertia-react";
-// import DashboardLayout from "../../Layouts/DashboardLayout";
+import DashboardLayout from "../../Layouts/DashboardLayout";
 
-export default function Create() {
+export default function CalendarCreate() {
     const { data, setData, post, errors } = useForm({
         title: "",
         description: "",
         start: "",
         end: "",
+        is_holiday: false,
     });
 
     const handleSubmit = (e) => {
@@ -18,7 +19,7 @@ export default function Create() {
     };
 
     return (
-        <>
+        <DashboardLayout>
             <h1 className="text-2xl font-bold mb-4">Create Event</h1>
             <form onSubmit={handleSubmit}>
                 <div>
@@ -56,8 +57,20 @@ export default function Create() {
                     />
                     {errors.end && <span>{errors.end}</span>}
                 </div>
+                <div>
+                    <label>
+                        <input
+                            type="checkbox"
+                            checked={data.is_holiday}
+                            onChange={(e) =>
+                                setData("is_holiday", e.target.checked)
+                            }
+                        />
+                        Holiday
+                    </label>
+                </div>
                 <button type="submit">Create</button>
             </form>
-        </>
+        </DashboardLayout>
     );
 }

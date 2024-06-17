@@ -6,9 +6,9 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
-// import DashboardLayout from "../../Layouts/DashboardLayout";
+import DashboardLayout from "../../Layouts/DashboardLayout";
 
-export default function Index() {
+export default function CalendarIndex() {
     const { events } = usePage().props;
     const calendarRef = useRef(null);
 
@@ -19,7 +19,7 @@ export default function Index() {
     }, [events]);
 
     return (
-        <>
+        <DashboardLayout>
             <h1 className="text-2xl font-bold mb-4">Calendar</h1>
             <FullCalendar
                 plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
@@ -27,6 +27,6 @@ export default function Index() {
                 events={events}
                 ref={calendarRef}
             />
-        </>
+        </DashboardLayout>
     );
 }

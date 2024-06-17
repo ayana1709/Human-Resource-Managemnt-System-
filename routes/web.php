@@ -67,15 +67,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('/admin/leave/{leave}', [LeaveController::class, 'update'])->name('leave.update');
 });
 
-//Calender
 // routes/web.php
-
-
-
 
 Route::middleware(['auth'])->group(function () {
     // Display the calendar with all events
-    Route::get('/calendar-events', [CalendarEventController::class, 'index'])->name('calendar-events.index');
+    Route::get('/calendarevents', [CalendarEventController::class, 'index'])->name('calendar-events.index');
     
     // Display form to create a new event
     Route::get('/calendar-events/create', [CalendarEventController::class, 'create'])->name('calendar-events.create');
@@ -92,8 +88,6 @@ Route::middleware(['auth'])->group(function () {
     // Delete the event
     Route::delete('/calendar-events/{calendarEvent}', [CalendarEventController::class, 'destroy'])->name('calendar-events.destroy');
 });
-
-
 
 
 
