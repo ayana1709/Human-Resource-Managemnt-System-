@@ -14,12 +14,35 @@ export default function Register() {
         password: "",
         password_confirmation: "",
         user_type: "employee",
+        department: "",
     });
 
-    const handleChange = (value) => {
-        setData("user_type", value);
-        showDepartment();
+    const [departments, setDepartments] = useState([]);
+
+    const handleChange = (event) => {
+        setData(event.target.name, event.target.value);
     };
+    useEffect(() => {
+        if (
+            data.user_type === "Department Manager" ||
+            data.user_type === "Employee"
+        ) {
+            // Fetch departments from your backend
+            axios
+                .get("/api/departments")
+                .then((response) => {
+                    setDepartments(response.data);
+                })
+                .catch((error) => {
+                    console.error(
+                        "There was an error fetching the departments!",
+                        error
+                    );
+                });
+        } else {
+            setDepartments([]);
+        }
+    }, [data.user_type]);
 
     useEffect(() => {
         return () => {
@@ -31,23 +54,25 @@ export default function Register() {
         e.preventDefault();
 
         post(route("register"));
+        // post('/form-submit-url');
     };
 
-    function showDepartment() {
-        const role = document.getElementById("user-type").value;
-        let departmentDiv = document.getElementById("department-div");
-        if (user - type === "dep_manager" || user - type === "employee") {
-            departmentDiv.className = "mt-4 block";
-        } else {
-            departmentDiv.className = "mt-4 hidden";
-        }
-    }
+    // function showDepartment() {
+    //     const role = document.getElementById("user-type").value;
+    //     let departmentDiv = document.getElementById("department-div");
+    //     if (user - type === "dep_manager" || user - type === "employee") {
+    //         departmentDiv.className = "mt-4 block";
+    //     } else {
+    //         departmentDiv.className = "mt-4 hidden";
+    //     }
+    // }
 
     return (
         <GuestLayout>
             <Head title="Register" />
 
             <form onSubmit={submit}>
+                {/* name */}
                 <div>
                     <InputLabel htmlFor="name" value="Name" />
 
@@ -64,6 +89,7 @@ export default function Register() {
 
                     <InputError message={errors.name} className="mt-2" />
                 </div>
+                {/* Email */}
 
                 <div className="mt-4">
                     <InputLabel htmlFor="email" value="Email" />
@@ -81,6 +107,8 @@ export default function Register() {
 
                     <InputError message={errors.email} className="mt-2" />
                 </div>
+                {/* Role */}
+
                 <div className="mt-4">
                     <InputLabel htmlFor="user_type" value="Role" />
 
@@ -90,19 +118,27 @@ export default function Register() {
                     />
                     <InputError message={errors.role} className="mt-2" />
                 </div>
-                <div className="mt-4 hidden" id="department-div">
-                    <InputLabel htmlFor="user_type" value="Department" />
+                {/*  Department  */}
 
-                    <SelectiveDropdown
-                        value={data.user_type}
-                        onChange={handleChange}
-                    />
-                    <InputError message={errors.role} className="mt-2" />
-                </div>
+                {data.user_type === "Department Manager" ||
+                data.user_type === "Employee" ? (
+                    <div className="mt-4">
+                        <SelectiveDropdown
+                            value={data.department}
+                            onChange={handleChange}
+                            options={departments}
+                            name="department"
+                        />
+                        <InputError
+                            message={errors.department}
+                            className="mt-2"
+                        />
+                    </div>
+                ) : null}
+                {/* Password*/}
 
                 <div className="mt-4">
                     <InputLabel htmlFor="password" value="Password" />
-
                     <TextInput
                         id="password"
                         type="password"
@@ -113,16 +149,15 @@ export default function Register() {
                         onChange={(e) => setData("password", e.target.value)}
                         required
                     />
-
                     <InputError message={errors.password} className="mt-2" />
                 </div>
+                {/* confirm Password */}
 
                 <div className="mt-4">
                     <InputLabel
                         htmlFor="password_confirmation"
                         value="Confirm Password"
                     />
-
                     <TextInput
                         id="password_confirmation"
                         type="password"
@@ -135,12 +170,13 @@ export default function Register() {
                         }
                         required
                     />
-
                     <InputError
                         message={errors.password_confirmation}
                         className="mt-2"
                     />
                 </div>
+
+                {/*  submit button  */}
 
                 <div className="flex items-center justify-end mt-4">
                     <Link

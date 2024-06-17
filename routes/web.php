@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\CalendarEventController;
+use App\Http\Controllers\DepartmentController;
 
 
 
@@ -88,6 +89,14 @@ Route::middleware(['auth'])->group(function () {
     // Delete the event
     Route::delete('/calendar-events/{calendarEvent}', [CalendarEventController::class, 'destroy'])->name('calendar-events.destroy');
 });
+
+
+
+
+
+
+Route::get('/api/departments', [DepartmentController::class, 'index']);
+
 
 
 

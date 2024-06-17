@@ -62,18 +62,7 @@ class RegisteredUserController extends Controller
         return redirect(RouteServiceProvider::HOME);}
 
         
-        // switch ($user->user_type) {
-        //     case 'admin':
-        //         return redirect()->route('admin.dashboard');
-        //     case 'hr':
-        //         return redirect()->route('hr.dashboard');
-        //     case 'department_manager':
-        //         return redirect()->route('manager.dashboard');
-        //     case 'employee':
-        //         return redirect()->route('employee.dashboard');
-        //     default:
-        //         return redirect('/');
-        // }
+       
 
 
         
