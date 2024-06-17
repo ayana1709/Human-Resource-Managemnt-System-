@@ -14,35 +14,35 @@ export default function Register() {
         password: "",
         password_confirmation: "",
         user_type: "employee",
-        department: "",
+        // department: "",
     });
 
-    const [departments, setDepartments] = useState([]);
+    // const [departments, setDepartments] = useState([]);
 
     const handleChange = (event) => {
         setData(event.target.name, event.target.value);
     };
-    useEffect(() => {
-        if (
-            data.user_type === "Department Manager" ||
-            data.user_type === "Employee"
-        ) {
-            // Fetch departments from your backend
-            axios
-                .get("/api/departments")
-                .then((response) => {
-                    setDepartments(response.data);
-                })
-                .catch((error) => {
-                    console.error(
-                        "There was an error fetching the departments!",
-                        error
-                    );
-                });
-        } else {
-            setDepartments([]);
-        }
-    }, [data.user_type]);
+    // useEffect(() => {
+    //     if (
+    //         data.user_type === "Department Manager" ||
+    //         data.user_type === "Employee"
+    //     ) {
+    //         // Fetch departments from your backend
+    //         axios
+    //             .get("/api/departments")
+    //             .then((response) => {
+    //                 setDepartments(response.data);
+    //             })
+    //             .catch((error) => {
+    //                 console.error(
+    //                     "There was an error fetching the departments!",
+    //                     error
+    //                 );
+    //             });
+    //     } else {
+    //         setDepartments([]);
+    //     }
+    // }, [data.user_type]);
 
     useEffect(() => {
         return () => {
@@ -54,18 +54,7 @@ export default function Register() {
         e.preventDefault();
 
         post(route("register"));
-        // post('/form-submit-url');
     };
-
-    // function showDepartment() {
-    //     const role = document.getElementById("user-type").value;
-    //     let departmentDiv = document.getElementById("department-div");
-    //     if (user - type === "dep_manager" || user - type === "employee") {
-    //         departmentDiv.className = "mt-4 block";
-    //     } else {
-    //         departmentDiv.className = "mt-4 hidden";
-    //     }
-    // }
 
     return (
         <GuestLayout>
@@ -119,22 +108,16 @@ export default function Register() {
                     <InputError message={errors.role} className="mt-2" />
                 </div>
                 {/*  Department  */}
+                {/* <div className="mt-4">
+                    <InputLabel htmlFor="user_type" value="Role" />
 
-                {data.user_type === "Department Manager" ||
-                data.user_type === "Employee" ? (
-                    <div className="mt-4">
-                        <SelectiveDropdown
-                            value={data.department}
-                            onChange={handleChange}
-                            options={departments}
-                            name="department"
-                        />
-                        <InputError
-                            message={errors.department}
-                            className="mt-2"
-                        />
-                    </div>
-                ) : null}
+                    <SelectiveDropdown
+                        value={data.user_type}
+                        onChange={handleChange}
+                    />
+                    <InputError message={errors.role} className="mt-2" />
+                </div> */}
+
                 {/* Password*/}
 
                 <div className="mt-4">

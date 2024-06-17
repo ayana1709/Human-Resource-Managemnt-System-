@@ -9,7 +9,7 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\CalendarEventController;
-use App\Http\Controllers\DepartmentController;
+// use App\Http\Controllers\DepartmentController;
 
 
 
@@ -32,23 +32,28 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
-
-
-
 // Route::get('/dashboard', function () {
 //     return Inertia::render('Admin/Dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+require __DIR__.'/auth.php';
+
+
+
+
 Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 Route::get('/admin/users', [UserController::class, 'index'])->middleware(['auth', 'verified'])->name('Admin.index');
-
-
 //Attendance
 Route::middleware(['auth', 'verified'])->group(function () {
     // Employee routes
     Route::get('/attendance/create', [AttendanceController::class, 'create'])->name('attendance.create');
     Route::post('/attendance/store', [AttendanceController::class, 'store'])->name('attendance.store');
-    
+  
     // Admin routes
     Route::get('/admin/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
 });
@@ -68,24 +73,19 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('/admin/leave/{leave}', [LeaveController::class, 'update'])->name('leave.update');
 });
 
-// routes/web.php
+//  Calander
 
 Route::middleware(['auth'])->group(function () {
     // Display the calendar with all events
     Route::get('/calendarevents', [CalendarEventController::class, 'index'])->name('calendar-events.index');
-    
     // Display form to create a new event
-    Route::get('/calendar-events/create', [CalendarEventController::class, 'create'])->name('calendar-events.create');
-    
+    Route::get('/calendar-events/create', [CalendarEventController::class, 'create'])->name('calendar-events.create');  
     // Store the new event
-    Route::post('/calendar-events', [CalendarEventController::class, 'store'])->name('calendar-events.store');
-    
+    Route::post('/calendar-events', [CalendarEventController::class, 'store'])->name('calendar-events.store'); 
     // Display form to edit an event
     Route::get('/calendar-events/{calendarEvent}/edit', [CalendarEventController::class, 'edit'])->name('calendar-events.edit');
-    
     // Update the event
     Route::put('/calendar-events/{calendarEvent}', [CalendarEventController::class, 'update'])->name('calendar-events.update');
-    
     // Delete the event
     Route::delete('/calendar-events/{calendarEvent}', [CalendarEventController::class, 'destroy'])->name('calendar-events.destroy');
 });
@@ -95,7 +95,6 @@ Route::middleware(['auth'])->group(function () {
 
 
 
-Route::get('/api/departments', [DepartmentController::class, 'index']);
 
 
 
@@ -114,13 +113,4 @@ Route::get('/api/departments', [DepartmentController::class, 'index']);
 
 
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
-
-
-
-require __DIR__.'/auth.php';
