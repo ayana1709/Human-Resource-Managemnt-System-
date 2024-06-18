@@ -2,7 +2,8 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faChartLine, faCog } from "@fortawesome/free-solid-svg-icons";
-import SidebarEmployee from "@/Components/SidebarEmployee";
+import SidebarEmployee from "@/Components/Sidebar/EmployeeSidebar";
+import EmployeeSidebar from "@/Components/Sidebar/EmployeeSidebar";
 
 export default function Dashboard({ auth }) {
     return (
@@ -13,7 +14,8 @@ export default function Dashboard({ auth }) {
                 <div className="h-screen flex flex-col">
                     {/* <Navbar /> */}
                     <div className="flex flex-1">
-                        <SidebarEmployee />
+                        <EmployeeSidebar />
+
                         <main className="flex-1 bg-gray-100">
                             <div className="p-4">
                                 <h2 className="text-xl mb-4">

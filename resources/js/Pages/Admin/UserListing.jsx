@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faChartLine, faCog } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import Sidebar from "@/Components/Sidebar";
+import AdminSidebar from "@/Components/Sidebar/AdminSidebar";
 
 export default function UserListing({ auth, users }) {
     return (
@@ -14,7 +15,7 @@ export default function UserListing({ auth, users }) {
                 <div className="h-screen flex flex-col">
                     {/* <Navbar /> */}
                     <div className="flex flex-1">
-                        <Sidebar />
+                        <AdminSidebar />
 
                         <main className="flex-1 bg-gray-100">
                             <div className="p-4">

@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faChartLine, faCog } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 // import Sidebar from "@/Components/Sidebar";
-function Sidebar() {
+function AdminSidebar() {
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const toggleDropdown = () => {
@@ -119,4 +119,4 @@ function Sidebar() {
     );
 }
 
-export default Sidebar;
+export default AdminSidebar;

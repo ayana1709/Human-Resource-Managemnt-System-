@@ -17,32 +17,9 @@ export default function Register() {
         // department: "",
     });
 
-    // const [departments, setDepartments] = useState([]);
-
     const handleChange = (event) => {
         setData(event.target.name, event.target.value);
     };
-    // useEffect(() => {
-    //     if (
-    //         data.user_type === "Department Manager" ||
-    //         data.user_type === "Employee"
-    //     ) {
-    //         // Fetch departments from your backend
-    //         axios
-    //             .get("/api/departments")
-    //             .then((response) => {
-    //                 setDepartments(response.data);
-    //             })
-    //             .catch((error) => {
-    //                 console.error(
-    //                     "There was an error fetching the departments!",
-    //                     error
-    //                 );
-    //             });
-    //     } else {
-    //         setDepartments([]);
-    //     }
-    // }, [data.user_type]);
 
     useEffect(() => {
         return () => {
@@ -107,16 +84,6 @@ export default function Register() {
                     />
                     <InputError message={errors.role} className="mt-2" />
                 </div>
-                {/*  Department  */}
-                {/* <div className="mt-4">
-                    <InputLabel htmlFor="user_type" value="Role" />
-
-                    <SelectiveDropdown
-                        value={data.user_type}
-                        onChange={handleChange}
-                    />
-                    <InputError message={errors.role} className="mt-2" />
-                </div> */}
 
                 {/* Password*/}
 

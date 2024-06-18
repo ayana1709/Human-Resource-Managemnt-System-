@@ -2,7 +2,8 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faChartLine, faCog } from "@fortawesome/free-solid-svg-icons";
-import Sidebar from "@/Components/Sidebar";
+
+import AdminSidebar from "@/Components/Sidebar/AdminSidebar";
 
 export default function Dashboard({ auth }) {
     return (
@@ -13,7 +14,7 @@ export default function Dashboard({ auth }) {
                 <div className="h-screen flex flex-col">
                     {/* <Navbar /> */}
                     <div className="flex flex-1">
-                        <Sidebar />
+                        <AdminSidebar />
 
                         <main className="flex-1 bg-gray-100">
                             <div className="p-4">

@@ -3,7 +3,7 @@ import { Head, Link } from "@inertiajs/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faChartLine, faCog } from "@fortawesome/free-solid-svg-icons";
 // import Sidebar from "@/Components/Sidebar";
-function SidebarEmployee() {
+function EmployeeSidebar() {
     return (
         <div className="bg-gray-800 text-white w-64 h-full p-4">
             <ul>
@@ -41,4 +41,4 @@ function SidebarEmployee() {
     );
 }
 
-export default SidebarEmployee;
+export default EmployeeSidebar;

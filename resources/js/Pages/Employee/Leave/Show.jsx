@@ -6,7 +6,7 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faChartLine, faCog } from "@fortawesome/free-solid-svg-icons";
-import SidebarEmployee from "@/Components/SidebarEmployee";
+import SidebarEmployee from "@/Components/Sidebar/EmployeeSidebar";
 
 export default function Show({ auth }) {
     const { leave, flash } = usePage().props;

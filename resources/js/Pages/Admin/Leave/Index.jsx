@@ -7,6 +7,7 @@ import Sidebar from "@/Components/Sidebar";
 
 import React from "react";
 import { Inertia } from "@inertiajs/inertia";
+import AdminSidebar from "@/Components/Sidebar/AdminSidebar";
 // import { Head } from "@inertiajs/inertia-react";
 
 export default function Index({ leaves, auth }) {
@@ -21,7 +22,7 @@ export default function Index({ leaves, auth }) {
             <div className="h-screen flex flex-col">
                 {/* <Navbar /> */}
                 <div className="flex flex-1">
-                    <Sidebar />
+                    <AdminSidebar />
 
                     <main className="flex-1 bg-gray-100">
                         <div className="p-4">
