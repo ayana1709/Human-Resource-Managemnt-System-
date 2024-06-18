@@ -34,7 +34,7 @@ function AdminSidebar() {
                 <Link href={"/admin/leave"}>
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
-                        Leave Response
+                        Leave
                     </li>
                 </Link>
                 <Link>
@@ -71,6 +71,30 @@ function AdminSidebar() {
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
                         Recurtemnt
+                    </li>
+                </Link>
+                <Link href={"/dashboard"}>
+                    <li className="flex items-center p-2 hover:bg-gray-700">
+                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
+                        Payroll
+                    </li>
+                </Link>
+                <Link href={"/dashboard"}>
+                    <li className="flex items-center p-2 hover:bg-gray-700">
+                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
+                        Performance Manegemnt
+                    </li>
+                </Link>
+                <Link href={"/dashboard"}>
+                    <li className="flex items-center p-2 hover:bg-gray-700">
+                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
+                        Message
+                    </li>
+                </Link>
+                <Link href={"/dashboard"}>
+                    <li className="flex items-center p-2 hover:bg-gray-700">
+                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
+                        Notification
                     </li>
                 </Link>
 

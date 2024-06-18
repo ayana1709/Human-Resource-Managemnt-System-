@@ -34,7 +34,7 @@ function HrSidebar() {
                 <Link href={"/admin/leave"}>
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
-                        Leave Response
+                        Leave
                     </li>
                 </Link>
                 <Link>
@@ -46,7 +46,7 @@ function HrSidebar() {
                 <Link href={"/dashboard"}>
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
-                        Schedule
+                        Schift And Shedule
                     </li>
                 </Link>
                 <Link href={"/dashboard"}>
@@ -58,7 +58,7 @@ function HrSidebar() {
                 <Link href={"dashboard"}>
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
-                        Report
+                        Report And Analytics
                     </li>
                 </Link>
                 <Link href={"/dashboard"}>
@@ -70,7 +70,25 @@ function HrSidebar() {
                 <Link href={"/dashboard"}>
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
-                        Recurtemnt
+                        Recurtiment
+                    </li>
+                </Link>
+                <Link href={"/dashboard"}>
+                    <li className="flex items-center p-2 hover:bg-gray-700">
+                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
+                        Engagemnt
+                    </li>
+                </Link>
+                <Link href={"/dashboard"}>
+                    <li className="flex items-center p-2 hover:bg-gray-700">
+                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
+                        Message
+                    </li>
+                </Link>
+                <Link href={"/dashboard"}>
+                    <li className="flex items-center p-2 hover:bg-gray-700">
+                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
+                        Notification
                     </li>
                 </Link>
 
