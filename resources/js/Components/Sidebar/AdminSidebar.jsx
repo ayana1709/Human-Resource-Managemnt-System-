@@ -97,6 +97,12 @@ function AdminSidebar() {
                         Notification
                     </li>
                 </Link>
+                <Link href={"/admin/users"}>
+                    <li className="flex items-center p-2 hover:bg-gray-700">
+                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
+                        Approvemnt
+                    </li>
+                </Link>
 
                 <li className="flex items-center p-2 hover:bg-gray-700">
                     <FontAwesomeIcon icon={faCog} className="mr-2" />

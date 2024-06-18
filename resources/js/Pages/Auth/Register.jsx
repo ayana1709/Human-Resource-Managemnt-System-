@@ -17,8 +17,12 @@ export default function Register() {
         // department: "",
     });
 
-    const handleChange = (event) => {
-        setData(event.target.name, event.target.value);
+    const handleChange = (e) => {
+        setData(e.target.name, e.target.value);
+    };
+
+    const handleUserTypeChange = (value) => {
+        setData("user_type", value);
     };
 
     useEffect(() => {
@@ -80,7 +84,7 @@ export default function Register() {
 
                     <SelectiveDropdown
                         value={data.user_type}
-                        onChange={handleChange}
+                        onChange={handleUserTypeChange}
                     />
                     <InputError message={errors.role} className="mt-2" />
                 </div>

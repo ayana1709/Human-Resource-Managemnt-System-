@@ -55,6 +55,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Leave::class);
     }
+    public function department(): BelongsTo
+    {
+        return $this->belongsTo(Department::class);
+    }
 
 
 }

@@ -36,7 +36,7 @@ class RegisteredUserController extends Controller
             'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'user_type' => 'required|in:admin,hr,department_manager,employee', // Validate user_type
-            // 'department' => ['nullable', 'exists:departments,id'],
+         
 
         ]);
 
@@ -45,10 +45,12 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'user_type' => $request->user_type,
+            'approved' => false, // default to not approved
             // 'department' => $request->department,
 
         ]);
 
+       
         event(new Registered($user));
 
 
@@ -59,7 +61,11 @@ class RegisteredUserController extends Controller
     
 
 
-        return redirect(RouteServiceProvider::HOME);}
+        // return redirect(RouteServiceProvider::HOME);}
+        return redirect()->route('pending');
+     
+
+
 
         
        
@@ -67,4 +73,12 @@ class RegisteredUserController extends Controller
 
         
     // }
-}
+    }
+protected function authenticated(Request $request, $user)
+{
+    if (!$user->approved) {
+        return redirect()->route('pending');
+    }
+
+    return redirect()->route('dashboard');
+}}
