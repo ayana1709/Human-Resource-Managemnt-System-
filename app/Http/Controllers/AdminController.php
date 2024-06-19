@@ -18,19 +18,35 @@ class AdminController extends Controller
             'departments' => $departments,
         ]);
     }
+    
+  // In AdminController.php
 
-    public function approve(Request $request)
+public function approve(Request $request)
+{
+    $request->validate([
+        'user_id' => 'required|exists:users,id',
+        'department_name' => 'required|string',
+    ]);
+
+    $user = User::findOrFail($request->user_id);
+    $user->approved = true;
+    $user->department_name = $request->department_name;
+    $user->save();
+
+    return redirect()->route('admin.users')->with('success', 'User approved successfully.');
+}
+public function deny(Request $request)
     {
         $request->validate([
             'user_id' => 'required|exists:users,id',
-            'department_id' => 'required|exists:departments,id',
         ]);
 
         $user = User::findOrFail($request->user_id);
-        $user->approved = true;
-        $user->department_id = $request->department_id;
-        $user->save();
+        $user->approved = false;
+        // $user->notify(new UserDeniedNotification());
+        $user->delete();
 
-        return redirect()->route('admin.users')->with('success', 'User approved successfully.');
+        // return redirect()->route('pending')->with('error', 'User registration denied.');
     }
+
 }

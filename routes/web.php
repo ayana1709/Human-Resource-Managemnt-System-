@@ -49,10 +49,12 @@ Route::get('/pending', function () {
     return Inertia::render('Pending');
 })->name('pending');
 
+//approvement
 
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin/users', [AdminController::class, 'index'])->name('admin.users');
+    Route::get('/admin/user', [AdminController::class, 'index'])->name('admin.users');
     Route::post('/admin/users/approve', [AdminController::class, 'approve'])->name('admin.users.approve');
+    Route::post('/admin/users/deny', [AdminController::class, 'deny'])->name('admin.users.deny');
 });
 
 

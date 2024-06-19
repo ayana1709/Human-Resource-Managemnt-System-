@@ -23,7 +23,7 @@ class User extends Authenticatable
         'email',
         'password',
         'user_type',
-        'department',
+       'department_name',
         
     ];
 
@@ -55,7 +55,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Leave::class);
     }
-    public function department(): BelongsTo
+    public function department():BelongsTo
     {
         return $this->belongsTo(Department::class);
     }

@@ -7,8 +7,9 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, usePage } from "@inertiajs/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faChartLine, faCog } from "@fortawesome/free-solid-svg-icons";
-import SidebarEmployee from "@/Components/Sidebar/EmployeeSidebar";
+
 import Swal from "sweetalert2";
+import EmployeeSidebar from "@/Components/Sidebar/EmployeeSidebar";
 
 export default function Create({ auth }) {
     const { data, setData, post, processing, errors } = useForm({
@@ -31,7 +32,7 @@ export default function Create({ auth }) {
             <div className="h-screen flex flex-col">
                 {/* <Navbar /> */}
                 <div className="flex flex-1">
-                    <SidebarEmployee />
+                    <EmployeeSidebar />
                     <main className="flex-1 bg-gray-100">
                         <div className="p-4">
                             <h2 className="text-xl mb-4">Employee Dashboard</h2>

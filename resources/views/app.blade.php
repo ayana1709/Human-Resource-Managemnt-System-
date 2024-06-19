@@ -16,6 +16,9 @@
         @vite(['resources/js/app.jsx', "resources/js/Pages/{$page['component']}.jsx"])
         @inertiaHead
       
+        <script>
+        window.Laravel = { csrfToken: '{{ csrf_token() }}' };
+    </script>
     </head>
     <body class="font-sans antialiased">
         @inertia

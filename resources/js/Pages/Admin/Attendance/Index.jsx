@@ -6,7 +6,7 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faChartLine, faCog } from "@fortawesome/free-solid-svg-icons";
-import Sidebar from "@/Components/Sidebar";
+
 import AdminSidebar from "@/Components/Sidebar/AdminSidebar";
 
 export default function Index({ auth, attendances }) {

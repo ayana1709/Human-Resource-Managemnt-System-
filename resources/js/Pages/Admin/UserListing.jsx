@@ -3,7 +3,7 @@ import { Head } from "@inertiajs/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faChartLine, faCog } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
-import Sidebar from "@/Components/Sidebar";
+// import Sidebar from "@/Components/Sidebar";
 import AdminSidebar from "@/Components/Sidebar/AdminSidebar";
 
 export default function UserListing({ auth, users }) {

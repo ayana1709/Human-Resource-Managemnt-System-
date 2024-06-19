@@ -3,9 +3,9 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faChartLine, faCog } from "@fortawesome/free-solid-svg-icons";
-import SidebarEmployee from "@/Components/Sidebar/EmployeeSidebar";
 import React from "react";
 import { usePage } from "@inertiajs/react";
+import EmployeeSidebar from "@/Components/Sidebar/EmployeeSidebar";
 
 // import DashboardLayout from "../Layouts/DashboardLayout";
 
@@ -20,7 +20,7 @@ export default function Notification({ auth }) {
                 <div className="h-screen flex flex-col">
                     {/* <Navbar /> */}
                     <div className="flex flex-1">
-                        <SidebarEmployee />
+                        <EmployeeSidebar />
                         <main className="flex-1 bg-gray-100">
                             <div className="p-4">
                                 <h2 className="text-xl mb-4">

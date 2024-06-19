@@ -25,13 +25,13 @@ function AdminSidebar() {
                         User List
                     </li>
                 </Link>
-                <Link href={"/admin/attendance"}>
+                <Link href="/admin/attendance">
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
                         Attendance
                     </li>
                 </Link>
-                <Link href={"/admin/leave"}>
+                <Link href="/admin/leave">
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
                         Leave
@@ -97,7 +97,7 @@ function AdminSidebar() {
                         Notification
                     </li>
                 </Link>
-                <Link href={"/admin/users"}>
+                <Link href={"/admin/user"}>
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
                         Approvemnt
