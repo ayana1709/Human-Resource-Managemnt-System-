@@ -17,6 +17,7 @@ class AdminController extends Controller
         return Inertia::render('Users', [
             'users' => $users,
             'departments' => $departments,
+            'pendingUserId' => Session::get('redirect_pending_to_dashboard'),
             'flash' => Session::get('message'),
         ]);
     }
@@ -34,6 +35,17 @@ public function approve(Request $request)
     $user->approved = true;
     $user->department_name = $request->department_name;
     $user->save();
+
+
+      // Check if the user is currently on the pending page
+    if (Session::get('redirect_pending_to_dashboard') === $user->id) {
+        Session::forget('redirect_pending_to_dashboard');
+        return redirect()->route('dashboard');
+    }
+
+
+
+
     Session::flash('message', 'User registration approved successfully!');
 
     return redirect()->route('admin.users')->with('success', 'User approved successfully.');

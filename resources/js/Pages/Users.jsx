@@ -1,9 +1,10 @@
 import React from "react";
 import { Head } from "@inertiajs/react";
 import { usePage } from "@inertiajs/react";
+import Pending from "./Pending";
 
 export default function Users() {
-    const { users, departments } = usePage().props;
+    const { users, departments, pendingUserId } = usePage().props;
     const csrfToken = window.Laravel.csrfToken;
 
     return (
@@ -46,14 +47,32 @@ export default function Users() {
                                 Approve
                             </button>
                         </form>
-                        <form method="POST" action="/admin/users/deny" className="inline-block">
-                            <input type="hidden" name="_token" value={csrfToken} />
-                            <input type="hidden" name="user_id" value={user.id} />
-                            <button type="submit" className="btn btn-danger mt-2">Deny</button>
+                        <form
+                            method="POST"
+                            action="/admin/users/deny"
+                            className="inline-block"
+                        >
+                            <input
+                                type="hidden"
+                                name="_token"
+                                value={csrfToken}
+                            />
+                            <input
+                                type="hidden"
+                                name="user_id"
+                                value={user.id}
+                            />
+                            <button
+                                type="submit"
+                                className="btn btn-danger mt-2"
+                            >
+                                Deny
+                            </button>
                         </form>
                     </div>
                 ))}
             </div>
+            <Pending pendingUserId={pendingUserId} />
         </div>
     );
 }
