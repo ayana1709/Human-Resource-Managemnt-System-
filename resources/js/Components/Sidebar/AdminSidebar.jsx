@@ -37,6 +37,13 @@ function AdminSidebar() {
                         Leave
                     </li>
                 </Link>
+                <Link href={"/admin/user"}>
+                    <li className="flex items-center p-2 hover:bg-gray-700">
+                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
+                        Approvemnt
+                    </li>
+                </Link>
+
                 <Link>
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
@@ -55,6 +62,18 @@ function AdminSidebar() {
                         Payroll
                     </li>
                 </Link>
+                <Link href={"/dashboard"}>
+                    <li className="flex items-center p-2 hover:bg-gray-700">
+                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
+                        Recurtemnt
+                    </li>
+                </Link>
+                <Link href={"/dashboard"}>
+                    <li className="flex items-center p-2 hover:bg-gray-700">
+                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
+                        Message
+                    </li>
+                </Link>
                 <Link href={"dashboard"}>
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
@@ -67,12 +86,7 @@ function AdminSidebar() {
                         Training
                     </li>
                 </Link>
-                <Link href={"/dashboard"}>
-                    <li className="flex items-center p-2 hover:bg-gray-700">
-                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
-                        Recurtemnt
-                    </li>
-                </Link>
+
                 <Link href={"/dashboard"}>
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
@@ -85,22 +99,11 @@ function AdminSidebar() {
                         Performance Manegemnt
                     </li>
                 </Link>
-                <Link href={"/dashboard"}>
-                    <li className="flex items-center p-2 hover:bg-gray-700">
-                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
-                        Message
-                    </li>
-                </Link>
+
                 <Link href={"/dashboard"}>
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
                         Notification
-                    </li>
-                </Link>
-                <Link href={"/admin/user"}>
-                    <li className="flex items-center p-2 hover:bg-gray-700">
-                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
-                        Approvemnt
                     </li>
                 </Link>
 
