@@ -5,6 +5,7 @@ use App\Models\User;
 use App\Models\Department;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
@@ -16,6 +17,7 @@ class AdminController extends Controller
         return Inertia::render('Users', [
             'users' => $users,
             'departments' => $departments,
+            'flash' => Session::get('message'),
         ]);
     }
     
@@ -32,6 +34,7 @@ public function approve(Request $request)
     $user->approved = true;
     $user->department_name = $request->department_name;
     $user->save();
+    Session::flash('message', 'User registration approved successfully!');
 
     return redirect()->route('admin.users')->with('success', 'User approved successfully.');
 }
@@ -45,8 +48,10 @@ public function deny(Request $request)
         $user->approved = false;
         // $user->notify(new UserDeniedNotification());
         $user->delete();
+        Session::flash('message', 'User registration denied successfully.');
 
         // return redirect()->route('pending')->with('error', 'User registration denied.');
+        return redirect()->route('admin.users');
     }
 
 }

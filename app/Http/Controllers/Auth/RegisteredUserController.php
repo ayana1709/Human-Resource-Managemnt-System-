@@ -62,9 +62,14 @@ class RegisteredUserController extends Controller
 
 
         // return redirect(RouteServiceProvider::HOME);}
-        return redirect()->route('pending');
+        // return redirect()->route('pending');
      
-
+        if (!$user->approved) {
+                     return redirect()->route('pending');
+               }
+            
+               return redirect()->route('dashboard');
+             }
 
 
         
@@ -72,13 +77,18 @@ class RegisteredUserController extends Controller
 
 
         
-    // }
+   
     }
-protected function authenticated(Request $request, $user)
-{
-    if (!$user->approved) {
-        return redirect()->route('pending');
-    }
+// protected function authenticated(Request $request, $user)
+// {
+//     if (!$user->approved) {
+//         return redirect()->route('pending');
+//     }
 
-    return redirect()->route('dashboard');
-}}
+//     return redirect()->route('dashboard');
+// }
+
+
+
+
+
