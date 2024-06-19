@@ -1,11 +1,12 @@
 // resources/js/Pages/Calendar/Index.jsx
 
 import React, { useRef, useEffect } from "react";
-import { usePage } from "@inertiajs/inertia-react";
+// import { usePage } from "@inertiajs/inertia-react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
+import { usePage } from "@inertiajs/react";
 export default function Index() {
     const { events } = usePage().props;
     const calendarRef = useRef(null);
