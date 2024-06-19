@@ -37,13 +37,6 @@ public function approve(Request $request)
     $user->save();
 
 
-      // Check if the user is currently on the pending page
-    if (Session::get('redirect_pending_to_dashboard') === $user->id) {
-        Session::forget('redirect_pending_to_dashboard');
-        return redirect()->route('dashboard');
-    }
-
-
 
 
     Session::flash('message', 'User registration approved successfully!');

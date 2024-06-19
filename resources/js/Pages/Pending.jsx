@@ -1,24 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Head, usePage } from "@inertiajs/react";
-import { useEffect } from "react";
+import { Inertia } from "@inertiajs/inertia";
 
 export default function Pending() {
-    const { flash } = usePage().props;
+    const { user, flash } = usePage().props;
 
     useEffect(() => {
-        if (flash.message) {
-            alert(flash.message); // Display the flash message as an alert
+        if (flash && flash.message) {
+            alert(flash.message);
         }
 
-        // Check if there's a pending user awaiting approval to redirect to dashboard
-        const userId = parseInt(window.inertia.page.props.pendingUserId);
-        if (userId) {
-            window.inertia.post("/admin/users/approve", {
-                user_id: userId,
-                department_name: department_name,
-            });
+        // Redirect to dashboard if user is approved
+        if (user.approved) {
+            alert("Your registration has been approved!");
+            Inertia.visit("/dashboard");
         }
-    }, [flash]);
+    }, [user, flash]);
+
     return (
         <div className="container mx-auto text-center">
             <Head title="Pending Approval" />

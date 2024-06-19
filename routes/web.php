@@ -10,6 +10,9 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\CalendarEventController;
+use App\Models\User;
+use App\Http\Controllers\PendingController;
+
 // use App\Http\Controllers\DepartmentController;
 
 
@@ -56,6 +59,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/admin/users/approve', [AdminController::class, 'approve'])->name('admin.users.approve');
     Route::post('/admin/users/deny', [AdminController::class, 'deny'])->name('admin.users.deny');
 });
+
+
+
+// Ensure this route uses the 'auth' middleware to only allow authenticated users
+Route::middleware(['auth'])->get('/pending', [PendingController::class, 'show'])->name('pending');
+
 
 
 

@@ -1,7 +1,6 @@
 import React from "react";
 import { Head } from "@inertiajs/react";
 import { usePage } from "@inertiajs/react";
-import Pending from "./Pending";
 
 export default function Users() {
     const { users, departments, pendingUserId } = usePage().props;
@@ -72,7 +71,7 @@ export default function Users() {
                     </div>
                 ))}
             </div>
-            <Pending pendingUserId={pendingUserId} />
+            {/* <Pending pendingUserId={pendingUserId} /> */}
         </div>
     );
 }
