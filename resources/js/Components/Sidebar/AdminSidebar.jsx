@@ -44,7 +44,7 @@ function AdminSidebar() {
                     </li>
                 </Link>
 
-                <Link>
+                <Link href={"/calendar-events/create"}>
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
                         calander

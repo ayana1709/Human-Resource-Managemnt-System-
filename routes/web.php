@@ -97,6 +97,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('/admin/leave/{leave}', [LeaveController::class, 'update'])->name('leave.update');
 });
 
+
+
+
+
+
+
 //  Calander
 
 Route::middleware(['auth'])->group(function () {

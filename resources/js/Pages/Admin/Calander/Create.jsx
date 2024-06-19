@@ -2,9 +2,9 @@
 
 import React, { useState } from "react";
 import { useForm } from "@inertiajs/inertia-react";
-import DashboardLayout from "../../Layouts/DashboardLayout";
+// import DashboardLayout from "../../Layouts/DashboardLayout";
 
-export default function CalendarCreate() {
+export default function Create() {
     const { data, setData, post, errors } = useForm({
         title: "",
         description: "",
@@ -19,7 +19,7 @@ export default function CalendarCreate() {
     };
 
     return (
-        <DashboardLayout>
+        <>
             <h1 className="text-2xl font-bold mb-4">Create Event</h1>
             <form onSubmit={handleSubmit}>
                 <div>
@@ -71,6 +71,6 @@ export default function CalendarCreate() {
                 </div>
                 <button type="submit">Create</button>
             </form>
-        </DashboardLayout>
+        </>
     );
 }

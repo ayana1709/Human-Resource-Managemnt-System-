@@ -13,12 +13,13 @@ class CalendarEventController extends Controller
     public function index()
     {
         $events = CalendarEvent::all();
-        return Inertia::render('Employee/Calendar/Index', ['events' => $events]);
+        return Inertia::render('Employee/Calander/Index', ['events' => $events]);
     }
 
     public function create()
+
     {
-        return Inertia::render('Admin/Calendar/Create');
+        return Inertia::render('Admin/Calander/Create');
     }
 
     public function store(Request $request)
@@ -38,7 +39,7 @@ class CalendarEventController extends Controller
 
     public function edit(CalendarEvent $calendarEvent)
     {
-        return Inertia::render('Admin/Calendar/Edit', ['event' => $calendarEvent]);
+        return Inertia::render('Admin/Calander/Edit', ['event' => $calendarEvent]);
     }
 
     public function update(Request $request, CalendarEvent $calendarEvent)
