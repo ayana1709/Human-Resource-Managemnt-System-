@@ -113,7 +113,7 @@ Route::middleware(['auth'])->group(function () {
     // Store the new event
     Route::post('/calendar-events', [CalendarEventController::class, 'store'])->name('calendar-events.store'); 
     // Display form to edit an event
-    Route::get('/calendar-events/{calendarEvent}/edit', [CalendarEventController::class, 'edit'])->name('calendar-events.edit');
+    Route::get('/calendar-events/edit', [CalendarEventController::class, 'edit'])->name('calendar-events.edit');
     // Update the event
     Route::put('/calendar-events/{calendarEvent}', [CalendarEventController::class, 'update'])->name('calendar-events.update');
     // Delete the event
