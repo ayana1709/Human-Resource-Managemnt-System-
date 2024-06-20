@@ -82,4 +82,37 @@ class ShiftAssignmentController extends Controller
         $shiftAssignment->delete();
         return redirect()->back()->with('success', 'Shift assignment deleted successfully.');
     }
+
+
+
+
+
+
+
+
+    public function userShifts(Request $request)
+    {
+        $user = auth()->user();
+        $shiftType = $request->get('shiftType');
+        $shiftDate = $request->get('shiftDate');
+
+        $shiftAssignments = ShiftAssignment::with('shift')
+            ->where('user_id', $user->id)
+            ->when($shiftType, function($query, $shiftType) {
+                return $query->whereHas('shift', function($q) use ($shiftType) {
+                    $q->where('name', $shiftType);
+                });
+            })
+            ->when($shiftDate, function($query, $shiftDate) {
+                return $query->where('shift_date', $shiftDate);
+            })
+            ->get();
+
+        $shifts = Shift::all();
+
+        return Inertia::render('Employee/Shifts/UserShift', [
+            'shiftAssignments' => $shiftAssignments,
+            'shifts' => $shifts,
+        ]);
+    }
 }
