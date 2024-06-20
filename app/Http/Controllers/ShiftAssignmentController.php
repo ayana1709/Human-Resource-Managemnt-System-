@@ -5,19 +5,50 @@ use App\Models\Shift;
 use App\Models\ShiftAssignment;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+
+
 
 class ShiftAssignmentController extends Controller
 {
-    public function index()
+    public function index(Request $request) 
     {
-        $shiftAssignments = ShiftAssignment::with('user', 'shift')->get();
+        $shiftType = $request->get('shiftType');
+        $shiftDate = $request->get('shiftDate');
+        $shiftAssignments = ShiftAssignment::with('user', 'shift')
+        ->when($shiftType, function($query, $shiftType) {
+            return $query->whereHas('shift', function($q) use ($shiftType) {
+                $q->where('name', $shiftType);
+            });
+        })
+        ->when($shiftDate, function($query, $shiftDate) {
+            return $query->where('shift_date', $shiftDate);
+        })
+        ->get();
+
+
         $shifts = Shift::all();
          $users = User::all();
-        return inertia('Admin/Shifts/ShiftAssignment', [
+
+
+        return Inertia::render('Admin/Shifts/ShiftAssignment', [
             'shiftAssignments' => $shiftAssignments,
             'shifts' => $shifts,
             'users' => $users,
         ]);
+
+        
+
+       
+
+       
+
+
+
+
+
+
+
     }
 
     public function store(Request $request)

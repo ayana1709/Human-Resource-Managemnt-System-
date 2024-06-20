@@ -123,8 +123,10 @@ Route::middleware(['auth'])->group(function () {
 //Shift
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('shifts', ShiftController::class);
-    Route::resource('shift-assignments', ShiftAssignmentController::class);
+    // Route::resource('shift-assignments', ShiftAssignmentController::class);
+    Route::get('/shift-assignments', [ShiftAssignmentController::class, 'index'])->name('shift-assignments.index');
 });
+
 
 Route::middleware('auth')->group(function () {
     Route::get('view-shifts', [ShiftAssignmentController::class, 'index'])->name('view-shifts');
