@@ -67,7 +67,13 @@ function AdminSidebar() {
                         Shift
                     </li>
                 </Link>
-                shift-assignments
+
+                <Link href={"/shift-assignments"}>
+                    <li className="flex items-center p-2 hover:bg-gray-700">
+                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
+                        Shift
+                    </li>
+                </Link>
                 <Link href={"/dashboard"}>
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />

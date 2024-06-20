@@ -12,7 +12,10 @@ class ShiftController extends Controller
         $shifts = Shift::all();
         return inertia('Admin/Shifts/Index', compact('shifts'));
     }
-
+    public function edit(Shift $shift)
+    {
+        return inertia('Admin/Shifts/Edit', ['shift' => $shift]);
+    }
     public function store(Request $request)
     {
         $validated = $request->validate([

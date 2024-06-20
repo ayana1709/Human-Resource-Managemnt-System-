@@ -11,7 +11,13 @@ class ShiftAssignmentController extends Controller
     public function index()
     {
         $shiftAssignments = ShiftAssignment::with('user', 'shift')->get();
-        return inertia('Admin/Shifts/ShiftAssignments', compact('shiftAssignments'));
+        $shifts = Shift::all();
+         $users = User::all();
+        return inertia('Admin/Shifts/ShiftAssignment', [
+            'shiftAssignments' => $shiftAssignments,
+            'shifts' => $shifts,
+            'users' => $users,
+        ]);
     }
 
     public function store(Request $request)

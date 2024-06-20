@@ -1,8 +1,7 @@
 import React from "react";
 import { Inertia } from "@inertiajs/inertia";
-import Layout from "@/Layouts/Layout";
 
-export default function ShiftAssignments({ shiftAssignments, shifts, users }) {
+export default function ShiftAssignment({ shiftAssignments, shifts, users }) {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.target);
@@ -37,11 +36,12 @@ export default function ShiftAssignments({ shiftAssignments, shifts, users }) {
                         required
                     >
                         <option value="">Select Shift</option>
-                        {shifts.map((shift) => (
-                            <option key={shift.id} value={shift.id}>
-                                {shift.name}
-                            </option>
-                        ))}
+                        {shifts &&
+                            shifts.map((shift) => (
+                                <option key={shift.id} value={shift.id}>
+                                    {shift.name}
+                                </option>
+                            ))}
                     </select>
                 </div>
                 <div>
