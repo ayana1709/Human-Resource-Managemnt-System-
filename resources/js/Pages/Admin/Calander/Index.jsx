@@ -11,7 +11,8 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faChartLine, faCog } from "@fortawesome/free-solid-svg-icons";
-import EmployeeSidebar from "@/Components/Sidebar/EmployeeSidebar";
+import AdminSidebar from "@/Components/Sidebar/AdminSidebar";
+
 export default function Index({ auth }) {
     const { events } = usePage().props;
     const calendarRef = useRef(null);
@@ -30,12 +31,12 @@ export default function Index({ auth }) {
                 <div className="h-screen flex flex-col">
                     {/* <Navbar /> */}
                     <div className="flex flex-1">
-                        <EmployeeSidebar />
+                        <AdminSidebar />
 
                         <main className="flex-1 bg-gray-100">
                             <div className="p-4">
                                 <h2 className="text-xl mb-4">
-                                    Employee Dashboard
+                                    Admin Dashboard
                                 </h2>
                                 <>
                                     <h1 className="text-2xl font-bold mb-4">

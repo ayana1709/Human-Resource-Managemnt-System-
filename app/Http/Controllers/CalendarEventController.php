@@ -6,18 +6,37 @@ namespace App\Http\Controllers;
 
 use App\Models\CalendarEvent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class CalendarEventController extends Controller
 {
     public function index()
+
     {
         $events = CalendarEvent::all();
-        return Inertia::render('Employee/Calander/Index', ['events' => $events]);
+        if(Auth::id() ){ 
+            
+            $usertype = Auth()->user()->user_type;
+            if($usertype=='admin'){
+            return Inertia::render('Admin/Calander/Index', ['events' => $events]);
+            } 
+            else if($usertype=='employee'){
+
+                return Inertia::render('Employee/Calander/Index', ['events' => $events]);
+
+             
+            }
+            else{
+                return redirect()->back();
+            }
+
+
+        }
+        
     }
 
     public function create()
-
     {
         return Inertia::render('Admin/Calander/Create');
     }

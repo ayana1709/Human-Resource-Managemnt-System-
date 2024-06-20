@@ -108,6 +108,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     // Display the calendar with all events
     Route::get('/calendarevents', [CalendarEventController::class, 'index'])->name('calendar-events.index');
+ 
     // Display form to create a new event
     Route::get('/calendar-events/create', [CalendarEventController::class, 'create'])->name('calendar-events.create');  
     // Store the new event
