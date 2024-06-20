@@ -1,7 +1,14 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faChartLine, faCog } from "@fortawesome/free-solid-svg-icons";
+import {
+    faHome,
+    faChartLine,
+    faCog,
+    faCalendar,
+    faCalendarCheck,
+    faCalendarPlus,
+} from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 // import Sidebar from "@/Components/Sidebar";
 function AdminSidebar() {
@@ -45,33 +52,34 @@ function AdminSidebar() {
                 </Link>
                 <Link href={"/calendar-events/create"}>
                     <li className="flex items-center p-2 hover:bg-gray-700">
-                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
-                        calander
+                        <FontAwesomeIcon
+                            icon={faCalendarPlus}
+                            className="mr-2"
+                        />
+                        Create calander
                     </li>
                 </Link>
-                <Link href={"/calendar-events/edit"}>
-                    <li className="flex items-center p-2 hover:bg-gray-700">
-                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
-                        calander Edit
-                    </li>
-                </Link>
+
                 <Link href={"/calendarevents"}>
                     <li className="flex items-center p-2 hover:bg-gray-700">
-                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
-                        calander View
+                        <FontAwesomeIcon
+                            icon={faCalendarCheck}
+                            className="mr-2"
+                        />
+                        View calander
                     </li>
                 </Link>
                 <Link href={"/shifts"}>
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
-                        Shift
+                        Create Shift
                     </li>
                 </Link>
 
                 <Link href={"/shift-assignments"}>
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
-                        Shift
+                        Shift Assignment
                     </li>
                 </Link>
                 <Link href={"/dashboard"}>
