@@ -1,19 +1,20 @@
 <?php
+use App\Models\User;
+use Inertia\Inertia;
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\CalendarEventController;
-use App\Models\User;
 use App\Http\Controllers\PendingController;
+use App\Http\Controllers\ShiftController;
+use App\Http\Controllers\ShiftAssignmentController;
 
-// use App\Http\Controllers\DepartmentController;
 
 
 
@@ -22,9 +23,7 @@ use App\Http\Controllers\PendingController;
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+
 |
 */
 
@@ -104,7 +103,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
 //  Calander
-
 Route::middleware(['auth'])->group(function () {
     // Display the calendar with all events
     Route::get('/calendarevents', [CalendarEventController::class, 'index'])->name('calendar-events.index');
@@ -119,6 +117,17 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/calendar-events/{calendarEvent}', [CalendarEventController::class, 'update'])->name('calendar-events.update');
     // Delete the event
     Route::delete('/calendar-events/{calendarEvent}', [CalendarEventController::class, 'destroy'])->name('calendar-events.destroy');
+});
+
+
+//Shift
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::resource('shifts', ShiftController::class);
+    Route::resource('shift-assignments', ShiftAssignmentController::class);
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('view-shifts', [ShiftAssignmentController::class, 'index'])->name('view-shifts');
 });
 
 
