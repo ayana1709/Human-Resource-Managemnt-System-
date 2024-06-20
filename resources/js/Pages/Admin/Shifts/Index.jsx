@@ -1,5 +1,6 @@
 import React from "react";
 import { Inertia } from "@inertiajs/inertia";
+import { Link } from "@inertiajs/react";
 // import Layout from '@/Layouts/Layout';
 
 export default function Shifts({ shifts }) {
@@ -63,19 +64,19 @@ export default function Shifts({ shifts }) {
                             </p>
                         </div>
                         <div>
-                            <InertiaLink
+                            <Link
                                 href={route("shifts.edit", shift.id)}
                                 className="text-blue-500 mr-2"
                             >
                                 Edit
-                            </InertiaLink>
-                            <InertiaLink
+                            </Link>
+                            <Link
                                 href={route("shifts.destroy", shift.id)}
                                 method="delete"
                                 className="text-red-500"
                             >
                                 Delete
-                            </InertiaLink>
+                            </Link>
                         </div>
                     </li>
                 ))}

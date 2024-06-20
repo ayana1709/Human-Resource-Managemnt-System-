@@ -1,6 +1,6 @@
 import React from "react";
 import { Inertia } from "@inertiajs/inertia";
-import Layout from "@/Layouts/Layout";
+// import Layout from "@/Layouts/Layout";
 
 export default function EditShift({ shift }) {
     const handleSubmit = (event) => {
@@ -13,7 +13,7 @@ export default function EditShift({ shift }) {
     };
 
     return (
-        <Layout>
+        <>
             <h1 className="text-2xl font-bold mb-4">Edit Shift</h1>
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
@@ -53,6 +53,6 @@ export default function EditShift({ shift }) {
                     Update Shift
                 </button>
             </form>
-        </Layout>
+        </>
     );
 }

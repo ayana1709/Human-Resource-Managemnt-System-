@@ -43,7 +43,6 @@ function AdminSidebar() {
                         Approvemnt
                     </li>
                 </Link>
-
                 <Link href={"/calendar-events/create"}>
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
@@ -62,12 +61,13 @@ function AdminSidebar() {
                         calander View
                     </li>
                 </Link>
-                <Link href={"/dashboard"}>
+                <Link href={"/shifts"}>
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
-                        Schedule
+                        Shift
                     </li>
                 </Link>
+                shift-assignments
                 <Link href={"/dashboard"}>
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
@@ -98,7 +98,6 @@ function AdminSidebar() {
                         Training
                     </li>
                 </Link>
-
                 <Link href={"/dashboard"}>
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
@@ -111,14 +110,12 @@ function AdminSidebar() {
                         Performance Manegemnt
                     </li>
                 </Link>
-
                 <Link href={"/dashboard"}>
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
                         Notification
                     </li>
                 </Link>
-
                 <li className="flex items-center p-2 hover:bg-gray-700">
                     <FontAwesomeIcon icon={faCog} className="mr-2" />
                     Settings

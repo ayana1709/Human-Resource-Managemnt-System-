@@ -11,7 +11,7 @@ export default function ShiftAssignments({ shiftAssignments, shifts, users }) {
     };
 
     return (
-        <Layout>
+        <>
             <h1 className="text-2xl font-bold mb-4">Shift Assignments</h1>
             <form onSubmit={handleSubmit} className="space-y-4 mb-6">
                 <div>
@@ -68,6 +68,6 @@ export default function ShiftAssignments({ shiftAssignments, shifts, users }) {
                     </li>
                 ))}
             </ul>
-        </Layout>
+        </>
     );
 }
