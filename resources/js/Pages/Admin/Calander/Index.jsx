@@ -35,24 +35,16 @@ export default function Index({ auth }) {
 
                         <main className="flex-1 bg-gray-100">
                             <div className="p-4">
-                                <h2 className="text-xl mb-4">
-                                    Admin Dashboard
-                                </h2>
-                                <>
-                                    <h1 className="text-2xl font-bold mb-4">
-                                        Calendar
-                                    </h1>
-                                    <FullCalendar
-                                        plugins={[
-                                            dayGridPlugin,
-                                            timeGridPlugin,
-                                            interactionPlugin,
-                                        ]}
-                                        initialView="dayGridMonth"
-                                        events={events}
-                                        ref={calendarRef}
-                                    />
-                                </>
+                                <FullCalendar
+                                    plugins={[
+                                        dayGridPlugin,
+                                        timeGridPlugin,
+                                        interactionPlugin,
+                                    ]}
+                                    initialView="dayGridMonth"
+                                    events={events}
+                                    ref={calendarRef}
+                                />
                             </div>
                         </main>
                     </div>

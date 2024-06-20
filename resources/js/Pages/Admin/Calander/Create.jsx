@@ -39,94 +39,117 @@ export default function Create({ auth }) {
                                 <h2 className="text-xl mb-4">
                                     Admin Dashboard
                                 </h2>
-                                <>
-                                    <h1 className="text-2xl font-bold mb-4">
-                                        Create Event
-                                    </h1>
-                                    <form onSubmit={handleSubmit}>
-                                        <div>
-                                            <label>Title</label>
+                                <form onSubmit={handleSubmit}>
+                                    <h2 className="text-xl mb-4">
+                                        Create Clander
+                                    </h2>
+                                    <div className="mb-4">
+                                        <label className="block text-gray-700">
+                                            Title
+                                        </label>
+                                        <input
+                                            type="text"
+                                            name="title"
+                                            value={data.title}
+                                            onChange={(e) =>
+                                                setData("title", e.target.value)
+                                            }
+                                            className="mt-1 block w-full"
+                                        />
+                                        {errors.title && (
+                                            <span className="text-red-500">
+                                                {errors.title}
+                                            </span>
+                                        )}
+                                    </div>
+                                    <div className="mb-4">
+                                        <label className="block text-gray-700">
+                                            Description
+                                        </label>
+                                        <textarea
+                                            name="description"
+                                            value={data.description}
+                                            onChange={(e) =>
+                                                setData(
+                                                    "description",
+                                                    e.target.value
+                                                )
+                                            }
+                                            className="mt-1 block w-full"
+                                        />
+                                        {errors.description && (
+                                            <span className="text-red-500">
+                                                {errors.description}
+                                            </span>
+                                        )}
+                                    </div>
+                                    <div className="mb-4">
+                                        <label className="block text-gray-700">
+                                            Start Date
+                                        </label>
+                                        <input
+                                            type="datetime-local"
+                                            name="start"
+                                            value={data.start}
+                                            onChange={(e) =>
+                                                setData("start", e.target.value)
+                                            }
+                                            className="mt-1 block w-full"
+                                        />
+                                        {errors.start && (
+                                            <span className="text-red-500">
+                                                {errors.start}
+                                            </span>
+                                        )}
+                                    </div>
+                                    <div className="mb-4">
+                                        <label className="block text-gray-700">
+                                            End Date
+                                        </label>
+                                        <input
+                                            type="datetime-local"
+                                            name="end"
+                                            value={data.end}
+                                            onChange={(e) =>
+                                                setData("end", e.target.value)
+                                            }
+                                            className="mt-1 block w-full"
+                                        />
+                                        {errors.end && (
+                                            <span className="text-red-500">
+                                                {errors.end}
+                                            </span>
+                                        )}
+                                    </div>
+                                    <div className="mb-4">
+                                        <label className="block text-gray-700">
                                             <input
-                                                type="text"
-                                                value={data.title}
+                                                type="checkbox"
+                                                name="is_holiday"
+                                                checked={data.is_holiday}
                                                 onChange={(e) =>
                                                     setData(
-                                                        "title",
-                                                        e.target.value
+                                                        "is_holiday",
+                                                        e.target.checked
                                                     )
                                                 }
+                                                className="mr-2"
                                             />
-                                            {errors.title && (
-                                                <span>{errors.title}</span>
-                                            )}
-                                        </div>
-                                        <div>
-                                            <label>Description</label>
-                                            <textarea
-                                                value={data.description}
-                                                onChange={(e) =>
-                                                    setData(
-                                                        "description",
-                                                        e.target.value
-                                                    )
-                                                }
-                                            />
-                                            {errors.description && (
-                                                <span>
-                                                    {errors.description}
-                                                </span>
-                                            )}
-                                        </div>
-                                        <div>
-                                            <label>Start Date</label>
-                                            <input
-                                                type="datetime-local"
-                                                value={data.start}
-                                                onChange={(e) =>
-                                                    setData(
-                                                        "start",
-                                                        e.target.value
-                                                    )
-                                                }
-                                            />
-                                            {errors.start && (
-                                                <span>{errors.start}</span>
-                                            )}
-                                        </div>
-                                        <div>
-                                            <label>End Date</label>
-                                            <input
-                                                type="datetime-local"
-                                                value={data.end}
-                                                onChange={(e) =>
-                                                    setData(
-                                                        "end",
-                                                        e.target.value
-                                                    )
-                                                }
-                                            />
-                                            {errors.end && (
-                                                <span>{errors.end}</span>
-                                            )}
-                                        </div>
-                                        <div>
-                                            <label>
-                                                <input
-                                                    type="checkbox"
-                                                    checked={data.is_holiday}
-                                                    onChange={(e) =>
-                                                        setData(
-                                                            "is_holiday",
-                                                            e.target.checked
-                                                        )
-                                                    }
-                                                />
-                                                Holiday
-                                            </label>
-                                        </div>
-                                        <button type="submit">Create</button>
-                                    </form>
-                                </>
+                                            Holiday
+                                        </label>
+                                        {errors.is_holiday && (
+                                            <span className="text-red-500">
+                                                {errors.is_holiday}
+                                            </span>
+                                        )}
+                                    </div>
+                                    <button
+                                        type="submit"
+                                        className="bg-blue-500 text-white px-4 py-2"
+                                    >
+                                        Update
+                                    </button>
+                                </form>
                             </div>
                         </main>
                     </div>
