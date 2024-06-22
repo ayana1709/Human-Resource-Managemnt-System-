@@ -1,21 +1,23 @@
 <?php
 
+// app/Http/Controllers/JobRequisitionController.php
 namespace App\Http\Controllers;
 
 use App\Models\JobRequisition;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class JobRequisitionController extends Controller
 {
     public function index()
     {
-        $jobRequisitions = JobRequisition::all();
-        return inertia('Manager/Job_Requistion/Index', ['jobRequisitions' => $jobRequisitions]);
+        $requisitions = JobRequisition::with('requester', 'approver')->get();
+        return Inertia::render('JobRequisitions/Index', ['requisitions' => $requisitions]);
     }
 
     public function create()
     {
-        return inertia('Manager/Job_Requistion/Create');
+        return Inertia::render('JobRequisitions/Create');
     }
 
     public function store(Request $request)
@@ -26,38 +28,24 @@ class JobRequisitionController extends Controller
             'department' => 'required|string|max:255',
         ]);
 
-        JobRequisition::create($request->all());
-
-        return redirect()->route('job-requisitions.index');
-    }
-
-    public function show(JobRequisition $jobRequisition)
-    {
-        return inertia('Admin/Show', ['jobRequisition' => $jobRequisition]);
-    }
-
-    public function edit(JobRequisition $jobRequisition)
-    {
-        return inertia('Manager/Job_Requistion/Edit', ['jobRequisition' => $jobRequisition]);
-    }
-
-    public function update(Request $request, JobRequisition $jobRequisition)
-    {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'department' => 'required|string|max:255',
+        JobRequisition::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'department' => $request->department,
+            'requested_by' => auth()->id(),
         ]);
 
-        $jobRequisition->update($request->all());
-
-        return redirect()->route('job-requisitions.index');
+        return redirect()->route('job-requisitions.index')->with('success', 'Job Requisition created successfully.');
     }
 
-    public function destroy(JobRequisition $jobRequisition)
+    public function approve($id)
     {
-        $jobRequisition->delete();
+        $requisition = JobRequisition::findOrFail($id);
+        $requisition->update([
+            'status' => 'approved',
+            'approved_by' => auth()->id(),
+        ]);
 
-        return redirect()->route('job-requisitions.index');
+        return redirect()->route('job-requisitions.index')->with('success', 'Job Requisition approved successfully.');
     }
 }

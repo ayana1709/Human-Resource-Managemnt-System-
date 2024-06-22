@@ -144,6 +144,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::resource('job-requisitions', JobRequisitionController::class);
 
+Route::post('job-requisitions/{id}/approve', [JobRequisitionController::class, 'approve'])->name('job-requisitions.approve');
 
 
 
