@@ -82,7 +82,7 @@ function AdminSidebar() {
                         Shift Assignment
                     </li>
                 </Link>
-                <Link href={"/job-requisitions"}>
+                <Link href={"/job-requisitions/{id}/approve"}>
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
                         Show Job Requsition

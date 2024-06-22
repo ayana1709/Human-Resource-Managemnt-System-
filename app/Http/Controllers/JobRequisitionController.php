@@ -12,12 +12,12 @@ class JobRequisitionController extends Controller
     public function index()
     {
         $requisitions = JobRequisition::with('requester', 'approver')->get();
-        return Inertia::render('JobRequisitions/Index', ['requisitions' => $requisitions]);
+        return Inertia::render('Admin/Index', ['requisitions' => $requisitions]);
     }
 
     public function create()
     {
-        return Inertia::render('JobRequisitions/Create');
+        return Inertia::render('Employee/Create');
     }
 
     public function store(Request $request)
