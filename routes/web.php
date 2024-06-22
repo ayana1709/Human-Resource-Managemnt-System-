@@ -14,6 +14,7 @@ use App\Http\Controllers\CalendarEventController;
 use App\Http\Controllers\PendingController;
 use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\ShiftAssignmentController;
+use App\Http\Controllers\JobRequisitionController;
 
 
 
@@ -137,6 +138,11 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
+//Job Requistion 
+
+
+
+Route::resource('job-requisitions', JobRequisitionController::class);
 
 
 
