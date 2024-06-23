@@ -15,6 +15,7 @@ use App\Http\Controllers\PendingController;
 use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\ShiftAssignmentController;
 use App\Http\Controllers\JobRequisitionController;
+use App\Http\Controllers\JobPostingController;
 
 
 
@@ -36,9 +37,8 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
-// Route::get('/dashboard', function () {
-//     return Inertia::render('Admin/Dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -51,6 +51,8 @@ require __DIR__.'/auth.php';
 Route::get('/pending', function () {
     return Inertia::render('Pending');
 })->name('pending');
+
+
 
 //approvement
 
@@ -140,13 +142,24 @@ Route::middleware(['auth'])->group(function () {
 
 //Job Requistion 
 
-
-
 Route::resource('job-requisitions', JobRequisitionController::class);
-
 Route::post('job-requisitions/{id}/approve', [JobRequisitionController::class, 'approve'])->name('job-requisitions.approve');
 
 
+
+
+
+// Resourceful routes for job postings
+Route::get('job-postings', [JobPostingController::class, 'index'])->name('job-postings.index'); // List all job postings
+Route::get('job-postings/create', [JobPostingController::class, 'create'])->name('job-postings.create'); // Form to create a new job posting
+Route::post('job-postings', [JobPostingController::class, 'store'])->name('job-postings.store'); // Store a new job posting
+Route::get('job-postings/{id}', [JobPostingController::class, 'show'])->name('job-postings.show'); // Show details of a job posting
+Route::get('job-postings/{id}/edit', [JobPostingController::class, 'edit'])->name('job-postings.edit'); // Form to edit a job posting
+Route::put('job-postings/{id}', [JobPostingController::class, 'update'])->name('job-postings.update'); // Update a job posting
+Route::delete('job-postings/{id}', [JobPostingController::class, 'destroy'])->name('job-postings.destroy'); // Delete a job posting
+
+// Custom route for approving a job requisition (if needed)
+Route::post('job-requisitions/{id}/approve', [JobRequisitionController::class, 'approve'])->name('job-requisitions.approve');
 
 
 

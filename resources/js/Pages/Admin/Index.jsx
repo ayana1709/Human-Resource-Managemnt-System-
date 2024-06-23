@@ -1,7 +1,8 @@
 // resources/js/Pages/JobRequisitions/Index.jsx
 import React from "react";
 import { Inertia } from "@inertiajs/inertia";
-import { usePage } from "@inertiajs/inertia-react";
+import { usePage } from "@inertiajs/react";
+// import { usePage } from "@inertiajs/inertia-react";
 
 export default function Index() {
     const { requisitions } = usePage().props;
