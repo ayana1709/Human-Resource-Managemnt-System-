@@ -16,10 +16,8 @@ class CreateJobPostingsTable extends Migration
             $table->text('responsibilities');
             $table->text('qualifications');
             $table->text('skills');
-            $table->unsignedBigInteger('created_by');
+            $table->foreignId('created_by')->constrained('users');
             $table->timestamps();
-
-            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

@@ -161,10 +161,7 @@ Route::delete('job-postings/{id}', [JobPostingController::class, 'destroy'])->na
 // Custom route for approving a job requisition (if needed)
 Route::post('job-requisitions/{id}/approve', [JobRequisitionController::class, 'approve'])->name('job-requisitions.approve');
 
-
-
-
-
+Route::resource('job-postings', JobPostingController::class);
 
 
 
