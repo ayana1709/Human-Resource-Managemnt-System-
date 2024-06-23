@@ -16,6 +16,7 @@ use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\ShiftAssignmentController;
 use App\Http\Controllers\JobRequisitionController;
 use App\Http\Controllers\JobPostingController;
+use App\Http\Controllers\JobApplicationController;
 
 
 
@@ -162,6 +163,9 @@ Route::delete('job-postings/{id}', [JobPostingController::class, 'destroy'])->na
 Route::post('job-requisitions/{id}/approve', [JobRequisitionController::class, 'approve'])->name('job-requisitions.approve');
 
 Route::resource('job-postings', JobPostingController::class);
+Route::get('job-postings/{id}/apply', [JobApplicationController::class, 'create'])->name('job-postings.apply');
+Route::post('job-postings/{id}/apply', [JobApplicationController::class, 'store'])->name('job-postings.apply.store');
+
 
 
 
