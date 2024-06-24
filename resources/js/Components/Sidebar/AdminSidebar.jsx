@@ -1,5 +1,5 @@
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head, Link } from "@inertiajs/react";
+import { useState } from "react";
+import { Link } from "@inertiajs/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faHome,
@@ -9,129 +9,180 @@ import {
     faCalendarCheck,
     faCalendarPlus,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
-// import Sidebar from "@/Components/Sidebar";
+
 function AdminSidebar() {
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
     };
+
     return (
-        <div className="bg-gray-800 text-white w-64 h-full p-4">
-            <ul>
-                <Link href={"/dashboard"}>
-                    <li className="flex items-center p-2 hover:bg-gray-700">
+        <div className="flex flex-col h-full min-h-screen bg-gray-800 text-white w-64 sm:w-48 md:w-56 lg:w-64 p-4">
+            <div className="mb-4">
+                <h2 className="text-2xl font-bold text-center">Admin Panel</h2>
+            </div>
+            <ul className="flex-1">
+                <li>
+                    <Link
+                        href="/dashboard"
+                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
+                    >
                         <FontAwesomeIcon icon={faHome} className="mr-2" />
                         Home
-                    </li>
-                </Link>
-                <Link href={"/admin/users"}>
-                    <li className="flex items-center p-2 hover:bg-gray-700">
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        href="/admin/users"
+                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
+                    >
                         <FontAwesomeIcon icon={faHome} className="mr-2" />
                         User List
-                    </li>
-                </Link>
-                <Link href="/admin/attendance">
-                    <li className="flex items-center p-2 hover:bg-gray-700">
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        href="/admin/attendance"
+                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
+                    >
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
                         Attendance
-                    </li>
-                </Link>
-                <Link href="/admin/leave">
-                    <li className="flex items-center p-2 hover:bg-gray-700">
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        href="/admin/leave"
+                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
+                    >
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
                         Leave
-                    </li>
-                </Link>
-                <Link href={"/admin/user"}>
-                    <li className="flex items-center p-2 hover:bg-gray-700">
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        href="/admin/user"
+                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
+                    >
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
                         Approvemnt
-                    </li>
-                </Link>
-                <Link href={"/calendar-events/create"}>
-                    <li className="flex items-center p-2 hover:bg-gray-700">
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        href="/calendar-events/create"
+                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
+                    >
                         <FontAwesomeIcon
                             icon={faCalendarPlus}
                             className="mr-2"
                         />
-                        Create calander
-                    </li>
-                </Link>
-
-                <Link href={"/calendarevents"}>
-                    <li className="flex items-center p-2 hover:bg-gray-700">
+                        Create Calendar
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        href="/calendarevents"
+                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
+                    >
                         <FontAwesomeIcon
                             icon={faCalendarCheck}
                             className="mr-2"
                         />
-                        View calander
-                    </li>
-                </Link>
-                <Link href={"/shifts"}>
-                    <li className="flex items-center p-2 hover:bg-gray-700">
+                        View Calendar
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        href="/shifts"
+                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
+                    >
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
                         Create Shift
-                    </li>
-                </Link>
-
-                <Link href={"/shift-assignments"}>
-                    <li className="flex items-center p-2 hover:bg-gray-700">
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        href="/shift-assignments"
+                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
+                    >
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
                         Shift Assignment
-                    </li>
-                </Link>
-                <Link href={"/job-requisitions"}>
-                    <li className="flex items-center p-2 hover:bg-gray-700">
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        href="/job-requisitions"
+                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
+                    >
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
-                        Job Requsition
-                    </li>
-                </Link>
-
-                <Link href={"/job-postings"}>
-                    <li className="flex items-center p-2 hover:bg-gray-700">
+                        Job Requisition
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        href="/job-postings"
+                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
+                    >
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
                         Job Posting
-                    </li>
-                </Link>
-                <Link href={"/dashboard"}>
-                    <li className="flex items-center p-2 hover:bg-gray-700">
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        href="/dashboard"
+                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
+                    >
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
                         Message
-                    </li>
-                </Link>
-                <Link href={"dashboard"}>
-                    <li className="flex items-center p-2 hover:bg-gray-700">
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        href="/dashboard"
+                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
+                    >
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
                         Report
-                    </li>
-                </Link>
-                <Link href={"/dashboard"}>
-                    <li className="flex items-center p-2 hover:bg-gray-700">
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        href="/dashboard"
+                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
+                    >
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
                         Training
-                    </li>
-                </Link>
-                <Link href={"/dashboard"}>
-                    <li className="flex items-center p-2 hover:bg-gray-700">
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        href="/dashboard"
+                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
+                    >
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
                         Payroll
-                    </li>
-                </Link>
-                <Link href={"/dashboard"}>
-                    <li className="flex items-center p-2 hover:bg-gray-700">
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        href="/dashboard"
+                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
+                    >
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
-                        Performance Manegemnt
-                    </li>
-                </Link>
-                <Link href={"/dashboard"}>
-                    <li className="flex items-center p-2 hover:bg-gray-700">
+                        Performance Management
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        href="/dashboard"
+                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
+                    >
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
                         Notification
-                    </li>
-                </Link>
-                <li className="flex items-center p-2 hover:bg-gray-700">
+                    </Link>
+                </li>
+                <li className="flex items-center p-2 hover:bg-gray-700 rounded transition">
                     <FontAwesomeIcon icon={faCog} className="mr-2" />
                     Settings
                 </li>
@@ -139,7 +190,7 @@ function AdminSidebar() {
                     <div className="relative">
                         <button
                             onClick={toggleDropdown}
-                            className="w-full text-left py-2 px-4 rounded hover:bg-gray-700 focus:outline-none"
+                            className="w-full text-left py-2 px-4 hover:bg-gray-700 rounded focus:outline-none transition"
                         >
                             <FontAwesomeIcon
                                 icon={faChartLine}
@@ -148,22 +199,22 @@ function AdminSidebar() {
                             Dropdown
                         </button>
                         {dropdownOpen && (
-                            <div className="absolute left-0 w-full mt-2 bg-gray-700 rounded shadow-lg">
+                            <div className="absolute left-0 w-full mt-2 bg-gray-700 rounded shadow-lg z-10">
                                 <Link
                                     href="/link1"
-                                    className="block py-2 px-4 hover:bg-gray-600"
+                                    className="block py-2 px-4 hover:bg-gray-600 rounded transition"
                                 >
                                     Link 1
                                 </Link>
                                 <Link
                                     href="/link2"
-                                    className="block py-2 px-4 hover:bg-gray-600"
+                                    className="block py-2 px-4 hover:bg-gray-600 rounded transition"
                                 >
                                     Link 2
                                 </Link>
                                 <Link
                                     href="/link3"
-                                    className="block py-2 px-4 hover:bg-gray-600"
+                                    className="block py-2 px-4 hover:bg-gray-600 rounded transition"
                                 >
                                     Link 3
                                 </Link>
