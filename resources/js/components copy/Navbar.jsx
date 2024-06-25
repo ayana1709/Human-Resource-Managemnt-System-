@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+const [toggleMenu, setToggleMenu] = useState(false);
 
 import companyLogo from "../assets/images/logo.svg";
 
 const Navbar = ({ auth, laravelVersion, phpVersion }) => {
-    const [toggleMenu, setToggleMenu] = useState(false);
-
     return (
         <nav className="relative container mx-auto p-6">
             {/* Flex Container */}
