@@ -49,7 +49,7 @@ function DepManagerSidebar() {
                         Shift
                     </li>
                 </Link>
-                <Link href={"/dashboard"}>
+                <Link href={"/"}>
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
                         Payroll

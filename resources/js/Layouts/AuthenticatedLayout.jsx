@@ -12,19 +12,12 @@ export default function Authenticated({ user, header, children }) {
     return (
         <div className="min-h-screen bg-gray-100">
             <nav className="bg-white border-b border-gray-100">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex justify-between h-16 items-center">
-                        {" "}
-                        {/* Added items-center here */}
-                        <div className="flex items-center">
-                            {" "}
-                            {/* Changed this div to align items-center */}
-                            <div className="shrink-0 flex items-center">
-                                {" "}
-                                {/* Modified this div */}
+                <div className="max-w-7xl mx-auto px-0 sm:px-0 lg:px-0">
+                    <div className="flex justify-between h-16">
+                        <div className="flex">
+                            <div className="shrink-0 flex  items-baseline">
                                 <Link href="/">
-                                    <h1 className="text-3xl pt-2 pb-6">HRMS</h1>{" "}
-                                    {/* Added padding classes to match the original design */}
+                                    <h1 className="text-3xl pt-2 pb-6">HRMS</h1>
                                 </Link>
                             </div>
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
@@ -36,6 +29,7 @@ export default function Authenticated({ user, header, children }) {
                                 </NavLink>
                             </div>
                         </div>
+
                         <div className="hidden sm:flex sm:items-center sm:ms-6">
                             <div className="ms-3 relative">
                                 <Dropdown>
@@ -60,6 +54,13 @@ export default function Authenticated({ user, header, children }) {
                                                     />
                                                 </svg>
                                             </button>
+                                            <Dropdown.Link
+                                                href={route("logout")}
+                                                method="post"
+                                                as="button"
+                                            >
+                                                Log Out
+                                            </Dropdown.Link>
                                         </span>
                                     </Dropdown.Trigger>
 
@@ -69,17 +70,11 @@ export default function Authenticated({ user, header, children }) {
                                         >
                                             Profile
                                         </Dropdown.Link>
-                                        <Dropdown.Link
-                                            href={route("logout")}
-                                            method="post"
-                                            as="button"
-                                        >
-                                            Log Out
-                                        </Dropdown.Link>
                                     </Dropdown.Content>
                                 </Dropdown>
                             </div>
                         </div>
+
                         <div className="-me-2 flex items-center sm:hidden">
                             <button
                                 onClick={() =>
