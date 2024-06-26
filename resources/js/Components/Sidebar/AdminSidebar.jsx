@@ -157,11 +157,18 @@ function AdminSidebar() {
                 </li>
                 <li>
                     <Link
-                        href="/dashboard"
+                        href="/payroll/create"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
-                        Payroll
+                        Payroll create
+                    </Link>
+                    <Link
+                        href="/payroll"
+                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
+                    >
+                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
+                        Payroll Index
                     </Link>
                 </li>
                 <li>

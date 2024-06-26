@@ -17,7 +17,7 @@ use App\Http\Controllers\ShiftAssignmentController;
 use App\Http\Controllers\JobRequisitionController;
 use App\Http\Controllers\JobPostingController;
 use App\Http\Controllers\JobApplicationController;
-
+use App\Http\Controllers\PayrollController;
 
 
 
@@ -165,6 +165,12 @@ Route::post('job-requisitions/{id}/approve', [JobRequisitionController::class, '
 
 
 
+
+//payroll
+
+Route::get('/payroll', [PayrollController::class, 'index'])->name('payroll.index');
+Route::get('/payroll/create', [PayrollController::class, 'create'])->name('payroll.create');
+Route::post('/payroll', [PayrollController::class, 'store'])->name('payroll.store');
 
 
 

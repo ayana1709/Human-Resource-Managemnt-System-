@@ -12,13 +12,13 @@ class PayrollController extends Controller
     public function index()
     {
         $payrolls = Payroll::with('user')->get();
-        return Inertia::render('Payroll/Index', ['payrolls' => $payrolls]);
+        return Inertia::render('Admin/Payroll/Index', ['payrolls' => $payrolls]);
     }
 
     public function create()
     {
         $users = User::all();
-        return Inertia::render('Payroll/Create', ['users' => $users]);
+        return Inertia::render('Admin/Payroll/Create', ['users' => $users]);
     }
 
     public function store(Request $request)
