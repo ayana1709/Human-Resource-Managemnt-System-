@@ -1,16 +1,32 @@
-// import Navbar from "@/components copy/Navbar";
-import Hero from "@/components copy/Hero";
-import Features from "@/components copy/Features";
-import Testimonial from "@/components copy/Testimonial";
-import CallToAction from "@/components copy/CallToAction";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, Head } from "@inertiajs/react";
+import Hero from "@/component/Hero";
+import Features from "@/component/Features";
+import Testimonial from "@/component/Testimonial";
+import CallToAction from "@/component/CallToAction";
 
 import { BrowserRouter } from "react-router-dom";
-// import Footer from "@/components copy/Footer";
+import ContactUs from "@/component/ContactUs";
 
-function Welcome({ auth, laravelVersion, phpVersion }) {
-    const [toggleMenu, setToggleMenu] = useState(false);
+const Welcome = ({ auth, laravelVersion, phpVersion }) => {
+    const [selectedJob, setSelectedJob] = useState(null);
+    const [applicationData, setApplicationData] = useState({
+        name: "",
+        email: "",
+        resume: null,
+    });
+
+    const handleApply = (job) => {
+        setSelectedJob(job);
+    };
+
+    const handleInputChange = (e) => {
+        const { name, value, files } = e.target;
+        setApplicationData({
+            ...applicationData,
+            [name]: files ? files[0] : value,
+        });
+    };
     const hrmUses = [
         {
             title: "Recruitment",
@@ -31,114 +47,115 @@ function Welcome({ auth, laravelVersion, phpVersion }) {
 
     return (
         <BrowserRouter>
-            <nav className="fixed container mx-auto p-2   text-white dark:bg-gray-800  top-0 z-4">
-                {/* Flex Container */}
-                <div className="flex items-center justify-between">
-                    {/* Logo */}
-                    <div className="pt-2">
-                        <h1>HRMS</h1>
-                    </div>
-                    {/* Menu Items */}
-                    <div className="hidden space-x-6 md:flex">
-                        <Link to="#" className="hover:text-darkGrayishBlue">
-                            Pricing
-                        </Link>
-                        <Link to="#" className="hover:text-darkGrayishBlue">
-                            Product
-                        </Link>
-                        <Link to="#" className="hover:text-darkGrayishBlue">
-                            About Us
-                        </Link>
-                        <Link to="#" className="hover:text-darkGrayishBlue">
-                            Careers
-                        </Link>
-                        <Link to="#" className="hover:text-darkGrayishBlue">
-                            Community
-                        </Link>
-                    </div>
-                    {/* Button */}
-                    <div
-                        to="#"
-                        className="hidden p-3 px-6 pt-2 text-white bg-brightRed rounded-full baseline hover:bg-brightRedLight md:block"
-                    >
-                        {auth.user ? (
-                            <Link
-                                href={route("dashboard")}
-                                className="font-semibold text-white-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
+            {/*Nav Bar  */}
+
+            {/* Navigation Bar */}
+            <nav className="w-full bg-white dark:bg-gray-800 shadow fixed top-0 z-10">
+                <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+                    <div className="relative flex items-center justify-between h-16">
+                        <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                            <button
+                                type="button"
+                                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                                aria-controls="mobile-menu"
+                                aria-expanded="false"
                             >
-                                Dashboard
-                            </Link>
-                        ) : (
-                            <>
-                                <Link
-                                    href={route("login")}
-                                    className="font-semibold text-white-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
+                                <span className="sr-only">Open main menu</span>
+                                <svg
+                                    className="block h-6 w-6"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
                                 >
-                                    Log in
-                                </Link>
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="M4 6h16M4 12h16m-7 6h7"
+                                    />
+                                </svg>
+                            </button>
+                        </div>
+                        <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+                            <div className="hidden sm:block sm:ml-6 ">
+                                <div className="flex justify-center space-x-10">
+                                    <Link
+                                        href="#"
+                                        className="text-gray-900 dark:text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                    >
+                                        Home
+                                    </Link>
+                                    <Link
+                                        href="#vision"
+                                        className="text-gray-900 dark:text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                    >
+                                        Vision
+                                    </Link>
+                                    <Link
+                                        href="#mission"
+                                        className="text-gray-900 dark:text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                    >
+                                        Mission
+                                    </Link>
 
-                                <Link
-                                    href={route("register")}
-                                    className="ms-4 font-semibold text-white-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                                >
-                                    Register
-                                </Link>
-                            </>
-                        )}
-                    </div>
-                    <div className="sm:fixed sm:top-0 sm:right-0 p-6 text-end"></div>
+                                    <Link
+                                        href="#contact"
+                                        className="text-gray-900 dark:text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                    >
+                                        Contact
+                                    </Link>
+                                </div>
 
-                    {/* Hamburger Icon */}
-                    <button
-                        className={
-                            toggleMenu
-                                ? "open block hamburger md:hidden focus:outline-none"
-                                : "block hamburger md:hidden focus:outline-none"
-                        }
-                        onClick={() => setToggleMenu(!toggleMenu)}
-                    >
-                        <span className="hamburger-top"></span>
-                        <span className="hamburger-middle"></span>
-                        <span className="hamburger-bottom"></span>
-                    </button>
-                </div>
+                                <div className="sm:fixed sm:top-0 sm:right-0 p-6 text-end">
+                                    {auth.user ? (
+                                        <Link
+                                            href={route("dashboard")}
+                                            className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
+                                        >
+                                            Dashboard
+                                        </Link>
+                                    ) : (
+                                        <>
+                                            <Link
+                                                href={route("login")}
+                                                className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
+                                            >
+                                                Log in
+                                            </Link>
 
-                {/* Mobile Menu */}
-                <div className="md:hidden">
-                    <div
-                        className={
-                            toggleMenu
-                                ? "absolute flex flex-col items-center self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md"
-                                : "absolute flex-col items-center hidden self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md"
-                        }
-                    >
-                        <Link to="#">Pricing</Link>
-                        <Link to="#">Product</Link>
-                        <Link to="#">About Us</Link>
-                        <Link to="#">Careers</Link>
-                        <Link to="#">Community</Link>
+                                            <Link
+                                                href={route("register")}
+                                                className="ms-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
+                                            >
+                                                Register
+                                            </Link>
+                                        </>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </nav>
+
+            {/*  */}
             <Hero />
             <Features />
-            <Testimonial />
-            <CallToAction />
-            {/* h */}
+            {/*  */}
             <div
-                className="w-full dark:bg-gray-900 text-white py-12 text-center"
+                className="w-full white:bg-gray-900 text-dark py-16 text-center"
                 style={{ height: "90vh", margin: "" }}
             >
-                <h1 className="text-4xl font-bold">Welcome to Our HRMS</h1>
-                <p className="mt-4 text-xl">
-                    Empowering Human Resources for a Brighter Future
-                </p>
+                <h1 className="text-4xl font-bold">Our Service</h1>
+                <p className="mt-4 text-xl"></p>
 
-                <div className="min-h-60 dark:bg-gray-900 flex flex-col items-center w-80% p-6">
-                    <h1 className="text-4xl font-bold text-white mb-8">
+                <div className="min-h-60 white:bg-gray-900 flex flex-col items-center w-80% p-6">
+                    <h1 className="text-4xl font-bold text-dark mb-8">
                         Uses of Human Resource Management
                     </h1>
-                    <div className="flex overflow-hidden space-x-6">
+                    <div className="bg-dark-800 flex overflow-hidden space-x-6 px-4 ">
                         {hrmUses.map((use, index) => (
                             <div
                                 key={index}
@@ -159,11 +176,14 @@ function Welcome({ auth, laravelVersion, phpVersion }) {
                     </div>
                 </div>
             </div>
+            <Testimonial />
+            {/* <ContactUs /> */}
+
             <footer className="w-full bg-gray-800 text-white py-6 mt-12 text-center">
                 <p>&copy; 2024 HRMS Company. All rights reserved.</p>
             </footer>
         </BrowserRouter>
     );
-}
+};
 
 export default Welcome;
