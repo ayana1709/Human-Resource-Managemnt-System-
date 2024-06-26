@@ -60,6 +60,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Department::class);
     }
+    public function payrolls()
+    {
+        return $this->hasMany(Payroll::class);
+    }
 
 
 }
