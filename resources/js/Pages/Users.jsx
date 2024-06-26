@@ -42,6 +42,7 @@ export default function Users({ auth }) {
                                             >
                                                 <p>Name: {user.name}</p>
                                                 <p>Email: {user.email}</p>
+                                                <p>Role: {user.user_type}</p>
                                                 <form
                                                     method="POST"
                                                     action="/admin/users/approve"

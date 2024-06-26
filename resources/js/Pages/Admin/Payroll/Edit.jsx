@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { Inertia } from "@inertiajs/inertia";
 
-const Create = ({ users }) => {
+const Edit = ({ payroll, users }) => {
     const [form, setForm] = useState({
-        user_id: "",
-        base_salary: "",
-        bonus: "",
-        deductions: "",
-        taxes: "",
-        insurance: "",
-        allowances: "",
-        other_deductions: "",
-        pay_date: "",
+        user_id: payroll.user_id,
+        base_salary: payroll.base_salary,
+        bonus: payroll.bonus,
+        deductions: payroll.deductions,
+        taxes: payroll.taxes,
+        insurance: payroll.insurance,
+        allowances: payroll.allowances,
+        other_deductions: payroll.other_deductions,
+        pay_date: payroll.pay_date,
     });
 
     const handleChange = (e) => {
@@ -23,12 +23,12 @@ const Create = ({ users }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        Inertia.post(route("payroll.store"), form);
+        Inertia.put(route("payroll.update", payroll.id), form);
     };
 
     return (
         <div className="container mx-auto p-4">
-            <h1 className="text-2xl font-bold mb-4">Create Payroll</h1>
+            <h1 className="text-2xl font-bold mb-4">Edit Payroll</h1>
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                     <label
@@ -184,11 +184,11 @@ const Create = ({ users }) => {
                     type="submit"
                     className="bg-blue-500 text-white px-4 py-2 rounded"
                 >
-                    Create Payroll
+                    Update Payroll
                 </button>
             </form>
         </div>
     );
 };
 
-export default Create;
+export default Edit;

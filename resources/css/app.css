@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-body {
+/* body {
     background-image: url("../js/assets/images/bg-tablet-pattern.svg");
     background-repeat: no-repeat;
     background-size: 800px;
@@ -11,9 +11,9 @@ body {
 #cta {
     background-image: url("../js/assets/images/bg-simplify-section-desktop.svg");
     background-repeat: no-repeat;
-}
+} */
 
-@media (max-width: 576px) {
+/* @media (max-width: 576px) {
     body {
         background-position: 50px -50px;
         background-size: 500px;
@@ -22,7 +22,7 @@ body {
     #cta {
         background-image: url("../js/assets/images/bg-simplify-section-mobile.svg");
     }
-}
+} */
 
 /* Hamburger Menu */
 .hamburger {

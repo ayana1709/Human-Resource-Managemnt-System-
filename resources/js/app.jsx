@@ -1,5 +1,7 @@
 import "./bootstrap";
 import "../css/app.css";
+// import { Ziggy } from "./ziggy"; // Adjust the path based on your setup
+// import route from "ziggy-js";
 
 // import "./index.css";
 

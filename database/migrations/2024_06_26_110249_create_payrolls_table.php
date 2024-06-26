@@ -15,12 +15,21 @@ class CreatePayrollsTable extends Migration
             $table->decimal('deductions', 8, 2)->nullable();
             $table->decimal('net_salary', 8, 2);
             $table->date('pay_date');
+            $table->decimal('taxes', 8, 2)->default(0);
+            $table->decimal('insurance', 8, 2)->default(0);
+            $table->decimal('allowances', 8, 2)->default(0);
+            $table->decimal('other_deductions', 8, 2)->default(0);
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('payrolls');
+        Schema::table('payrolls', function (Blueprint $table) {
+            $table->dropColumn('taxes');
+            $table->dropColumn('insurance');
+            $table->dropColumn('allowances');
+            $table->dropColumn('other_deductions');
+        });
     }
 }

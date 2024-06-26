@@ -60,7 +60,8 @@ Route::get('/pending', function () {
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/user', [AdminController::class, 'index'])->name('admin.users');
-    Route::post('/admin/users/approve', [AdminController::class, 'approve'])->name('admin.users.approve');
+    Route::post('/admin/users/approve', [AdminController::class, 'approve'])
+    ->name('admin.users.approve');
     Route::post('/admin/users/deny', [AdminController::class, 'deny'])->name('admin.users.deny');
 });
 
@@ -168,9 +169,15 @@ Route::post('job-requisitions/{id}/approve', [JobRequisitionController::class, '
 
 //payroll
 
+
+
 Route::get('/payroll', [PayrollController::class, 'index'])->name('payroll.index');
 Route::get('/payroll/create', [PayrollController::class, 'create'])->name('payroll.create');
 Route::post('/payroll', [PayrollController::class, 'store'])->name('payroll.store');
+Route::get('/payroll/{payroll}', [PayrollController::class, 'show'])->name('payroll.show');
+Route::get('/payroll/{payroll}/edit', [PayrollController::class, 'edit'])->name('payroll.edit');
+Route::put('/payroll/{payroll}', [PayrollController::class, 'update'])->name('payroll.update');
+Route::delete('/payroll/{payroll}', [PayrollController::class, 'destroy'])->name('payroll.destroy');
 
 
 
