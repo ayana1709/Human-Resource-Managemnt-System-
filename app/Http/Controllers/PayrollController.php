@@ -69,7 +69,26 @@ return Inertia::render('Admin/Payroll/Index', [
         return redirect()->route('payroll.index')->with('success', 'Payroll record created successfully.');
     }
     
-   
+    public function reports()
+    {
+        $payrolls = Payroll::with('user')->get();
+    
+        // Calculate total payroll costs
+        $totalBaseSalary = $payrolls->sum('base_salary');
+        $totalBonus = $payrolls->sum('bonus');
+        $totalDeductions = $payrolls->sum('deductions');
+        $totalNetSalary = $payrolls->sum('net_salary');
+    
+        return response()->json([
+            'totalBaseSalary' => $totalBaseSalary,
+            'totalBonus' => $totalBonus,
+            'totalDeductions' => $totalDeductions,
+            'totalNetSalary' => $totalNetSalary,
+            'payrolls' => $payrolls,
+        ]);
+    }
+    
+    
     
    
     
@@ -112,4 +131,5 @@ return Inertia::render('Admin/Payroll/Index', [
         $payroll->delete();
         return redirect()->route('payroll.index')->with('success', 'Payroll record deleted successfully.');
     }
+   
 }

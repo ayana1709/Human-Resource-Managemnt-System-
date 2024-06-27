@@ -8,6 +8,7 @@ const Index = ({ payrolls, filters }) => {
             Inertia.delete(route("payroll.destroy", id));
         }
     };
+
     const [search, setSearch] = useState(filters.search || "");
 
     const handleSearch = (e) => {
@@ -21,17 +22,21 @@ const Index = ({ payrolls, filters }) => {
         <div className="container mx-auto p-4">
             <h1 className="text-2xl font-bold mb-4">Payroll Records</h1>
 
-            <div>
+            <div className="flex justify-between items-center mb-4">
                 <InertiaLink
                     href={route("payroll.create")}
-                    className="bg-green-500 text-white px-4 py-2 rounded mb-4 inline-block"
+                    className="bg-green-500 text-white px-4 py-2 rounded inline-block"
                 >
                     Create Payroll
                 </InertiaLink>
-                <form
-                    onSubmit={handleSearch}
-                    className="mb-4 flex justify-end space-x-2"
+                <InertiaLink
+                    href={route("payroll.report")}
+                    className="bg-blue-500 text-white px-4 py-2 rounded"
                 >
+                    View Payroll Reports
+                </InertiaLink>
+
+                <form onSubmit={handleSearch} className="flex space-x-2">
                     <input
                         type="text"
                         placeholder="Search by name"

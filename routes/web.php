@@ -178,12 +178,17 @@ Route::get('/payroll/{payroll}', [PayrollController::class, 'show'])->name('payr
 Route::get('/payroll/{payroll}/edit', [PayrollController::class, 'edit'])->name('payroll.edit');
 Route::put('/payroll/{payroll}', [PayrollController::class, 'update'])->name('payroll.update');
 Route::delete('/payroll/{payroll}', [PayrollController::class, 'destroy'])->name('payroll.destroy');
+//payroll report
+Route::get('/reports',function(){
+    return Inertia::render('Admin/Payrol/Report');
+});
 
 
 
-// routes/web.php
+//payslip
 Route::get('/payslips/{id}', [PayslipController::class, 'show'])->name('payslips.show');
 Route::get('/payslips/{id}/download', [PayslipController::class, 'download'])->name('payslips.download');
+
 
 
 
