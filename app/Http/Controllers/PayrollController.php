@@ -8,11 +8,39 @@ use Inertia\Inertia;
 
 class PayrollController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $payrolls = Payroll::with('user')->get();
-        return Inertia::render('Admin/Payroll/Index', ['payrolls' => $payrolls]);
-    }
+        $query = Payroll::with('user:id,name,user_type,department_name');
+
+
+ // Search by name
+ if ($request->has('search')) {
+    $query->whereHas('user', function ($q) use ($request) {
+        $q->where('name', 'like', '%' . $request->search . '%');
+    });
+}
+
+// Filter by department
+if ($request->has('department')) {
+    $query->whereHas('user', function ($q) use ($request) {
+        $q->where('department_name', $request->department);
+    });
+}
+
+// Filter by net salary
+if ($request->has('net_salary')) {
+    $query->where('net_salary', $request->net_salary);
+}
+
+$payrolls = $query->get();
+
+return Inertia::render('Admin/Payroll/Index', [
+    'payrolls' => $payrolls,
+    'filters' => $request->all(),
+]);
+}
+
+   
 
     public function create()
     {

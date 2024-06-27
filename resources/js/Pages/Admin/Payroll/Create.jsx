@@ -71,8 +71,16 @@ const Create = ({ users }) => {
             (deductions + taxes + insurance + other_deductions)
         );
     };
+    // State for available users
+    const [availableUsers, setAvailableUsers] = useState(users);
+
+    // Handle form input changes
 
     const handleChange = (e) => {
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value,
+        });
         const { name, value } = e.target;
         setForm((prevForm) => {
             const updatedForm = { ...prevForm, [name]: value };
@@ -82,6 +90,14 @@ const Create = ({ users }) => {
             updatedForm.net_salary = calculateNetSalary(updatedForm);
             return updatedForm;
         });
+
+        // If user_id is selected, remove it from available users
+        if (e.target.name === "user_id" && e.target.value) {
+            const selectedUserId = e.target.value;
+            setAvailableUsers(
+                availableUsers.filter((user) => user.id !== selectedUserId)
+            );
+        }
     };
 
     const handleSubmit = (e) => {
