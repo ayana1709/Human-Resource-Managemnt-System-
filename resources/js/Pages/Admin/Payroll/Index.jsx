@@ -90,6 +90,7 @@ const Index = ({ payrolls }) => {
                                 >
                                     Payslip
                                 </InertiaLink>
+
                                 <InertiaLink
                                     href={route(
                                         "payslips.download",

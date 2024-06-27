@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Inertia } from "@inertiajs/inertia";
+import { InertiaLink } from "@inertiajs/inertia-react";
 
-const Payslip = ({ payslip }) => {
+const Payslip = ({ payslip, payroll }) => {
     return (
         <div className="container mx-auto p-4">
             <h1 className="text-2xl font-bold mb-4">Payslip</h1>
@@ -37,6 +38,7 @@ const Payslip = ({ payslip }) => {
                 <div>
                     <strong>Net Salary:</strong> {payslip.net_salary}
                 </div>
+                <div></div>
             </div>
         </div>
     );
