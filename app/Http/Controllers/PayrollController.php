@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Payroll;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class PayrollController extends Controller
@@ -79,7 +80,7 @@ return Inertia::render('Admin/Payroll/Index', [
         $totalDeductions = $payrolls->sum('deductions');
         $totalNetSalary = $payrolls->sum('net_salary');
     
-        return response()->json([
+        return Inertia::render('Admin/Payroll/Reports', [
             'totalBaseSalary' => $totalBaseSalary,
             'totalBonus' => $totalBonus,
             'totalDeductions' => $totalDeductions,
@@ -87,7 +88,6 @@ return Inertia::render('Admin/Payroll/Index', [
             'payrolls' => $payrolls,
         ]);
     }
-    
     
     
    
@@ -130,6 +130,30 @@ return Inertia::render('Admin/Payroll/Index', [
     {
         $payroll->delete();
         return redirect()->route('payroll.index')->with('success', 'Payroll record deleted successfully.');
+    }
+
+
+    public function employeeIndex()
+    {
+        $userId = Auth::id();
+        $payrolls = Payroll::where('user_id', $userId)->with('user')->get();
+
+        return Inertia::render('Employee/Payroll/Index', [
+            'payrolls' => $payrolls,
+        ]);
+    }
+
+    // Method for department managers to view payroll of their department
+    public function managerIndex()
+    {
+        $departmentId = Auth::user()->department_id;
+        $payrolls = Payroll::whereHas('user', function ($query) use ($departmentId) {
+            $query->where('department_id', $departmentId);
+        })->with('user')->get();
+
+        return Inertia::render('Manager/Payroll/Index', [
+            'payrolls' => $payrolls,
+        ]);
     }
    
 }

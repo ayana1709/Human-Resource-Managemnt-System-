@@ -179,15 +179,18 @@ Route::get('/payroll/{payroll}/edit', [PayrollController::class, 'edit'])->name(
 Route::put('/payroll/{payroll}', [PayrollController::class, 'update'])->name('payroll.update');
 Route::delete('/payroll/{payroll}', [PayrollController::class, 'destroy'])->name('payroll.destroy');
 //payroll report
-Route::get('/reports',function(){
-    return Inertia::render('Admin/Payrol/Report');
-});
-
+Route::get('/reports', [PayrollController::class, 'reports'])->name('payroll.report');
 
 
 //payslip
 Route::get('/payslips/{id}', [PayslipController::class, 'show'])->name('payslips.show');
 Route::get('/payslips/{id}/download', [PayslipController::class, 'download'])->name('payslips.download');
+
+// For employees to view their payroll
+Route::get('/employee/payroll', [PayrollController::class, 'employeeIndex'])->name('employee.payroll.index');
+
+// For department managers to view payroll of their department
+Route::get('/manager/payroll', [PayrollController::class, 'managerIndex'])->name('manager.payroll.index');
 
 
 
