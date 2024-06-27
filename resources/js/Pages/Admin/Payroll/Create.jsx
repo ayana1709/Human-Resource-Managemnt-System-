@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { Inertia } from "@inertiajs/inertia";
+import { usePage } from "@inertiajs/react";
 
 const Create = ({ users }) => {
+    const { flash } = usePage().props;
+
     const [form, setForm] = useState({
         user_id: "",
         base_salary: "",
@@ -108,6 +111,11 @@ const Create = ({ users }) => {
     return (
         <div className="container mx-auto p-4">
             <h1 className="text-2xl font-bold mb-4">Create Payroll</h1>
+            {flash.success && (
+                <div className="bg-green-500 text-white p-2 mb-4 rounded items-center  ">
+                    {flash.success}
+                </div>
+            )}
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                     <label

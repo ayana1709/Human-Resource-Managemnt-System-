@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Inertia } from "@inertiajs/inertia";
 import { InertiaLink } from "@inertiajs/inertia-react";
+import { usePage } from "@inertiajs/react";
 
 const Index = ({ payrolls, filters }) => {
+    const { flash } = usePage().props;
     const handleDelete = (id) => {
         if (confirm("Are you sure you want to delete this payroll record?")) {
             Inertia.delete(route("payroll.destroy", id));
@@ -145,6 +147,11 @@ const Index = ({ payrolls, filters }) => {
                     ))}
                 </tbody>
             </table>
+            {flash.success && (
+                <div className="bg-green-500 text-white p-2 mb-4 rounded items-center  ">
+                    {flash.success}
+                </div>
+            )}
         </div>
     );
 };

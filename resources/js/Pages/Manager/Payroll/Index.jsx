@@ -4,7 +4,9 @@ import { InertiaLink } from "@inertiajs/inertia-react";
 const Index = ({ payrolls }) => {
     return (
         <div className="container mx-auto p-4">
-            <h1 className="text-2xl font-bold mb-4">Department Payroll Records</h1>
+            <h1 className="text-2xl font-bold mb-4">
+                Department Payroll Records
+            </h1>
             <InertiaLink
                 href={route("dashboard")}
                 className="bg-green-500 text-white px-4 py-2 rounded mb-4 inline-block"

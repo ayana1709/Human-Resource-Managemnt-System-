@@ -6,6 +6,7 @@ use App\Models\Payroll;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
+use App\Notifications\PayrollNotification;
 
 class PayrollController extends Controller
 {
@@ -66,6 +67,12 @@ return Inertia::render('Admin/Payroll/Index', [
         $payroll->taxes = $payroll->calculateTaxes($request->base_salary);
         $payroll->net_salary = $payroll->calculateNetSalary();
         $payroll->save();
+
+
+    $user = User::find($payroll->user_id);
+    // $user->notify(new PayrollNotification($payroll));
+
+    return redirect()->route('payroll.index')->with('success', 'Payroll created and notification sent.');
     
         return redirect()->route('payroll.index')->with('success', 'Payroll record created successfully.');
     }
@@ -146,9 +153,10 @@ return Inertia::render('Admin/Payroll/Index', [
     // Method for department managers to view payroll of their department
     public function managerIndex()
     {
-        $departmentId = Auth::user()->department_id;
+        
+        $departmentId = Auth::user()->department_name;
         $payrolls = Payroll::whereHas('user', function ($query) use ($departmentId) {
-            $query->where('department_id', $departmentId);
+            $query->where('department_name', $departmentId);
         })->with('user')->get();
 
         return Inertia::render('Manager/Payroll/Index', [

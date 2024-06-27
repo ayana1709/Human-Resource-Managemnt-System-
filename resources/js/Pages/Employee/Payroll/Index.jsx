@@ -15,6 +15,10 @@ const Index = ({ payrolls }) => {
                 <thead>
                     <tr>
                         <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            ID
+                        </th>
+
+                        <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Base Salary
                         </th>
                         <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -34,6 +38,10 @@ const Index = ({ payrolls }) => {
                 <tbody className="bg-white divide-y divide-gray-200">
                     {payrolls.map((payroll) => (
                         <tr key={payroll.id}>
+                            <td className="px-6 py-4 whitespace-nowrap">
+                                {payroll.id}
+                            </td>
+
                             <td className="px-6 py-4 whitespace-nowrap">
                                 {payroll.base_salary}
                             </td>

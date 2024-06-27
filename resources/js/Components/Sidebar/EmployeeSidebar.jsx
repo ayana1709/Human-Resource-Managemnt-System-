@@ -43,10 +43,10 @@ function EmployeeSidebar() {
                         View Shift
                     </li>
                 </Link>
-                <Link href={"/job-postings"}>
+                <Link href={"/employee/payroll"}>
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
-                        Job Posting
+                        payroll
                     </li>
                 </Link>
 
