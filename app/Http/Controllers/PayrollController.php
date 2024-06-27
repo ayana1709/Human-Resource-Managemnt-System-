@@ -27,19 +27,24 @@ class PayrollController extends Controller
             'base_salary' => 'required|numeric',
             'bonus' => 'nullable|numeric',
             'deductions' => 'nullable|numeric',
-            'taxes' => 'nullable|numeric',
             'insurance' => 'nullable|numeric',
             'allowances' => 'nullable|numeric',
             'other_deductions' => 'nullable|numeric',
             'pay_date' => 'required|date',
         ]);
-
-        $payroll = Payroll::create($request->all());
+    
+        $payroll = new Payroll($request->all());
+        $payroll->taxes = $payroll->calculateTaxes($request->base_salary);
         $payroll->net_salary = $payroll->calculateNetSalary();
         $payroll->save();
-
+    
         return redirect()->route('payroll.index')->with('success', 'Payroll record created successfully.');
     }
+    
+   
+    
+   
+    
 
     public function show(Payroll $payroll)
     {
@@ -59,19 +64,20 @@ class PayrollController extends Controller
             'base_salary' => 'required|numeric',
             'bonus' => 'nullable|numeric',
             'deductions' => 'nullable|numeric',
-            'taxes' => 'nullable|numeric',
             'insurance' => 'nullable|numeric',
             'allowances' => 'nullable|numeric',
             'other_deductions' => 'nullable|numeric',
             'pay_date' => 'required|date',
         ]);
-
-        $payroll->update($request->all());
+    
+        $payroll->fill($request->all());
+        $payroll->taxes = $payroll->calculateTaxes($request->base_salary);
         $payroll->net_salary = $payroll->calculateNetSalary();
         $payroll->save();
-
+    
         return redirect()->route('payroll.index')->with('success', 'Payroll record updated successfully.');
     }
+    
 
     public function destroy(Payroll $payroll)
     {

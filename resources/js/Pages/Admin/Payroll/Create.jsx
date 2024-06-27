@@ -12,12 +12,75 @@ const Create = ({ users }) => {
         allowances: "",
         other_deductions: "",
         pay_date: "",
+        net_salary: "",
     });
 
+    const calculateTaxes = (base_salary) => {
+        const salary = parseFloat(base_salary) || 0;
+        if (salary <= 600) {
+            return 0;
+        } else if (salary <= 1650) {
+            return (salary - 600) * 0.1;
+        } else if (salary <= 3200) {
+            return (1650 - 600) * 0.1 + (salary - 1650) * 0.15;
+        } else if (salary <= 5250) {
+            return (
+                (1650 - 600) * 0.1 +
+                (3200 - 1650) * 0.15 +
+                (salary - 3200) * 0.2
+            );
+        } else if (salary <= 7800) {
+            return (
+                (1650 - 600) * 0.1 +
+                (3200 - 1650) * 0.15 +
+                (5250 - 3200) * 0.2 +
+                (salary - 5250) * 0.25
+            );
+        } else if (salary <= 10900) {
+            return (
+                (1650 - 600) * 0.1 +
+                (3200 - 1650) * 0.15 +
+                (5250 - 3200) * 0.2 +
+                (7800 - 5250) * 0.25 +
+                (salary - 7800) * 0.3
+            );
+        } else {
+            return (
+                (1650 - 600) * 0.1 +
+                (3200 - 1650) * 0.15 +
+                (5250 - 3200) * 0.2 +
+                (7800 - 5250) * 0.25 +
+                (10900 - 7800) * 0.3 +
+                (salary - 10900) * 0.35
+            );
+        }
+    };
+
+    const calculateNetSalary = (form) => {
+        const base_salary = parseFloat(form.base_salary) || 0;
+        const bonus = parseFloat(form.bonus) || 0;
+        const deductions = parseFloat(form.deductions) || 0;
+        const taxes = parseFloat(form.taxes) || 0;
+        const insurance = parseFloat(form.insurance) || 0;
+        const allowances = parseFloat(form.allowances) || 0;
+        const other_deductions = parseFloat(form.other_deductions) || 0;
+        return (
+            base_salary +
+            bonus +
+            allowances -
+            (deductions + taxes + insurance + other_deductions)
+        );
+    };
+
     const handleChange = (e) => {
-        setForm({
-            ...form,
-            [e.target.name]: e.target.value,
+        const { name, value } = e.target;
+        setForm((prevForm) => {
+            const updatedForm = { ...prevForm, [name]: value };
+            if (name === "base_salary") {
+                updatedForm.taxes = calculateTaxes(value);
+            }
+            updatedForm.net_salary = calculateNetSalary(updatedForm);
+            return updatedForm;
         });
     };
 
@@ -112,8 +175,8 @@ const Create = ({ users }) => {
                         id="taxes"
                         name="taxes"
                         value={form.taxes}
-                        onChange={handleChange}
-                        className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        readOnly
+                        className="mt-1 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     />
                 </div>
                 <div>
@@ -162,6 +225,22 @@ const Create = ({ users }) => {
                         value={form.other_deductions}
                         onChange={handleChange}
                         className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    />
+                </div>
+                <div>
+                    <label
+                        htmlFor="net_salary"
+                        className="block text-sm font-medium text-gray-700"
+                    >
+                        Net Salary
+                    </label>
+                    <input
+                        type="text"
+                        id="net_salary"
+                        name="net_salary"
+                        value={form.net_salary}
+                        readOnly
+                        className="mt-1 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     />
                 </div>
                 <div>

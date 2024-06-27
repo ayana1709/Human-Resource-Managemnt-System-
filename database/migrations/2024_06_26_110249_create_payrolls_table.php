@@ -13,7 +13,7 @@ class CreatePayrollsTable extends Migration
             $table->decimal('base_salary', 8, 2);
             $table->decimal('bonus', 8, 2)->nullable();
             $table->decimal('deductions', 8, 2)->nullable();
-            $table->decimal('net_salary', 8, 2);
+            $table->decimal('net_salary', 8, 2)->nullable();
             $table->date('pay_date');
             $table->decimal('taxes', 8, 2)->default(0);
             $table->decimal('insurance', 8, 2)->default(0);
