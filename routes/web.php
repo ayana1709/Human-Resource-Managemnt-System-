@@ -19,7 +19,7 @@ use App\Http\Controllers\JobPostingController;
 use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\PayrollController;
 
-
+use App\Http\Controllers\PayslipController;
 
 
 /*
@@ -182,8 +182,8 @@ Route::delete('/payroll/{payroll}', [PayrollController::class, 'destroy'])->name
 
 
 // routes/web.php
-Route::get('/payslips/{id}', [PayrollController::class, 'showpayslip'])->name('payslips.show');
-Route::get('/payslips/{id}/download', [PayrollController::class, 'downloadPayslip'])->name('payslips.download');
+Route::get('/payslips/{id}', [PayslipController::class, 'show'])->name('payslips.show');
+Route::get('/payslips/{id}/download', [PayslipController::class, 'download'])->name('payslips.download');
 
 
 
