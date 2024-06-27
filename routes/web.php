@@ -181,6 +181,12 @@ Route::delete('/payroll/{payroll}', [PayrollController::class, 'destroy'])->name
 
 
 
+// routes/web.php
+Route::get('/payslips/{id}', [PayrollController::class, 'showpayslip'])->name('payslips.show');
+Route::get('/payslips/{id}/download', [PayrollController::class, 'downloadPayslip'])->name('payslips.download');
+
+
+
 
 
 

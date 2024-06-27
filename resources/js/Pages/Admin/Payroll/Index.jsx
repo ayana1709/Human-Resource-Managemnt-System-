@@ -80,10 +80,25 @@ const Index = ({ payrolls }) => {
                                 </InertiaLink>
                                 <button
                                     onClick={() => handleDelete(payroll.id)}
-                                    className="text-red-600 hover:text-red-900"
+                                    className="text-red-600 hover:text-red-900 mr-2"
                                 >
                                     Delete
                                 </button>
+                                <InertiaLink
+                                    href={route("payslips.show", payroll.id)}
+                                    className="text-green-600 hover:text-green-900 mr-2"
+                                >
+                                    Payslip
+                                </InertiaLink>
+                                <InertiaLink
+                                    href={route(
+                                        "payslips.download",
+                                        payroll.id
+                                    )}
+                                    className="text-indigo-600 hover:text-indigo-900"
+                                >
+                                    Download PDF
+                                </InertiaLink>
                             </td>
                         </tr>
                     ))}
