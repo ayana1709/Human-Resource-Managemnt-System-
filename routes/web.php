@@ -18,8 +18,8 @@ use App\Http\Controllers\JobRequisitionController;
 use App\Http\Controllers\JobPostingController;
 use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\PayrollController;
-
 use App\Http\Controllers\PayslipController;
+use App\Http\Controllers\MessageController;
 
 
 /*
@@ -191,6 +191,14 @@ Route::get('/employee/payroll', [PayrollController::class, 'employeeIndex'])->na
 
 // For department managers to view payroll of their department
 Route::get('/manager/payroll', [PayrollController::class, 'managerIndex'])->name('manager.payroll.index');
+
+//message
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
+    Route::post('/messages', [MessageController::class, 'store'])->name('messages.store');
+});
+
 
 
 
