@@ -54,6 +54,12 @@ function EmployeeSidebar() {
                     <FontAwesomeIcon icon={faCog} className="mr-2" />
                     Settings
                 </li>
+                <Link href={"/messages"}>
+                    <li className="flex items-center p-2 hover:bg-gray-700">
+                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
+                        Message
+                    </li>
+                </Link>
             </ul>
         </div>
     );

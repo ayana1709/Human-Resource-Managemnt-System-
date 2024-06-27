@@ -194,10 +194,13 @@ Route::get('/manager/payroll', [PayrollController::class, 'managerIndex'])->name
 
 //message
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::post('/messages', [MessageController::class, 'store'])->name('messages.store');
+    Route::get('/messages/{user}', [MessageController::class, 'show'])->name('messages.show');
 });
+
 
 
 
