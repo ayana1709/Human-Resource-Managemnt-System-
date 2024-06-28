@@ -20,6 +20,8 @@ use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\PayslipController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\TrainingController;
+use App\Http\Controllers\TrainingSessionController;
 
 
 /*
@@ -214,6 +216,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/messages/{user}', [MessageController::class, 'show'])->name('messages.show');
 });
 
+
+
+//trainings
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::resource('trainings', TrainingController::class);
+    Route::resource('trainings.sessions', TrainingSessionController::class)->shallow();
+});
 
 
 
