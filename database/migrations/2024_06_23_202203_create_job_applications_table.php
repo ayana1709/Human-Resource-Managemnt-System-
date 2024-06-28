@@ -12,12 +12,15 @@ class CreateJobApplicationsTable extends Migration
     {
         Schema::create('job_applications', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('job_posting_id')->constrained('job_postings')->onDelete('cascade');
+            $table->foreignId('job_posting_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->string('email');
-            $table->string('resume');
+            $table->text('cover_letter');
+            $table->string('resume_path');
             $table->timestamps();
         });
+        
     }
 
     public function down()

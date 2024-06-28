@@ -1,57 +1,94 @@
-// resources/js/Pages/JobPostings/Show.jsx
-import React from "react";
+import React, { useState } from "react";
 import { Inertia } from "@inertiajs/inertia";
-import { usePage } from "@inertiajs/react";
+import { useForm } from "@inertiajs/inertia-react";
 
-export default function Show() {
-    const { posting } = usePage().props;
+const Show = ({ posting }) => {
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        resume: null,
+        cover_letter: "",
+    });
+
+    const { data, setData, post, processing, errors } = useForm(formData);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        post(route("job-postings.apply", posting.id));
+    };
+
+    const handleChange = (e) => {
+        const { name, value, files } = e.target;
+        const newValue = files ? files[0] : value;
+        setFormData((prevData) => ({ ...prevData, [name]: newValue }));
+    };
 
     return (
-        <div className="max-w-4xl mx-auto p-6 bg-gray-100 min-h-screen">
-            <h1 className="text-3xl font-bold mb-6 text-center">
-                Job Posting Details
-            </h1>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-                <h2 className="text-2xl font-bold mb-4 text-blue-600">
-                    {posting.title}
-                </h2>
-                <div className="mb-4">
-                    <p className="mb-2">
-                        <strong className="text-gray-700">Description:</strong>{" "}
-                        {posting.description}
-                    </p>
-                    <p className="mb-2">
-                        <strong className="text-gray-700">Roles:</strong>{" "}
-                        {posting.roles}
-                    </p>
-                    <p className="mb-2">
-                        <strong className="text-gray-700">
-                            Responsibilities:
-                        </strong>{" "}
-                        {posting.responsibilities}
-                    </p>
-                    <p className="mb-2">
-                        <strong className="text-gray-700">
-                            Qualifications:
-                        </strong>{" "}
-                        {posting.qualifications}
-                    </p>
-                    <p className="mb-2">
-                        <strong className="text-gray-700">Skills:</strong>{" "}
-                        {posting.skills}
-                    </p>
-                    <p className="mb-2">
-                        <strong className="text-gray-700">Created By:</strong>{" "}
-                        {posting.creator.name}
-                    </p>
+        <div>
+            <h1>{posting.title}</h1>
+            <p>{posting.description}</p>
+            <form onSubmit={handleSubmit}>
+                <div className="mb-3">
+                    <label htmlFor="name" className="form-label">
+                        Name
+                    </label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="name"
+                        name="name"
+                        value={data.name}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="email" className="form-label">
+                        Email
+                    </label>
+                    <input
+                        type="email"
+                        className="form-control"
+                        id="email"
+                        name="email"
+                        value={data.email}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="resume" className="form-label">
+                        Resume (PDF only)
+                    </label>
+                    <input
+                        type="file"
+                        className="form-control"
+                        id="resume"
+                        name="resume"
+                        accept=".pdf"
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="cover_letter" className="form-label">
+                        Cover Letter
+                    </label>
+                    <textarea
+                        className="form-control"
+                        id="cover_letter"
+                        name="cover_letter"
+                        value={data.cover_letter}
+                        onChange={handleChange}
+                    />
                 </div>
                 <button
-                    onClick={() => Inertia.visit(route("job-postings.index"))}
-                    className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-200"
+                    type="submit"
+                    className="btn btn-primary"
+                    disabled={processing}
                 >
-                    Back to List
+                    Apply
                 </button>
-            </div>
+            </form>
         </div>
     );
-}
+};
+
+export default Show;

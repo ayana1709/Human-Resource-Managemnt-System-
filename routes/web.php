@@ -161,7 +161,14 @@ Route::get('job-postings/{id}/edit', [JobPostingController::class, 'edit'])->nam
 Route::put('job-postings/{id}', [JobPostingController::class, 'update'])->name('job-postings.update'); // Update a job posting
 Route::delete('job-postings/{id}', [JobPostingController::class, 'destroy'])->name('job-postings.destroy'); // Delete a job posting
 Route::get('/job-postings-cards', [JobPostingController::class, 'showCards'])->name('job-postings.cards');
-Route::post('/job-postings/{id}/apply', [JobPostingController::class, 'apply'])->name('job-postings.apply');
+
+
+
+//job applying
+Route::get('/job-postings/{id}/apply', [JobPostingController::class, 'showApplyForm'])->name('job-postings.apply');
+Route::post('/job-postings/{id}/apply', [JobPostingController::class, 'apply'])->name('job-postings.process-application');
+
+
 
 
 
@@ -172,9 +179,6 @@ Route::post('job-requisitions/{id}/approve', [JobRequisitionController::class, '
 
 
 //payroll
-
-
-
 Route::get('/payroll', [PayrollController::class, 'index'])->name('payroll.index');
 Route::get('/payroll/create', [PayrollController::class, 'create'])->name('payroll.create');
 Route::post('/payroll', [PayrollController::class, 'store'])->name('payroll.store');
@@ -205,7 +209,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/messages/{user}', [MessageController::class, 'show'])->name('messages.show');
 });
 
-//message count 
+
 
 
 

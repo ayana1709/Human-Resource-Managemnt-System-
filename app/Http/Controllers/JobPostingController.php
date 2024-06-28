@@ -3,6 +3,7 @@
 // app/Http/Controllers/JobPostingController.php
 namespace App\Http\Controllers;
 
+use App\Models\JobApplication;
 use App\Models\JobPosting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -85,16 +86,36 @@ public function store(Request $request)
         'auth' => auth()->user(),
     ]);
 }
-public function apply($id)
+public function apply(Request $request, $id)
 {
-    // Handle the application logic here
-    $jobPosting = JobPosting::find($id);
-    $user = auth()->user();
+    $jobPosting = JobPosting::findOrFail($id);
 
-    // Save the application to the database or perform any other action
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|max:255',
+        'resume' => 'required|file|mimes:pdf|max:2048',
+        'cover_letter' => 'required|string|max:1000',
+    ]);
+
+    $resumePath = $request->file('resume')->store('resumes', 'public');
+
+    $application = new JobApplication();
+    $application->job_posting_id = $jobPosting->id;
+    $application->user_id = Auth::id();
+    $application->name = $request->input('name');
+    $application->email = $request->input('email');
+    $application->cover_letter = $request->input('cover_letter');
+    $application->resume_path = $resumePath;
+    $application->save();
 
     return redirect()->back()->with('success', 'You have successfully applied for the job.');
 }
+public function showApplyForm($id)
+    {
+       
+        $jobPosting = JobPosting::find($id);
+        return inertia('Admin/JobPosting/JobApplicationForm', ['jobPosting' => $jobPosting]);
+    }
 
-
+    
 }
