@@ -32,50 +32,43 @@ const Chat = ({ selectedUser }) => {
     };
 
     if (!selectedUser) {
-        return (
-            <div className="w-full p-4">Select a user to start chatting</div>
-        );
+        return <div className="w-3/4 p-4">Select a user to start chatting</div>;
     }
 
     return (
-        <div className="flex flex-col h-screen w-full">
-            <div className="flex-grow p-4">
-                <h2 className="text-lg font-bold mb-4">
-                    Chat with {selectedUser.name}
-                </h2>
-                <div
-                    className="flex flex-col-reverse space-y-4"
-                    style={{ maxHeight: "70vh", overflowY: "auto" }}
-                >
-                    {messages.map((msg, index) => (
-                        <div
-                            key={index}
-                            className={`p-2 rounded ${
-                                msg.sender_id === selectedUser.id
-                                    ? "bg-gray-100 text-left self-start"
-                                    : "bg-blue-100 text-right self-end"
-                            }`}
-                        >
-                            <strong>
-                                {msg.sender_id === selectedUser.id
-                                    ? selectedUser.name
-                                    : "You"}
-                                :
-                            </strong>{" "}
-                            {msg.message}
-                        </div>
-                    ))}
-                </div>
-            </div>
-            <form
-                onSubmit={handleSendMessage}
-                className="bg-white p-4 flex items-center w-full"
+        <div className="w-3/4 p-4">
+            <h2 className="text-lg font-bold mb-4">
+                Chat with {selectedUser.name}
+            </h2>
+            <div
+                className="bg-white p-4 rounded shadow mb-4"
+                style={{ height: "60vh", overflowY: "scroll" }}
             >
+                {messages.map((msg, index) => (
+                    <div
+                        key={index}
+                        className={`mb-2 p-2 rounded ${
+                            msg.sender_id === selectedUser.id
+                                ? "bg-blue-100 text-right"
+                                : "bg-gray-100 text-left"
+                        }`}
+                    >
+                        <strong>
+                            {msg.sender_id === selectedUser.id
+                                ? selectedUser.name
+                                : "You"}
+                            :
+                        </strong>{" "}
+                        {msg.message}
+                    </div>
+                ))}
+            </div>
+            <form onSubmit={handleSendMessage}>
                 <input
                     type="text"
                     value={newMessage}
                     onChange={(e) => setNewMessage(e.target.value)}
-                    className="flex-1 p-2 border rounded mr-2 w-full"
+                    className="w-full p-2 border rounded mb-2"
                     placeholder="Type your message..."
                 />
                 <button
