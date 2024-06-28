@@ -8,11 +8,13 @@ use App\Models\Message;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Storage;
 
 class MessageController extends Controller
 {
     public function index()
     {
+
         $messages = Message::with(['sender', 'receiver'])->get();
         $users = User::all();
 
@@ -22,16 +24,38 @@ class MessageController extends Controller
         ]);
     }
 
-   public function store(Request $request)
+    
+    
+    
+    public function store(Request $request)
     {
-        $message = Message::create([
-            'sender_id' => auth()->id(),
-            'receiver_id' => $request->receiver_id,
-            'message' => $request->message,
+        $request->validate([
+            'receiver_id' => 'required|integer',
+            'message' => 'nullable|string',
+            'file' => 'nullable|file|mimes:jpg,jpeg,png,gif,mp4,webm,ogg,pdf,doc,docx,xls,xlsx|max:20480' // Adjust max size as needed
         ]);
-
-        return $message;
+    
+        $message = new Message();
+        $message->sender_id = auth()->id();
+        $message->receiver_id = $request->receiver_id;
+        $message->message = $request->message;
+    
+        if ($request->hasFile('file')) {
+            $path = $request->file('file')->store('uploads', 'public');
+            $message->file_url = Storage::url($path);
+            $message->file_name = $request->file('file')->getClientOriginalName();
+        }
+    
+        $message->save();
+    
+        return response()->json($message);
     }
+    
+
+    
+
+
+
 
     public function show(User $user)
     {
@@ -43,4 +67,5 @@ class MessageController extends Controller
                 ->where('receiver_id', auth()->id());
         })->get();
     }
-}
+
+    }
