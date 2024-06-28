@@ -12,12 +12,12 @@ class TrainingController extends Controller
     public function index()
     {
         $trainings = Training::all();
-        return Inertia::render('Trainings/Index', ['trainings' => $trainings]);
+        return Inertia::render('Admin/Training/Index', ['trainings' => $trainings]);
     }
 
     public function create()
     {
-        return Inertia::render('Trainings/Create');
+        return Inertia::render('Admin/Training/Create');
     }
 
     public function store(Request $request)
@@ -34,12 +34,12 @@ class TrainingController extends Controller
 
     public function show(Training $training)
     {
-        return Inertia::render('Trainings/Show', ['training' => $training]);
+        return Inertia::render('Admin/Training/Show', ['training' => $training]);
     }
 
     public function edit(Training $training)
     {
-        return Inertia::render('Trainings/Edit', ['training' => $training]);
+        return Inertia::render(' Admin/Training/Edit', ['training' => $training]);
     }
 
     public function update(Request $request, Training $training)

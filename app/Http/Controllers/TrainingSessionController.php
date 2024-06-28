@@ -31,7 +31,7 @@ class TrainingSessionController extends Controller
 
     public function edit(TrainingSession $session)
     {
-        return Inertia::render('TrainingSessions/Edit', ['session' => $session]);
+        return Inertia::render('Admin/Training/TrainingSessions', ['session' => $session]);
     }
 
     public function update(Request $request, TrainingSession $session)
