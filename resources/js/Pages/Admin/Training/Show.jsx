@@ -1,24 +1,30 @@
 // resources/js/Pages/Trainings/Show.jsx
 
 import React from "react";
-import { InertiaLink } from "@inertiajs/inertia-react";
-import { usePage } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 
-const Show = () => {
-    const { training } = usePage().props;
+export default function Show() {
+    const { training, users } = usePage().props;
 
     return (
         <div>
-            <h1 className="text-2xl font-bold mb-4">{training.title}</h1>
+            <h1>{training.title}</h1>
             <p>{training.description}</p>
-            <InertiaLink
-                href={route("trainings.index")}
-                className="btn btn-secondary mt-4"
+            <Link href={route("trainings.index")} className="btn btn-secondary">
+                Back
+            </Link>
+            <Link
+                href={route("trainings.assignUser", training.id)}
+                className="btn btn-primary"
             >
-                Back to Trainings
-            </InertiaLink>
+                Assign User
+            </Link>
+            <h2>Assigned Users</h2>
+            <ul>
+                {training.users.map((user) => (
+                    <li key={user.id}>{user.name}</li>
+                ))}
+            </ul>
         </div>
     );
-};
-
-export default Show;
+}

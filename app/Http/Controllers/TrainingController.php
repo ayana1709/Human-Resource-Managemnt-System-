@@ -1,23 +1,24 @@
 <?php
 // app/Http/Controllers/TrainingController.php
 
+
 namespace App\Http\Controllers;
 
 use App\Models\Training;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 
 class TrainingController extends Controller
 {
     public function index()
     {
-        $trainings = Training::all();
-        return Inertia::render('Admin/Training/Index', ['trainings' => $trainings]);
+        $trainings = Training::with('users')->get();
+        return inertia('Trainings/Index', compact('trainings'));
     }
 
     public function create()
     {
-        return Inertia::render('Admin/Training/Create');
+        return inertia('Trainings/Create');
     }
 
     public function store(Request $request)
@@ -32,33 +33,16 @@ class TrainingController extends Controller
         return redirect()->route('trainings.index')->with('success', 'Training created successfully.');
     }
 
-    public function show(Training $training)
-    {
-        return Inertia::render('Admin/Training/Show', ['training' => $training]);
-    }
-
-    public function edit(Training $training)
-    {
-        return Inertia::render(' Admin/Training/Edit', ['training' => $training]);
-    }
-
-    public function update(Request $request, Training $training)
+    public function assignUser(Request $request, Training $training)
     {
         $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
+            'user_id' => 'required|exists:users,id',
         ]);
 
-        $training->update($request->all());
+        $training->users()->attach($request->user_id);
 
-        return redirect()->route('trainings.index')->with('success', 'Training updated successfully.');
-    }
+        // Send notification logic here
 
-    public function destroy(Training $training)
-    {
-        $training->delete();
-
-        return redirect()->route('trainings.index')->with('success', 'Training deleted successfully.');
+        return redirect()->route('trainings.index')->with('success', 'User assigned to training successfully.');
     }
 }
-

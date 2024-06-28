@@ -15,6 +15,7 @@ class CreateTrainingsTable extends Migration
             $table->text('description');
             $table->timestamps();
         });
+        
     }
 
     public function down()
