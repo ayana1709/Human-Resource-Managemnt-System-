@@ -168,6 +168,11 @@ Route::get('/job-postings-cards', [JobPostingController::class, 'showCards'])->n
 Route::get('/job-postings/{id}/apply', [JobPostingController::class, 'showApplyForm'])->name('job-postings.apply');
 Route::post('/job-postings/{id}/apply', [JobPostingController::class, 'apply'])->name('job-postings.process-application');
 
+//
+
+Route::get('/job-postings/{id}/applications', [JobPostingController::class, 'viewApplications'])->name('job-postings.view-applications');
+
+
 
 
 

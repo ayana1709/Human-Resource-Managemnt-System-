@@ -23,7 +23,7 @@ export default function JobPostingsCards({ auth }) {
     };
 
     const handleCopyLink = () => {
-        const jobPostingLink = `${window.location.origin}/job-postings/${selectedPosting.id}`;
+        const jobPostingLink = `${window.location.origin}/job-postings-cards/`;
         navigator.clipboard
             .writeText(jobPostingLink)
             .then(() => alert("Job posting link copied to clipboard"))

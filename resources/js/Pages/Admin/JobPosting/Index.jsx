@@ -63,8 +63,11 @@ export default function Index({ auth }) {
                                                     <th className="px-4 py-2 border">
                                                         Skills
                                                     </th>
-                                                    <th className="px-4 py-2 border">
+                                                    {/* <th className="px-4 py-2 border">
                                                         Actions
+                                                    </th> */}
+                                                    <th className="px-4 py-2 border">
+                                                        Applications
                                                     </th>
                                                 </tr>
                                             </thead>
@@ -106,10 +109,21 @@ export default function Index({ auth }) {
                                                         <td className="px-4 py-2 border">
                                                             {posting.skills}
                                                         </td>
-                                                        <td className="px-4 py-2 border text-center">
+                                                        {/* <td className="px-4 py-2 border text-center">
                                                             <Link
                                                                 href={route(
                                                                     "job-postings.show",
+                                                                    posting.id
+                                                                )}
+                                                                className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition duration-200"
+                                                            >
+                                                                View
+                                                            </Link>
+                                                        </td> */}
+                                                        <td className="px-4 py-2 border text-center">
+                                                            <Link
+                                                                href={route(
+                                                                    "job-postings.view-applications",
                                                                     posting.id
                                                                 )}
                                                                 className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition duration-200"

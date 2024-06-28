@@ -148,11 +148,11 @@ function AdminSidebar() {
                 </li>
                 <li>
                     <Link
-                        href="/dashboard"
+                        href="/"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
-                        Training
+                        View Applications
                     </Link>
                 </li>
                 <li>

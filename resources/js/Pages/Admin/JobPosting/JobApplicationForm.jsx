@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useForm } from "@inertiajs/inertia-react";
+import { usePage } from "@inertiajs/react";
 
 const JobApplicationForm = ({ postingId }) => {
+    const { flash } = usePage().props;
     const { data, setData, post, processing, errors } = useForm({
         name: "",
         email: "",
@@ -31,6 +33,11 @@ const JobApplicationForm = ({ postingId }) => {
             <h1 className="text-2xl font-bold mb-4 text-center">
                 Job Application Form
             </h1>
+            {flash.success && (
+                <div className="bg-green-500 text-white p-2 mb-4 rounded items-center  ">
+                    {flash.success}
+                </div>
+            )}
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                     <label

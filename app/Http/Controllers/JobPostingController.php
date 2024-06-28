@@ -86,36 +86,48 @@ public function store(Request $request)
         'auth' => auth()->user(),
     ]);
 }
+
+
 public function apply(Request $request, $id)
 {
-    $jobPosting = JobPosting::findOrFail($id);
-
-    $request->validate([
+    $validatedData = $request->validate([
         'name' => 'required|string|max:255',
         'email' => 'required|email|max:255',
         'resume' => 'required|file|mimes:pdf|max:2048',
-        'cover_letter' => 'required|string|max:1000',
+        'cover_letter' => 'nullable|string',
     ]);
 
-    $resumePath = $request->file('resume')->store('resumes', 'public');
+    // Save the resume file
+    if ($request->hasFile('resume')) {
+        $path = $request->file('resume')->store('resumes', 'public');
+        $validatedData['resume'] = $path;
+    }
 
-    $application = new JobApplication();
-    $application->job_posting_id = $jobPosting->id;
-    $application->user_id = Auth::id();
-    $application->name = $request->input('name');
-    $application->email = $request->input('email');
-    $application->cover_letter = $request->input('cover_letter');
-    $application->resume_path = $resumePath;
-    $application->save();
+    // Save the application
+    $validatedData['job_posting_id'] = $id;
+    JobApplication::create($validatedData);
 
-    return redirect()->back()->with('success', 'You have successfully applied for the job.');
+    return redirect()->back()->with('success', 'Application submitted successfully.');
 }
+
 public function showApplyForm($id)
     {
-       
         $jobPosting = JobPosting::find($id);
-        return inertia('Admin/JobPosting/JobApplicationForm', ['jobPosting' => $jobPosting]);
+        return inertia('Admin/JobPosting/JobApplicationForm', ['jobPosting' => $jobPosting,
+    'postingId' => $id
+    
+    ]);
     }
+    public function viewApplications($id)
+{
+    $jobPosting = JobPosting::findOrFail($id);
+    $applications = JobApplication::where('job_posting_id', $id)->get();
+
+    return Inertia::render('Admin/JobPosting/JobApplications', [
+        'jobPosting' => $jobPosting,
+        'applications' => $applications,
+    ]);
+}
 
     
 }
