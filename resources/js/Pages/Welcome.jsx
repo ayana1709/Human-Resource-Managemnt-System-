@@ -7,6 +7,7 @@ import CallToAction from "@/component/CallToAction";
 
 import { BrowserRouter } from "react-router-dom";
 import ContactUs from "@/component/ContactUs";
+import JobPostingsCards from "./Admin/JobPosting/JobPostingCards";
 
 const Welcome = ({ auth, laravelVersion, phpVersion }) => {
     const [selectedJob, setSelectedJob] = useState(null);
@@ -101,10 +102,10 @@ const Welcome = ({ auth, laravelVersion, phpVersion }) => {
                                     </Link>
 
                                     <Link
-                                        href="#contact"
-                                        className="text-gray-900 dark:text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                        href="/job-postings-cards"
+                                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                                     >
-                                        Contact
+                                        Job cards
                                     </Link>
                                 </div>
 
@@ -177,6 +178,7 @@ const Welcome = ({ auth, laravelVersion, phpVersion }) => {
                 </div>
             </div>
             <Testimonial />
+            {/* <JobPostingsCards /> */}
             {/* <ContactUs /> */}
 
             <footer className="w-full bg-gray-800 text-white py-6 mt-12 text-center">
