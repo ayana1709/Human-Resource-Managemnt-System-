@@ -22,4 +22,13 @@ class UserController extends Controller
         ]);
         
     }
+    public function unreadMessages()
+{
+    $users = User::withCount(['messages as unread_count' => function ($query) {
+        $query->where('read', false)->where('receiver_id', auth()->id());
+    }])->get();
+
+    return response()->json($users);
+}
+
 }

@@ -201,8 +201,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/messages/{user}', [MessageController::class, 'show'])->name('messages.show');
 });
 
-// new message count 
-Route::get('/users/unread-messages', [UserController::class, 'unreadMessages'])->name('users.unreadMessages');
+//message count 
 
 
 

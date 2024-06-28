@@ -104,7 +104,7 @@ const Chat = ({ selectedUser }) => {
                 </h2>
                 <div
                     className="bg-white p-4 rounded shadow mb-4"
-                    style={{ maxHeight: "75vh", overflowY: "auto" }}
+                    style={{ maxHeight: "70vh", overflowY: "auto" }}
                     ref={chatContainerRef}
                 >
                     {messages.map((msg, index) => (
