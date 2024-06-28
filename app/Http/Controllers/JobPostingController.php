@@ -75,4 +75,26 @@ public function store(Request $request)
         $posting = JobPosting::with('creator')->findOrFail($id);
         return Inertia::render('Admin/JobPosting/Show', ['posting' => $posting]);
     }
+    public function showCards()
+{
+    
+    $postings = JobPosting::all();
+
+    return Inertia::render('Admin/JobPosting/JobPostingCards', [
+        'postings' => $postings,
+        'auth' => auth()->user(),
+    ]);
+}
+public function apply($id)
+{
+    // Handle the application logic here
+    $jobPosting = JobPosting::find($id);
+    $user = auth()->user();
+
+    // Save the application to the database or perform any other action
+
+    return redirect()->back()->with('success', 'You have successfully applied for the job.');
+}
+
+
 }

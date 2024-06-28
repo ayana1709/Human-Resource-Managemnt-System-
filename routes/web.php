@@ -160,6 +160,10 @@ Route::get('job-postings/{id}', [JobPostingController::class, 'show'])->name('jo
 Route::get('job-postings/{id}/edit', [JobPostingController::class, 'edit'])->name('job-postings.edit'); // Form to edit a job posting
 Route::put('job-postings/{id}', [JobPostingController::class, 'update'])->name('job-postings.update'); // Update a job posting
 Route::delete('job-postings/{id}', [JobPostingController::class, 'destroy'])->name('job-postings.destroy'); // Delete a job posting
+Route::get('/job-postings-cards', [JobPostingController::class, 'showCards'])->name('job-postings.cards');
+Route::post('/job-postings/{id}/apply', [JobPostingController::class, 'apply'])->name('job-postings.apply');
+
+
 
 // Custom route for approving a job requisition (if needed)
 Route::post('job-requisitions/{id}/approve', [JobRequisitionController::class, 'approve'])->name('job-requisitions.approve');
