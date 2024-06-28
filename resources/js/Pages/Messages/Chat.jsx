@@ -26,7 +26,7 @@ const Chat = ({ selectedUser }) => {
 
         const formData = new FormData();
         formData.append("receiver_id", selectedUser.id);
-        formData.append("message", newMessage || ""); // Ensure non-null message
+        formData.append("message", newMessage.trim());
         if (selectedFile) {
             formData.append("file", selectedFile);
         }

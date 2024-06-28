@@ -32,7 +32,7 @@ class MessageController extends Controller
         $request->validate([
             'receiver_id' => 'required|integer',
             'message' => 'nullable|string',
-            'file' => 'nullable|file|mimes:jpg,jpeg,png,gif,mp4,webm,ogg,pdf,doc,docx,xls,xlsx|max:20480' // Adjust max size as needed
+            'file' => 'nullable|file',
         ]);
     
         $message = new Message();
@@ -41,15 +41,17 @@ class MessageController extends Controller
         $message->message = $request->message;
     
         if ($request->hasFile('file')) {
-            $path = $request->file('file')->store('uploads', 'public');
-            $message->file_url = Storage::url($path);
-            $message->file_name = $request->file('file')->getClientOriginalName();
+            $file = $request->file('file');
+            $path = $file->store('uploads', 'public');
+            $message->file_url = '/storage/' . $path;
+            $message->file_name = $file->getClientOriginalName();
         }
     
         $message->save();
     
-        return response()->json($message);
+        return response()->json($message, 201);
     }
+    
     
 
     
