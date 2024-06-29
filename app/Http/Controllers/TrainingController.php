@@ -36,16 +36,17 @@ class TrainingController extends Controller
         ]);
 
         $training = Training::create($request->only(['title', 'description']));
-        // $training->users()->sync($request->input('users', []));
+        $training->users()->sync($request->input('users', []));
         
 
-        // $users = User::whereIn('id', $request->users)->get();
+
         if ($request->has('users')) {
             $users = User::whereIn('id', $request->users)->get();
             foreach ($users as $user) {
                 $user->notify(new TrainingAssigned($training));
             }
         }
+
 
         return redirect()->route('trainings.index')->with('success', 'Training created successfully.');
     }

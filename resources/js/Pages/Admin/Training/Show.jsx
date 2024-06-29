@@ -25,12 +25,12 @@ const Show = () => {
                     <li>No participants assigned.</li>
                 )}
             </ul>
-            <InertiaLink
+            {/* <InertiaLink
                 href={route("trainings.index")}
                 className="btn btn-secondary px-4 py-2 bg-gray-500 text-white rounded-md shadow hover:bg-gray-600 transition duration-300"
             >
                 Back to Trainings
-            </InertiaLink>
+            </InertiaLink> */}
         </div>
     );
 };
