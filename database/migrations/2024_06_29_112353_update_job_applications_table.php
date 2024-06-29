@@ -4,29 +4,21 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCoverLetterToJobApplicationsTable extends Migration
+class UpdateJobApplicationsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::table('job_applications', function (Blueprint $table) {
-            $table->text('cover_letter')->nullable();
+            // Make the user_id column nullable
+            $table->unsignedBigInteger('user_id')->nullable()->change();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::table('job_applications', function (Blueprint $table) {
-            $table->dropColumn('cover_letter');
+            // Revert the user_id column to not nullable (if you want to revert this change)
+            $table->unsignedBigInteger('user_id')->nullable(false)->change();
         });
     }
 }

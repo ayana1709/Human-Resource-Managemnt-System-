@@ -11,6 +11,7 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\CalendarEventController;
+use App\Http\Controllers\EmployeeTrainingNotification;
 use App\Http\Controllers\PendingController;
 use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\ShiftAssignmentController;
@@ -224,6 +225,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('trainings', TrainingController::class);
     Route::resource('trainings.sessions', TrainingSessionController::class)->shallow();
 });
+// routes/web.php
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/notification', [EmployeeTrainingNotification::class, 'index'])->name('dashboard');
+});
+
 
 
 

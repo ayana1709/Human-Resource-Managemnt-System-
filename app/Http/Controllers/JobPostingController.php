@@ -38,7 +38,7 @@ public function store(Request $request)
         'platforms.jobBoards' => 'boolean',
         'platforms.socialMedia' => 'boolean',
         'platforms.recruitmentAgencies' => 'boolean',
-        // 'created_by' => auth()->id(),
+        'created_by' => auth()->id(),
     ]);
 
     // Create the job posting

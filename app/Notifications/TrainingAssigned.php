@@ -1,5 +1,7 @@
 <?php
 
+// app/Notifications/TrainingAssigned.php
+
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
@@ -10,7 +12,7 @@ class TrainingAssigned extends Notification
 {
     use Queueable;
 
-    private $training;
+    protected $training;
 
     public function __construct($training)
     {
@@ -19,15 +21,7 @@ class TrainingAssigned extends Notification
 
     public function via($notifiable)
     {
-        return ['database', 'mail']; // You can add 'mail' or 'sms' if needed
-    }
-
-    public function toMail($notifiable)
-    {
-        return (new MailMessage)
-            ->line('You have been assigned to a training.')
-            ->action('View Training', url('/trainings/' . $this->training->id))
-            ->line('Thank you for using our application!');
+        return ['database'];
     }
 
     public function toArray($notifiable)
