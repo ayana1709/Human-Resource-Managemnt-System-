@@ -1,6 +1,5 @@
 <?php
 
-
 // database/migrations/2024_06_28_000000_create_training_sessions_table.php
 
 use Illuminate\Database\Migrations\Migration;

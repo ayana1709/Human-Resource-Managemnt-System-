@@ -1,4 +1,5 @@
 <?php
+
 // database/migrations/2024_06_28_000000_create_trainings_table.php
 
 use Illuminate\Database\Migrations\Migration;
@@ -15,7 +16,6 @@ class CreateTrainingsTable extends Migration
             $table->text('description');
             $table->timestamps();
         });
-        
     }
 
     public function down()

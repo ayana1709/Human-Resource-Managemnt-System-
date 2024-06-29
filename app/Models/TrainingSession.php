@@ -1,4 +1,5 @@
 <?php
+
 // app/Models/TrainingSession.php
 
 namespace App\Models;
@@ -16,9 +17,4 @@ class TrainingSession extends Model
     {
         return $this->belongsTo(Training::class);
     }
-    public function users()
-    {
-        return $this->belongsToMany(User::class, 'training_user');
-    }
 }
-

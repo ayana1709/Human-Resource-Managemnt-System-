@@ -1,6 +1,4 @@
 <?php
-// app/Models/Training.php
-
 
 
 namespace App\Models;
@@ -12,10 +10,12 @@ class Training extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description'];
+    protected $fillable = [
+        'title', 'description',
+    ];
 
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'training_user');
     }
 }

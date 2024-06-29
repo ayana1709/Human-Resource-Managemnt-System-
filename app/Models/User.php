@@ -69,5 +69,9 @@ class User extends Authenticatable
     return $this->belongsToMany(Training::class);
 }
 
-
+public function trainingSessions()
+    {
+        return $this->belongsToMany(TrainingSession::class, 'training_user');
+    }
+    
 }

@@ -1,20 +1,20 @@
-// resources/js/Pages/Trainings/Create.jsx
+// resources/js/Pages/Trainings/Edit.jsx
 
 import React, { useState } from "react";
 import { useForm } from "@inertiajs/inertia-react";
 import { usePage } from "@inertiajs/react";
 
-const Create = () => {
-    const { users } = usePage().props;
-    const { data, setData, post, processing, errors } = useForm({
-        title: "",
-        description: "",
-        users: [],
+const Edit = () => {
+    const { training, users } = usePage().props;
+    const { data, setData, put, processing, errors } = useForm({
+        title: training.title,
+        description: training.description,
+        users: training.users.map((user) => user.id),
     });
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route("trainings.store"));
+        put(route("trainings.update", training.id));
     };
 
     const handleCheckboxChange = (e) => {
@@ -30,7 +30,7 @@ const Create = () => {
     return (
         <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
             <h1 className="text-3xl font-bold mb-6 text-center">
-                Create Training
+                Edit Training
             </h1>
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
@@ -74,6 +74,7 @@ const Create = () => {
                                 <input
                                     type="checkbox"
                                     value={user.id}
+                                    checked={data.users.includes(user.id)}
                                     onChange={handleCheckboxChange}
                                     className="form-checkbox"
                                 />
@@ -92,11 +93,11 @@ const Create = () => {
                     className="btn btn-primary px-4 py-2 bg-blue-500 text-white rounded-md shadow hover:bg-blue-600 transition duration-300"
                     disabled={processing}
                 >
-                    Create
+                    Update
                 </button>
             </form>
         </div>
     );
 };
 
-export default Create;
+export default Edit;

@@ -220,11 +220,10 @@ Route::middleware(['auth'])->group(function () {
 
 //trainings
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('trainings', TrainingController::class);
-    Route::post('trainings/{training}/assign-user', [TrainingController::class, 'assignUser'])->name('trainings.assignUser');
+    Route::resource('trainings.sessions', TrainingSessionController::class)->shallow();
 });
-
 
 
 
