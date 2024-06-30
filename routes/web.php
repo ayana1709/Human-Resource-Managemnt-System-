@@ -75,12 +75,18 @@ Route::middleware(['auth', 'admin'])->group(function () {
 Route::middleware(['auth'])->get('/pending', [PendingController::class, 'show'])->name('pending');
 
 
-
-
-
-
 Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 Route::get('/admin/users', [UserController::class, 'userlist'])->middleware(['auth', 'verified'])->name('Admin.index');
+
+// Route::middleware(['auth', 'verified'])->group(function () {
+//     Route::get('/dashboard', [HomeDashboardController::class, 'index']);
+// });
+
+
+
+
+
+
 //Attendance
 Route::middleware(['auth', 'verified'])->group(function () {
     // Employee routes
@@ -235,9 +241,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/notification', [EmployeeTrainingNotification::class, 'index'])->name('dashboard');
-});
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/home', [HomeDashboardController::class, 'index']);
 });
 
 
