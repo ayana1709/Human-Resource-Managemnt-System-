@@ -25,7 +25,7 @@ function AdminSidebar() {
             <ul className="flex-1">
                 <li>
                     <Link
-                        href="/dashboard"
+                        href="/home"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
                         <FontAwesomeIcon icon={faHome} className="mr-2" />

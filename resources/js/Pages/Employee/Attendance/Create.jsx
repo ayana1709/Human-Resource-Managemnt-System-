@@ -1,120 +1,103 @@
-// resources/js/Pages/Attendance/Create.jsx
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "@inertiajs/inertia-react";
-// import DashboardLayout from "../../Layouts/DashboardLayout";
-
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head, Link } from "@inertiajs/react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faChartLine, faCog } from "@fortawesome/free-solid-svg-icons";
+import { Head } from "@inertiajs/react";
 import EmployeeSidebar from "@/Components/Sidebar/EmployeeSidebar";
 
 export default function Create({ auth }) {
     const { data, setData, post, processing, errors } = useForm({
-        date: "",
-        check_in: "",
-        check_out: "",
+        date: formatDate(new Date()), // Initialize date with today's date
+        check_in_time: null,
+        check_out_time: null,
     });
+
+    useEffect(() => {
+        setData("date", formatDate(new Date())); // Update date when component mounts
+    }, []);
+
+    const handleCheckIn = () => {
+        setData("check_in_time", new Date().toLocaleTimeString());
+    };
+
+    const handleCheckOut = () => {
+        setData("check_out_time", new Date().toLocaleTimeString());
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         post(route("attendance.store"));
     };
+
+    // Function to format date as YYYY-MM-DD for input type date
+    function formatDate(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`;
+    }
+
     return (
-        <>
-            <AuthenticatedLayout user={auth.user}>
-                <Head title="Dashboard" />
+        <AuthenticatedLayout user={auth.user}>
+            <Head title="Record Attendance" />
 
-                <div className="h-screen flex flex-col">
-                    {/* <Navbar /> */}
-                    <div className="flex flex-1">
-                        <EmployeeSidebar />
-
-                        <main className="flex-1 bg-gray-100">
-                            <div className="p-4">
-                                <>
-                                    <h1 className="text-2xl font-bold mb-4">
-                                        Record Attendance
-                                    </h1>
-                                    <form onSubmit={handleSubmit}>
-                                        <div className="mb-4">
-                                            <label className="block mb-2">
-                                                Date
-                                            </label>
-                                            <input
-                                                type="date"
-                                                value={data.date}
-                                                onChange={(e) =>
-                                                    setData(
-                                                        "date",
-                                                        e.target.value
-                                                    )
-                                                }
-                                                className="border p-2 w-full"
-                                            />
-                                            {errors.date && (
-                                                <div className="text-red-500 mt-1">
-                                                    {errors.date}
-                                                </div>
-                                            )}
-                                        </div>
-                                        <div className="mb-4">
-                                            <label className="block mb-2">
-                                                Check In
-                                            </label>
-                                            <input
-                                                type="time"
-                                                value={data.check_in}
-                                                onChange={(e) =>
-                                                    setData(
-                                                        "check_in",
-                                                        e.target.value
-                                                    )
-                                                }
-                                                className="border p-2 w-full"
-                                            />
-                                            {errors.check_in && (
-                                                <div className="text-red-500 mt-1">
-                                                    {errors.check_in}
-                                                </div>
-                                            )}
-                                        </div>
-                                        <div className="mb-4">
-                                            <label className="block mb-2">
-                                                Check Out
-                                            </label>
-                                            <input
-                                                type="time"
-                                                value={data.check_out}
-                                                onChange={(e) =>
-                                                    setData(
-                                                        "check_out",
-                                                        e.target.value
-                                                    )
-                                                }
-                                                className="border p-2 w-full"
-                                            />
-                                            {errors.check_out && (
-                                                <div className="text-red-500 mt-1">
-                                                    {errors.check_out}
-                                                </div>
-                                            )}
-                                        </div>
-                                        <button
-                                            type="submit"
-                                            disabled={processing}
-                                            className="bg-blue-500 text-white px-4 py-2 rounded"
-                                        >
-                                            Submit
-                                        </button>
-                                    </form>
-                                </>
-                            </div>
-                        </main>
-                    </div>
+            <div className="h-screen flex flex-col">
+                <div className="flex flex-1">
+                    <EmployeeSidebar />
+                    <main className="flex-1 bg-gray-100">
+                        <div className="p-4">
+                            <h1 className="text-2xl font-bold mb-4">
+                                Record Attendance
+                            </h1>
+                            <form onSubmit={handleSubmit}>
+                                <div className="mb-4">
+                                    <label className="block mb-2">Date</label>
+                                    <input
+                                        type="text"
+                                        value={data.date}
+                                        readOnly // Make the input read-only
+                                        className="border p-2 w-full"
+                                    />
+                                </div>
+                                <div className="mb-4">
+                                    <button
+                                        type="button"
+                                        onClick={handleCheckIn}
+                                        className="bg-blue-500 text-white px-4 py-2 rounded mr-2"
+                                    >
+                                        Check In
+                                    </button>
+                                    {data.check_in_time && (
+                                        <span className="text-green-500">
+                                            Checked in at {data.check_in_time}
+                                        </span>
+                                    )}
+                                </div>
+                                <div className="mb-4">
+                                    <button
+                                        type="button"
+                                        onClick={handleCheckOut}
+                                        className="bg-red-500 text-white px-4 py-2 rounded mr-2"
+                                    >
+                                        Check Out
+                                    </button>
+                                    {data.check_out_time && (
+                                        <span className="text-red-500">
+                                            Checked out at {data.check_out_time}
+                                        </span>
+                                    )}
+                                </div>
+                                <button
+                                    type="submit"
+                                    disabled={processing}
+                                    className="bg-blue-500 text-white px-4 py-2 rounded"
+                                >
+                                    Submit
+                                </button>
+                            </form>
+                        </div>
+                    </main>
                 </div>
-            </AuthenticatedLayout>
-        </>
+            </div>
+        </AuthenticatedLayout>
     );
 }

@@ -12,6 +12,7 @@ use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\CalendarEventController;
 use App\Http\Controllers\EmployeeTrainingNotification;
+use App\Http\Controllers\HomeDashboardController;
 use App\Http\Controllers\PendingController;
 use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\ShiftAssignmentController;
@@ -79,7 +80,7 @@ Route::middleware(['auth'])->get('/pending', [PendingController::class, 'show'])
 
 
 Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
-Route::get('/admin/users', [UserController::class, 'index'])->middleware(['auth', 'verified'])->name('Admin.index');
+Route::get('/admin/users', [UserController::class, 'userlist'])->middleware(['auth', 'verified'])->name('Admin.index');
 //Attendance
 Route::middleware(['auth', 'verified'])->group(function () {
     // Employee routes
@@ -230,7 +231,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/notification', [EmployeeTrainingNotification::class, 'index'])->name('dashboard');
 });
-
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/home', [HomeDashboardController::class, 'index']);
+});
 
 
 
