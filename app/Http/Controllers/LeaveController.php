@@ -86,5 +86,10 @@ public function show($id)
     return Inertia::render('Employee/Leave/Show', ['leave' => $leave]);
 }
 
+public function getNewLeaveRequestsCount()
+{
+    $newLeaveRequestsCount = Leave::where('status', 'pending')->count();
+    return response()->json(['count' => $newLeaveRequestsCount]);
+}
 
 }

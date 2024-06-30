@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "@inertiajs/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -9,13 +9,44 @@ import {
     faCalendarCheck,
     faCalendarPlus,
 } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 
 function AdminSidebar() {
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [newLeaveRequestsCount, setNewLeaveRequestsCount] = useState(0);
+    const [newAttendanceRequestsCount, setNewAttendanceRequestsCount] =
+        useState(0);
 
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
     };
+
+    useEffect(() => {
+        axios
+            .get(route("leave.requests.count"))
+            .then((response) => {
+                setNewAttendanceRequestsCount(response.data.count);
+            })
+            .catch((error) => {
+                console.error(
+                    "Error fetching new leave requests count:",
+                    error
+                );
+            });
+    }, []);
+    useEffect(() => {
+        axios
+            .get(route("Attendance.requests.count"))
+            .then((response) => {
+                setNewLeaveRequestsCount(response.data.count);
+            })
+            .catch((error) => {
+                console.error(
+                    "Error fetching new leave requests count:",
+                    error
+                );
+            });
+    }, []);
 
     return (
         <div className="flex flex-col h-full min-h-screen bg-gray-800 text-white w-64 sm:w-48 md:w-56 lg:w-64 p-4">
@@ -48,15 +79,25 @@ function AdminSidebar() {
                     >
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
                         Attendance
+                        {newAttendanceRequestsCount > 0 && (
+                            <span className="bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center ml-2">
+                                {newAttendanceRequestsCount}
+                            </span>
+                        )}
                     </Link>
                 </li>
-                <li>
+                <li className="relative">
                     <Link
                         href="/admin/leave"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
                         Leave
+                        {newLeaveRequestsCount > 0 && (
+                            <span className="bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center ml-2">
+                                {newLeaveRequestsCount}
+                            </span>
+                        )}
                     </Link>
                 </li>
                 <li>
@@ -65,7 +106,7 @@ function AdminSidebar() {
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
-                        Approvemnt
+                        Approval
                     </Link>
                 </li>
                 <li>

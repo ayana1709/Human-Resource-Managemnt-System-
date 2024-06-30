@@ -41,4 +41,9 @@ class AttendanceController extends Controller
         $attendances = Attendance::with('user')->get();
         return Inertia::render('Admin/Attendance/Index', ['attendances' => $attendances]);
     }
+    public function getNewAttendanceRequestsCount()
+{
+    $newAttendanceRequestsCount = Attendance::where('status', 'pending')->count();
+    return response()->json(['count' => $newAttendanceRequestsCount]);
+}
 }

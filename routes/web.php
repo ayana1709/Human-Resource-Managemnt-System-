@@ -94,6 +94,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Admin routes
     Route::get('/admin/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
 });
+Route::get('/Attendance-requests/count', [AttendanceController::class, 'getNewAttendanceRequestsCount'])->name('Attendance.requests.count');
+
 
 
 //Leave
@@ -109,6 +111,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/admin/leave', [LeaveController::class, 'index'])->name('leave.index');
     Route::patch('/admin/leave/{leave}', [LeaveController::class, 'update'])->name('leave.update');
 });
+Route::get('/leave-requests/count', [LeaveController::class, 'getNewLeaveRequestsCount'])->name('leave.requests.count');
 
 
 
