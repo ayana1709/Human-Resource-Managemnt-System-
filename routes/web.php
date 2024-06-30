@@ -198,6 +198,11 @@ Route::delete('/payroll/{payroll}', [PayrollController::class, 'destroy'])->name
 //payroll report
 Route::get('/reports', [PayrollController::class, 'reports'])->name('payroll.report');
 
+Route::get('/payroll/reports', function () {
+    return Inertia::render('Admin/Payroll/Reports');
+})->name('payroll.reports');
+
+
 
 //payslip
 Route::get('/payslips/{id}', [PayslipController::class, 'show'])->name('payslips.show');
