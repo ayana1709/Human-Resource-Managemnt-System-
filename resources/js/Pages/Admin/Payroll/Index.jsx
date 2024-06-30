@@ -32,7 +32,7 @@ const Index = ({ payrolls, filters }) => {
                     Create Payroll
                 </InertiaLink>
                 <InertiaLink
-                    href={route("payroll.report")}
+                    href={route("payroll.reports")}
                     className="bg-blue-500 text-white px-4 py-2 rounded"
                 >
                     View Payroll Reports

@@ -13,16 +13,13 @@ const Reports = () => {
 
     useEffect(() => {
         axios
-            .get(route("payroll.reports"))
+            .get(route("payroll.reports.data")) // Use the new route name
             .then((response) => {
-                console.log(response.data);
+                console.log("Response Data:", response.data); // Debug log
                 setData(response.data);
             })
             .catch((error) => {
-                console.error(
-                    "There was an error fetching the payroll reports!",
-                    error
-                );
+                console.error("Error fetching payroll reports:", error);
             });
     }, []);
 
@@ -74,31 +71,32 @@ const Reports = () => {
                             </tr>
                         </thead>
                         <tbody className="bg-white divide-y divide-gray-200">
-                            {data.payrolls.map((payroll) => (
-                                <tr key={payroll.id}>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                        {payroll.user.name}
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                        {payroll.user.department_name}
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                        {payroll.base_salary}
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                        {payroll.bonus}
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                        {payroll.deductions}
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                        {payroll.net_salary}
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                        {payroll.pay_date}
-                                    </td>
-                                </tr>
-                            ))}
+                            {Array.isArray(data.payrolls) &&
+                                data.payrolls.map((payroll) => (
+                                    <tr key={payroll.id}>
+                                        <td className="px-6 py-4 whitespace-nowrap">
+                                            {payroll.user.name}
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap">
+                                            {payroll.user.department_name}
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap">
+                                            {payroll.base_salary}
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap">
+                                            {payroll.bonus}
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap">
+                                            {payroll.deductions}
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap">
+                                            {payroll.net_salary}
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap">
+                                            {payroll.pay_date}
+                                        </td>
+                                    </tr>
+                                ))}
                         </tbody>
                     </table>
                 </div>

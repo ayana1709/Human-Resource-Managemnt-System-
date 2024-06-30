@@ -78,9 +78,7 @@ Route::middleware(['auth'])->get('/pending', [PendingController::class, 'show'])
 Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 Route::get('/admin/users', [UserController::class, 'userlist'])->middleware(['auth', 'verified'])->name('Admin.index');
 
-// Route::middleware(['auth', 'verified'])->group(function () {
-//     Route::get('/dashboard', [HomeDashboardController::class, 'index']);
-// });
+
 
 
 
@@ -202,9 +200,8 @@ Route::get('/payroll/{payroll}/edit', [PayrollController::class, 'edit'])->name(
 Route::put('/payroll/{payroll}', [PayrollController::class, 'update'])->name('payroll.update');
 Route::delete('/payroll/{payroll}', [PayrollController::class, 'destroy'])->name('payroll.destroy');
 //payroll report
-Route::get('/reports', [PayrollController::class, 'reports'])->name('payroll.report');
-
-Route::get('/payroll/reports', function () {
+Route::get('/reports', [PayrollController::class, 'reports'])->name('payroll.reports.data');
+Route::get('/reports', function () {
     return Inertia::render('Admin/Payroll/Reports');
 })->name('payroll.reports');
 
@@ -237,8 +234,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('trainings', TrainingController::class);
     Route::resource('trainings.sessions', TrainingSessionController::class)->shallow();
 });
-// routes/web.php
 
+
+
+//notification
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/notification', [EmployeeTrainingNotification::class, 'index'])->name('dashboard');
 });
