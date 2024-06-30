@@ -14,8 +14,7 @@ import axios from "axios";
 function AdminSidebar() {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [newLeaveRequestsCount, setNewLeaveRequestsCount] = useState(0);
-    const [newAttendanceRequestsCount, setNewAttendanceRequestsCount] =
-        useState(0);
+    const [newAttendanceCount, setNewAttendanceCount] = useState(0);
 
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
@@ -25,7 +24,7 @@ function AdminSidebar() {
         axios
             .get(route("leave.requests.count"))
             .then((response) => {
-                setNewAttendanceRequestsCount(response.data.count);
+                setNewLeaveRequestsCount(response.data.count);
             })
             .catch((error) => {
                 console.error(
@@ -34,17 +33,15 @@ function AdminSidebar() {
                 );
             });
     }, []);
+
     useEffect(() => {
         axios
-            .get(route("Attendance.requests.count"))
+            .get(route("attendance.new.count"))
             .then((response) => {
-                setNewLeaveRequestsCount(response.data.count);
+                setNewAttendanceCount(response.data.newAttendanceCount);
             })
             .catch((error) => {
-                console.error(
-                    "Error fetching new leave requests count:",
-                    error
-                );
+                console.error("Error fetching new attendance count:", error);
             });
     }, []);
 
@@ -79,11 +76,6 @@ function AdminSidebar() {
                     >
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
                         Attendance
-                        {newAttendanceRequestsCount > 0 && (
-                            <span className="bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center ml-2">
-                                {newAttendanceRequestsCount}
-                            </span>
-                        )}
                     </Link>
                 </li>
                 <li className="relative">

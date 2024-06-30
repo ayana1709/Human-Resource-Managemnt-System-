@@ -11,21 +11,29 @@ export default function Create({ auth }) {
         check_out_time: null,
     });
 
+    const [conflictError, setConflictError] = useState(null);
+
     useEffect(() => {
         setData("date", formatDate(new Date())); // Update date when component mounts
     }, []);
 
     const handleCheckIn = () => {
-        setData("check_in_time", new Date().toLocaleTimeString());
+        setData("check_in_time", formatTime(new Date()));
     };
 
     const handleCheckOut = () => {
-        setData("check_out_time", new Date().toLocaleTimeString());
+        setData("check_out_time", formatTime(new Date()));
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route("attendance.store"));
+        post(route("attendance.store"), {
+            onError: (errors) => {
+                if (errors.response && errors.response.status === 409) {
+                    setConflictError(errors.response.data.error);
+                }
+            },
+        });
     };
 
     // Function to format date as YYYY-MM-DD for input type date
@@ -34,6 +42,14 @@ export default function Create({ auth }) {
         const month = String(date.getMonth() + 1).padStart(2, "0");
         const day = String(date.getDate()).padStart(2, "0");
         return `${year}-${month}-${day}`;
+    }
+
+    // Function to format time as HH:MM:SS
+    function formatTime(date) {
+        const hours = String(date.getHours()).padStart(2, "0");
+        const minutes = String(date.getMinutes()).padStart(2, "0");
+        const seconds = String(date.getSeconds()).padStart(2, "0");
+        return `${hours}:${minutes}:${seconds}`;
     }
 
     return (
@@ -94,6 +110,18 @@ export default function Create({ auth }) {
                                     Submit
                                 </button>
                             </form>
+                            {conflictError && (
+                                <div className="text-red-500 mt-2">
+                                    {conflictError}
+                                </div>
+                            )}
+                            {errors && (
+                                <div className="text-red-500 mt-2">
+                                    {Object.keys(errors).map((key) => (
+                                        <p key={key}>{errors[key]}</p>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     </main>
                 </div>
