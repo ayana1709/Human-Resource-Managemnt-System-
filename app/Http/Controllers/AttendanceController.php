@@ -5,6 +5,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attendance;
+use App\Models\User;
+use AttendanceFilled;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -49,7 +51,11 @@ class AttendanceController extends Controller
         $attendance->check_out = $validatedData['check_out_time'];
         $attendance->save();
 
-        return response()->json(['success' => true]);
+        // return response()->json(['success' => true]);
+        $admin = User::user_type('admin');
+        $admin->notify(new AttendanceFilled($attendance));
+    
+        return redirect()->back()->with('success', 'Attendance filled successfully');
     }
 
 

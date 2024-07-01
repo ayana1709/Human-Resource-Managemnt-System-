@@ -94,7 +94,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Admin routes
     Route::get('/admin/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
 });
-Route::get('/attendance/new-count', [AttendanceController::class, 'newAttendanceCount'])->name('attendance.new.count');
+// Route::get('/attendance/new-count', [AttendanceController::class, 'newAttendanceCount'])->name('attendance.new.count');
+Route::get('/admin/notifications', [NotificationController::class, 'index'])->name('admin.notifications');
+
 
 
 

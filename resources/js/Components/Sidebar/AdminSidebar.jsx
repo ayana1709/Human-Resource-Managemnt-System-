@@ -14,7 +14,7 @@ import axios from "axios";
 function AdminSidebar() {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [newLeaveRequestsCount, setNewLeaveRequestsCount] = useState(0);
-    const [newAttendanceCount, setNewAttendanceCount] = useState(0);
+    const [notificationCount, setNotificationCount] = useState(0);
 
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
@@ -36,12 +36,12 @@ function AdminSidebar() {
 
     useEffect(() => {
         axios
-            .get(route("attendance.new.count"))
+            .get(route("admin.notifications"))
             .then((response) => {
-                setNewAttendanceCount(response.data.newAttendanceCount);
+                setNotificationCount(response.data.length);
             })
             .catch((error) => {
-                console.error("Error fetching new attendance count:", error);
+                console.error("Error fetching notifications:", error);
             });
     }, []);
 
@@ -75,6 +75,11 @@ function AdminSidebar() {
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
+                        {notificationCount > 0 && (
+                            <span className="ml-2 bg-red-600 text-white rounded-full px-2 py-1 text-xs">
+                                {notificationCount}
+                            </span>
+                        )}
                         Attendance
                     </Link>
                 </li>
