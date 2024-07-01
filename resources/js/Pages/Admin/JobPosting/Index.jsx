@@ -46,7 +46,7 @@ export default function Index({ auth }) {
                                     <div className="overflow-x-auto">
                                         <table className="min-w-full bg-white border">
                                             <thead>
-                                                <tr className="w-full bg-gray-200">
+                                                <tr className="w-full bg-gray-400">
                                                     <th className="px-4 py-2 border">
                                                         Title
                                                     </th>

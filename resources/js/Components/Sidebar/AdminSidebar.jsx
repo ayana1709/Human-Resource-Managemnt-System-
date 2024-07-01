@@ -14,6 +14,13 @@ import {
     faUserPlus,
     faSignOut,
     faClock,
+    faClipboardList,
+    faClipboard,
+    faBullhorn,
+    faComment,
+    faComments,
+    faChalkboardTeacher,
+    faMoneyCheckAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
@@ -186,8 +193,11 @@ function AdminSidebar() {
                         href="/job-requisitions"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
-                        <FontAwesomeIcon icon={faChartLine} className="mr-4" />
-                        Job Requisition
+                        <FontAwesomeIcon
+                            icon={faClipboardList}
+                            className="mr-4"
+                        />
+                        Job Request
                     </Link>
                 </li>
                 <li>
@@ -195,7 +205,7 @@ function AdminSidebar() {
                         href="/job-postings"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
-                        <FontAwesomeIcon icon={faChartLine} className="mr-4" />
+                        <FontAwesomeIcon icon={faBullhorn} className="mr-4" />
                         Job Posting
                     </Link>
                 </li>
@@ -204,11 +214,11 @@ function AdminSidebar() {
                         href="/messages"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
-                        <FontAwesomeIcon icon={faChartLine} className="mr-4" />
+                        <FontAwesomeIcon icon={faComments} className="mr-4" />
                         Message
                     </Link>
                 </li>
-                <li>
+                {/* <li>
                     <Link
                         href="/job-postings-cards"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
@@ -216,13 +226,16 @@ function AdminSidebar() {
                         <FontAwesomeIcon icon={faChartLine} className="mr-4" />
                         Job cards
                     </Link>
-                </li>
+                </li> */}
                 <li>
                     <Link
                         href="/trainings"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
-                        <FontAwesomeIcon icon={faChartLine} className="mr-4" />
+                        <FontAwesomeIcon
+                            icon={faChalkboardTeacher}
+                            className="mr-4"
+                        />
                         Training
                     </Link>
                 </li>
@@ -231,8 +244,11 @@ function AdminSidebar() {
                         href="/payroll"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
-                        <FontAwesomeIcon icon={faChartLine} className="mr-4" />
-                        Payroll Index
+                        <FontAwesomeIcon
+                            icon={faMoneyCheckAlt}
+                            className="mr-4"
+                        />
+                        Payroll
                     </Link>
                 </li>
             </ul>
