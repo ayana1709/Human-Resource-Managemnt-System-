@@ -14,12 +14,14 @@ import axios from "axios";
 function AdminSidebar() {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [newLeaveRequestsCount, setNewLeaveRequestsCount] = useState(0);
+    const [newRegisterRequestsCount, setNewRegisterRequestsCount] = useState(0);
+
     const [notificationCount, setNotificationCount] = useState(0);
 
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
     };
-
+    // counting new leave request
     useEffect(() => {
         axios
             .get(route("leave.requests.count"))
@@ -33,7 +35,22 @@ function AdminSidebar() {
                 );
             });
     }, []);
+    //counting new register request
+    useEffect(() => {
+        axios
+            .get(route("admin.register-requests.count"))
+            .then((response) => {
+                setNewRegisterRequestsCount(response.data.count);
+            })
+            .catch((error) => {
+                console.error(
+                    "Error fetching new leave requests count:",
+                    error
+                );
+            });
+    }, []);
 
+    //
     useEffect(() => {
         axios
             .get(route("admin.notifications"))
@@ -104,6 +121,11 @@ function AdminSidebar() {
                     >
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
                         Approval
+                        {newRegisterRequestsCount > 0 && (
+                            <span className="bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center ml-2">
+                                {newRegisterRequestsCount}
+                            </span>
+                        )}
                     </Link>
                 </li>
                 <li>

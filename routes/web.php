@@ -22,6 +22,7 @@ use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\PayslipController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\TrainingController;
 use App\Http\Controllers\TrainingSessionController;
 
@@ -68,13 +69,13 @@ Route::middleware(['auth', 'admin'])->group(function () {
     ->name('admin.users.approve');
     Route::post('/admin/users/deny', [AdminController::class, 'deny'])->name('admin.users.deny');
 });
+Route::get('/admin/register-requests/count', [AdminController::class, 'countNewRequests'])->name('admin.register-requests.count');
+
 
 
 
 // Ensure this route uses the 'auth' middleware to only allow authenticated users
 Route::middleware(['auth'])->get('/pending', [PendingController::class, 'show'])->name('pending');
-
-
 Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 Route::get('/admin/users', [UserController::class, 'userlist'])->middleware(['auth', 'verified'])->name('Admin.index');
 
@@ -90,7 +91,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Employee routes
     Route::get('/attendance/create', [AttendanceController::class, 'create'])->name('attendance.create');
     Route::post('/attendance/store', [AttendanceController::class, 'store'])->name('attendance.store');
-  
     // Admin routes
     Route::get('/admin/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
 });
@@ -114,6 +114,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/admin/leave', [LeaveController::class, 'index'])->name('leave.index');
     Route::patch('/admin/leave/{leave}', [LeaveController::class, 'update'])->name('leave.update');
 });
+//leave count notification
 Route::get('/leave-requests/count', [LeaveController::class, 'getNewLeaveRequestsCount'])->name('leave.requests.count');
 
 

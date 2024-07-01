@@ -59,4 +59,11 @@ public function deny(Request $request)
         return redirect()->route('admin.users');
     }
 
+
+    public function getNewLeaveRequestsCount()
+{
+    $newRegisterRequestsCount = User::where('approved', 0)->count();
+    return response()->json(['count' => $newRegisterRequestsCount]);
+}
+
 }
