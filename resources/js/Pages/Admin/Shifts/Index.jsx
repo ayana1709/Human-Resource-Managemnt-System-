@@ -76,6 +76,7 @@ export default function Shifts({ shifts, auth }) {
                                             Create Shift
                                         </button>
                                     </form>
+
                                     <ul>
                                         {shifts.map((shift) => (
                                             <li

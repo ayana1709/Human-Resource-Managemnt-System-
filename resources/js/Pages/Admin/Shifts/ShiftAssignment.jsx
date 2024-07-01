@@ -42,7 +42,15 @@ export default function ShiftAssignment({
                                     <h1 className="text-2xl font-bold mb-4">
                                         Shift Assignments
                                     </h1>
-                                    <div className="flex space-x-4 mb-6">
+                                    <div className="flex space-x-6 mb-6">
+                                        <div className="flex items-end flex-grow md:flex-grow-1">
+                                            <Link
+                                                href="/shifts"
+                                                className=" bg-gray-700 text-white p-2 rounded   "
+                                            >
+                                                Create Shift
+                                            </Link>
+                                        </div>
                                         <div>
                                             <label className="block text-gray-700">
                                                 Shift Type
@@ -87,6 +95,7 @@ export default function ShiftAssignment({
                                             </button>
                                         </div>
                                     </div>
+
                                     <table className="min-w-full bg-white">
                                         <thead>
                                             <tr>

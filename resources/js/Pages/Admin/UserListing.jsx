@@ -53,7 +53,7 @@ export default function UserListing({ auth, users }) {
                                             value={searchTerm}
                                             onChange={handleSearchChange}
                                             placeholder="Search by name"
-                                            className="p-3 border rounded-md flex-grow md:flex-grow-"
+                                            className="p-3 border rounded-md flex-grow md:flex-grow-1"
                                         />
                                         <select
                                             value={selectedUserType}

@@ -8,6 +8,11 @@ import {
     faCalendar,
     faCalendarCheck,
     faCalendarPlus,
+    faList,
+    faClipboardCheck,
+    faThumbsUp,
+    faUserPlus,
+    faSignOut,
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
@@ -78,7 +83,7 @@ function AdminSidebar() {
                         href="/dashboard"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
-                        <FontAwesomeIcon icon={faHome} className="mr-2" />
+                        <FontAwesomeIcon icon={faHome} className="mr-4" />
                         Home
                     </Link>
                 </li>
@@ -87,7 +92,7 @@ function AdminSidebar() {
                         href="/admin/users"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
-                        <FontAwesomeIcon icon={faHome} className="mr-2" />
+                        <FontAwesomeIcon icon={faList} className="mr-4" />
                         User List
                     </Link>
                 </li>
@@ -96,12 +101,10 @@ function AdminSidebar() {
                         href="/admin/attendance"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
-                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
-                        {/* {notificationCount > 0 && (
-                            <span className="ml-2 bg-red-600 text-white rounded-full px-2 py-1 text-xs">
-                                {notificationCount}
-                            </span>
-                        )} */}
+                        <FontAwesomeIcon
+                            icon={faClipboardCheck}
+                            className="mr-4"
+                        />
                         Attendance
                         {notificationCount > 0 && (
                             <span className="bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center ml-2">
@@ -115,8 +118,8 @@ function AdminSidebar() {
                         href="/admin/leave"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
-                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
-                        Leave
+                        <FontAwesomeIcon icon={faSignOut} className="mr-4" />
+                        Leave Request
                         {newLeaveRequestsCount > 0 && (
                             <span className="bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center ml-2">
                                 {newLeaveRequestsCount}
@@ -129,8 +132,8 @@ function AdminSidebar() {
                         href="/admin/user"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
-                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
-                        Approval
+                        <FontAwesomeIcon icon={faUserPlus} className="mr-4" />
+                        New Register
                         {newRegisterRequestsCount > 0 && (
                             <span className="bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center ml-2">
                                 {newRegisterRequestsCount}
@@ -138,45 +141,42 @@ function AdminSidebar() {
                         )}
                     </Link>
                 </li>
-                <li>
+                {/* <li>
                     <Link
                         href="/calendar-events/create"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
                         <FontAwesomeIcon
                             icon={faCalendarPlus}
-                            className="mr-2"
+                            className="mr-4"
                         />
                         Create Calendar
                     </Link>
-                </li>
+                </li> */}
                 <li>
                     <Link
                         href="/calendarevents"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
-                        <FontAwesomeIcon
-                            icon={faCalendarCheck}
-                            className="mr-2"
-                        />
-                        View Calendar
+                        <FontAwesomeIcon icon={faCalendar} className="mr-4" />
+                        Calander
                     </Link>
                 </li>
-                <li>
+                {/* <li>
                     <Link
                         href="/shifts"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
-                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
+                        <FontAwesomeIcon icon={faChartLine} className="mr-4" />
                         Create Shift
                     </Link>
-                </li>
+                </li> */}
                 <li>
                     <Link
                         href="/shift-assignments"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
-                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
+                        <FontAwesomeIcon icon={faChartLine} className="mr-4" />
                         Shift Assignment
                     </Link>
                 </li>
@@ -185,7 +185,7 @@ function AdminSidebar() {
                         href="/job-requisitions"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
-                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
+                        <FontAwesomeIcon icon={faChartLine} className="mr-4" />
                         Job Requisition
                     </Link>
                 </li>
@@ -194,7 +194,7 @@ function AdminSidebar() {
                         href="/job-postings"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
-                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
+                        <FontAwesomeIcon icon={faChartLine} className="mr-4" />
                         Job Posting
                     </Link>
                 </li>
@@ -203,7 +203,7 @@ function AdminSidebar() {
                         href="/messages"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
-                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
+                        <FontAwesomeIcon icon={faChartLine} className="mr-4" />
                         Message
                     </Link>
                 </li>
@@ -212,7 +212,7 @@ function AdminSidebar() {
                         href="/job-postings-cards"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
-                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
+                        <FontAwesomeIcon icon={faChartLine} className="mr-4" />
                         Job cards
                     </Link>
                 </li>
@@ -221,7 +221,7 @@ function AdminSidebar() {
                         href="/trainings"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
-                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
+                        <FontAwesomeIcon icon={faChartLine} className="mr-4" />
                         Training
                     </Link>
                 </li>
@@ -230,59 +230,9 @@ function AdminSidebar() {
                         href="/payroll"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
-                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
+                        <FontAwesomeIcon icon={faChartLine} className="mr-4" />
                         Payroll Index
                     </Link>
-                </li>
-
-                <li>
-                    <Link
-                        href="/payroll/reports"
-                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
-                    >
-                        <FontAwesomeIcon icon={faChartLine} className="mr-2" />
-                        Rep
-                    </Link>
-                </li>
-                <li className="flex items-center p-2 hover:bg-gray-700 rounded transition">
-                    <FontAwesomeIcon icon={faCog} className="mr-2" />
-                    Settings
-                </li>
-                <li>
-                    <div className="relative">
-                        <button
-                            onClick={toggleDropdown}
-                            className="w-full text-left py-2 px-4 hover:bg-gray-700 rounded focus:outline-none transition"
-                        >
-                            <FontAwesomeIcon
-                                icon={faChartLine}
-                                className="mr-2"
-                            />
-                            Dropdown
-                        </button>
-                        {dropdownOpen && (
-                            <div className="absolute left-0 w-full mt-2 bg-gray-700 rounded shadow-lg z-10">
-                                <Link
-                                    href="/link1"
-                                    className="block py-2 px-4 hover:bg-gray-600 rounded transition"
-                                >
-                                    Link 1
-                                </Link>
-                                <Link
-                                    href="/link2"
-                                    className="block py-2 px-4 hover:bg-gray-600 rounded transition"
-                                >
-                                    Link 2
-                                </Link>
-                                <Link
-                                    href="/link3"
-                                    className="block py-2 px-4 hover:bg-gray-600 rounded transition"
-                                >
-                                    Link 3
-                                </Link>
-                            </div>
-                        )}
-                    </div>
                 </li>
             </ul>
         </div>
