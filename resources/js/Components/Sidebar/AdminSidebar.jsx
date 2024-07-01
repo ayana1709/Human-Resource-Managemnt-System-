@@ -50,17 +50,22 @@ function AdminSidebar() {
             });
     }, []);
 
-    //
+    // notification for attendance
     useEffect(() => {
         axios
-            .get(route("admin.notifications"))
+            .get(route("attendance.new.count"))
             .then((response) => {
-                setNotificationCount(response.data.length);
+                setNotificationCount(response.data.count);
             })
             .catch((error) => {
-                console.error("Error fetching notifications:", error);
+                console.error(
+                    "Error fetching new leave requests count:",
+                    error
+                );
             });
     }, []);
+
+    //
 
     return (
         <div className="flex flex-col h-full min-h-screen bg-gray-800 text-white w-64 sm:w-48 md:w-56 lg:w-64 p-4">
@@ -98,6 +103,11 @@ function AdminSidebar() {
                             </span>
                         )} */}
                         Attendance
+                        {notificationCount > 0 && (
+                            <span className="bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center ml-2">
+                                {notificationCount}
+                            </span>
+                        )}
                     </Link>
                 </li>
                 <li className="relative">

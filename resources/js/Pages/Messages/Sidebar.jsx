@@ -12,18 +12,17 @@ const Sidebar = ({ onUserSelect }) => {
             .then((response) => {
                 setCurrentUser(response.data.currentUser);
                 setUsers(response.data.users);
-
-                // Fetch unread counts for each user
-                axios
-                    .get(route("messages.unread_counts"))
-                    .then((response) => {
-                        setUnreadCounts(response.data.unreadCounts);
-                    })
-                    .catch((error) =>
-                        console.error("Error fetching unread counts:", error)
-                    );
             })
             .catch((error) => console.error("Error fetching users:", error));
+
+        axios
+            .get(route("messages.unread_counts"))
+            .then((response) => {
+                setUnreadCounts(response.data.unreadCounts);
+            })
+            .catch((error) =>
+                console.error("Error fetching unread counts:", error)
+            );
     }, []);
 
     return (

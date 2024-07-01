@@ -69,7 +69,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
     ->name('admin.users.approve');
     Route::post('/admin/users/deny', [AdminController::class, 'deny'])->name('admin.users.deny');
 Route::get('/admin/register-requests/count', [AdminController::class, 'getNewLeaveRequestsCount'])->name('admin.register-requests.count');
-
 });
 
 
@@ -81,12 +80,6 @@ Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dash
 Route::get('/admin/users', [UserController::class, 'userlist'])->middleware(['auth', 'verified'])->name('Admin.index');
 
 
-
-
-
-
-
-
 //Attendance
 Route::middleware(['auth', 'verified'])->group(function () {
     // Employee routes
@@ -95,8 +88,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Admin routes
     Route::get('/admin/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
 });
-// Route::get('/attendance/new-count', [AttendanceController::class, 'newAttendanceCount'])->name('attendance.new.count');
-Route::get('/admin/notifications', [NotificationController::class, 'index'])->name('admin.notifications');
+Route::get('/attendance/new-count', [AttendanceController::class, 'newAttendanceCount'])->name('attendance.new.count');
+
+
+// Route::get('/admin/notifications', [NotificationController::class, 'index'])->name('admin.notifications');
 
 
 
@@ -232,7 +227,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
     Route::post('/messages', [MessageController::class, 'store'])->name('messages.store');
     Route::get('/messages/{user}', [MessageController::class, 'show'])->name('messages.show');
+    
+
 });
+Route::get('/messages/unread_counts', [MessageController::class, 'unreadCounts'])->name('messages.unread_counts');
+
 
 
 

@@ -70,4 +70,18 @@ class MessageController extends Controller
         })->get();
     }
 
+    public function unreadCounts()
+    {
+        $unreadCounts = Message::where('receiver_id', auth()->id())
+            ->where('read_at', null) // Assuming read_at field indicates if message is read
+            ->groupBy('sender_id')
+            ->selectRaw('sender_id, count(*) as count')
+            ->get()
+            ->pluck('count', 'sender_id');
+    
+        return response()->json(['unreadCounts' => $unreadCounts]);
+    }
+    
+
+
     }
