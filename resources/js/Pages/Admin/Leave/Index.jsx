@@ -32,7 +32,7 @@ export default function Index({ leaves, auth }) {
                                     Leave Requests
                                 </h1>
                                 <table className="min-w-full bg-white border">
-                                    <thead>
+                                    <thead className="bg-gray-400">
                                         <tr>
                                             <th className="py-2 px-4 border">
                                                 ID
