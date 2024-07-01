@@ -17,7 +17,7 @@ class JobRequisitionController extends Controller
 
     public function create()
     {
-        return Inertia::render('Employee/Create');
+        return Inertia::render('Manager/Job_Requistion/Create');
     }
 
     public function store(Request $request)
