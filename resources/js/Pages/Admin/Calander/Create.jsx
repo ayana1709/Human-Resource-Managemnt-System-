@@ -36,11 +36,8 @@ export default function Create({ auth }) {
 
                         <main className="flex-1 bg-gray-100">
                             <div className="p-4">
-                                <h2 className="text-xl mb-4">
-                                    Admin Dashboard
-                                </h2>
                                 <form onSubmit={handleSubmit}>
-                                    <h2 className="text-xl mb-4">
+                                    <h2 className="text-2xl mb-4">
                                         Create Clander
                                     </h2>
                                     <div className="mb-4">
