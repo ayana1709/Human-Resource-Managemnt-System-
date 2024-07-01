@@ -12,7 +12,7 @@ class JobRequisitionController extends Controller
     public function index()
     {
         $requisitions = JobRequisition::with('requester', 'approver')->get();
-        return Inertia::render('Admin/Index', ['requisitions' => $requisitions]);
+        return Inertia::render('Admin/Job_Requistion/Index', ['requisitions' => $requisitions]);
     }
 
     public function create()
@@ -35,7 +35,7 @@ class JobRequisitionController extends Controller
             'requested_by' => auth()->id(),
         ]);
 
-        return redirect()->route('job-requisitions.index')->with('success', 'Job Requisition created successfully.');
+        return redirect()->back()->with('success', 'Job Requisition created successfully.');
     }
 
     public function approve($id)

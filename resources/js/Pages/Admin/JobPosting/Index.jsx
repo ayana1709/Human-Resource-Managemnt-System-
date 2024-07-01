@@ -26,20 +26,22 @@ export default function Index({ auth }) {
 
                         <main className="flex-1 bg-gray-100">
                             <div className="p-4">
-                                <h2 className="text-xl mb-4">
-                                    Admin Dashboard
-                                </h2>
                                 <div className="max-w-7xl mx-auto p-6 bg-white rounded-lg shadow-md">
-                                    <h1 className="text-2xl font-bold mb-6">
-                                        Job Postings
-                                    </h1>
-                                    <div className="mb-4">
-                                        <Link
-                                            href={route("job-postings.create")}
-                                            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-200"
-                                        >
-                                            Create New Job Posting
-                                        </Link>
+                                    <div className="flex">
+                                        {" "}
+                                        <h1 className="text-2xl font-bold mb-6 flex-grow md:flex-grow-1">
+                                            Job Postings
+                                        </h1>
+                                        <div className="mb-4 ">
+                                            <Link
+                                                href={route(
+                                                    "job-postings.create"
+                                                )}
+                                                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-200"
+                                            >
+                                                Create New Job Posting
+                                            </Link>
+                                        </div>
                                     </div>
                                     <div className="overflow-x-auto">
                                         <table className="min-w-full bg-white border">

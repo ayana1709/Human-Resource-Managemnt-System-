@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Inertia } from "@inertiajs/inertia";
 import { Head, useForm } from "@inertiajs/react";
-import AdminSidebar from "@/Components/Sidebar/AdminSidebar";
+import DepManagerSidebar from "@/Components/Sidebar/DepManagerSide";
 
 export default function Create() {
     const { data, setData, post, errors } = useForm({
@@ -19,7 +19,7 @@ export default function Create() {
         <div className="min-h-screen flex flex-col">
             <Head title="Create Job Requisition" />
             <div className="flex flex-1">
-                <AdminSidebar />
+                <DepManagerSidebar />
                 <main className="flex-1 p-6 bg-gray-100">
                     <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
                         <h1 className="text-2xl font-semibold mb-6 text-gray-800">

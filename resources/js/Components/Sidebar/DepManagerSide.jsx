@@ -19,19 +19,19 @@ function DepManagerSidebar() {
                         Home
                     </li>
                 </Link>
-                <Link href={"/admin/users"}>
+                <Link href={""}>
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon icon={faHome} className="mr-2" />
                         User List
                     </li>
                 </Link>
-                <Link href={"/admin/attendance"}>
+                <Link href={"/"}>
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
                         Attendance
                     </li>
                 </Link>
-                <Link href={"/admin/leave"}>
+                <Link href={""}>
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
                         Leave
@@ -61,10 +61,10 @@ function DepManagerSidebar() {
                         Report
                     </li>
                 </Link>
-                <Link href={"/dashboard"}>
+                <Link href={"/job-requisitions/create"}>
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
-                        Training
+                        Job Requstion
                     </li>
                 </Link>
                 <Link href={"/messages"}>

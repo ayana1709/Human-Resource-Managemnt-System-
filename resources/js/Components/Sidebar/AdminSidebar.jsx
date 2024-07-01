@@ -183,7 +183,7 @@ function AdminSidebar() {
                 </li>
                 <li>
                     <Link
-                        href="/job-requisitions/create"
+                        href="/job-requisitions"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
                         <FontAwesomeIcon icon={faChartLine} className="mr-4" />
