@@ -73,5 +73,9 @@ public function trainingSessions()
     {
         return $this->belongsToMany(TrainingSession::class, 'training_user');
     }
+    public function hasRole($role)
+    {
+        return $this->user_type === $role;
+    }
     
 }
