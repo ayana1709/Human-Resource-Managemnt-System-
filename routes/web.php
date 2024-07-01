@@ -68,8 +68,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/admin/users/approve', [AdminController::class, 'approve'])
     ->name('admin.users.approve');
     Route::post('/admin/users/deny', [AdminController::class, 'deny'])->name('admin.users.deny');
+Route::get('/admin/register-requests/count', [AdminController::class, 'getNewLeaveRequestsCount'])->name('admin.register-requests.count');
+
 });
-Route::get('/admin/register-requests/count', [AdminController::class, 'countNewRequests'])->name('admin.register-requests.count');
 
 
 
@@ -246,7 +247,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 //notification
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/notification', [EmployeeTrainingNotification::class, 'index'])->name('dashboard');
+    Route::get('/notification', [EmployeeTrainingNotification::class, 'index']);
 });
 
 

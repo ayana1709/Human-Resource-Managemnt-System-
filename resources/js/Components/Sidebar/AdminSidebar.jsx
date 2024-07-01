@@ -92,11 +92,11 @@ function AdminSidebar() {
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
                         <FontAwesomeIcon icon={faChartLine} className="mr-2" />
-                        {notificationCount > 0 && (
+                        {/* {notificationCount > 0 && (
                             <span className="ml-2 bg-red-600 text-white rounded-full px-2 py-1 text-xs">
                                 {notificationCount}
                             </span>
-                        )}
+                        )} */}
                         Attendance
                     </Link>
                 </li>

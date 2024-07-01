@@ -62,7 +62,7 @@ public function deny(Request $request)
 
     public function getNewLeaveRequestsCount()
 {
-    $newRegisterRequestsCount = User::where('approved', 0)->count();
+    $newRegisterRequestsCount = User::where('approved', false)->count();
     return response()->json(['count' => $newRegisterRequestsCount]);
 }
 
