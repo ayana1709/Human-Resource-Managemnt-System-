@@ -13,6 +13,7 @@ import {
     faThumbsUp,
     faUserPlus,
     faSignOut,
+    faClock,
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
@@ -176,8 +177,8 @@ function AdminSidebar() {
                         href="/shift-assignments"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
-                        <FontAwesomeIcon icon={faChartLine} className="mr-4" />
-                        Shift Assignment
+                        <FontAwesomeIcon icon={faClock} className="mr-4" />
+                        Shift
                     </Link>
                 </li>
                 <li>
