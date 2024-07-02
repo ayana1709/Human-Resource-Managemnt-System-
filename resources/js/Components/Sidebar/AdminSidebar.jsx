@@ -197,7 +197,7 @@ function AdminSidebar() {
                             icon={faClipboardList}
                             className="mr-4"
                         />
-                        Job Request
+                        Hiring Request
                     </Link>
                 </li>
                 <li>
