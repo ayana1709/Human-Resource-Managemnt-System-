@@ -33,11 +33,7 @@ public function store(Request $request)
         'responsibilities' => 'required|string',
         'qualifications' => 'required|string',
         'skills' => 'required|string',
-        'platforms' => 'required|array',
-        'platforms.careerPage' => 'boolean',
-        'platforms.jobBoards' => 'boolean',
-        'platforms.socialMedia' => 'boolean',
-        'platforms.recruitmentAgencies' => 'boolean',
+       
         'created_by' => auth()->id(),
     ]);
 
@@ -52,19 +48,7 @@ public function store(Request $request)
         'created_by' => Auth::id(),
     ]);
 
-    // Handle distribution to platforms
-    if ($validated['platforms']['careerPage']) {
-        // Logic to post to career page
-    }
-    if ($validated['platforms']['jobBoards']) {
-        // Logic to post to job boards
-    }
-    if ($validated['platforms']['socialMedia']) {
-        // Logic to post to social media
-    }
-    if ($validated['platforms']['recruitmentAgencies']) {
-        // Logic to post to recruitment agencies
-    }
+    
 
     return redirect()->route('job-postings.index')->with('success', 'Job posting created successfully!');
 }

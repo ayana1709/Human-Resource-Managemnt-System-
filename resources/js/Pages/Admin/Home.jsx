@@ -10,10 +10,13 @@ import {
     Legend,
     ArcElement,
 } from "chart.js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { usePage } from "@inertiajs/react";
 import { Inertia } from "@inertiajs/inertia";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import AdminSidebar from "@/Components/Sidebar/AdminSidebar";
+import { faStar, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 
 ChartJS.register(
     CategoryScale,
@@ -151,16 +154,17 @@ const Home = ({ auth }) => {
                             <div className="bg-white p-6 rounded-lg shadow-md mb-2 grid grid-cols-2 gap-4">
                                 <div>
                                     <h2 className="text-xl font-semibold mb-4">
-                                        Recent Trainings
+                                        Recently posted Jobs
                                     </h2>
                                     <ul>
                                         {jobs.length > 0 ? (
-                                            jobs.map((job) => (
-                                                <li
-                                                    key={job.id}
-                                                    className="mb-2"
-                                                >
-                                                    {job.title}
+                                            jobs.map((e) => (
+                                                <li key={e.id} className="mb-2">
+                                                    <FontAwesomeIcon
+                                                        icon={faStar}
+                                                        className="mr-4"
+                                                    />
+                                                    {e.title}
                                                 </li>
                                             ))
                                         ) : (
@@ -172,7 +176,7 @@ const Home = ({ auth }) => {
                                 </div>
                                 <div>
                                     <h2 className="text-xl font-semibold mb-4">
-                                        Recently posted Jobs
+                                        Recent Trainings
                                     </h2>
                                     <ul>
                                         {recentTrainings.length > 0 ? (
@@ -181,6 +185,10 @@ const Home = ({ auth }) => {
                                                     key={training.id}
                                                     className="mb-2"
                                                 >
+                                                    <FontAwesomeIcon
+                                                        icon={faThumbsUp}
+                                                        className="mr-4"
+                                                    />
                                                     {training.title}
                                                 </li>
                                             ))

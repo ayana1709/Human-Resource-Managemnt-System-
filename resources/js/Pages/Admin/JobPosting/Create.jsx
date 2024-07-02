@@ -35,7 +35,6 @@ export default function Create({ auth }) {
             responsibilities,
             qualifications,
             skills,
-            platforms,
         });
     };
 
@@ -141,83 +140,7 @@ export default function Create({ auth }) {
                                                 className="w-full border rounded px-4 py-2 mt-2 focus:ring focus:ring-blue-200"
                                             />
                                         </div>
-                                        <div className="mb-4">
-                                            <label className="block text-gray-700">
-                                                Distribution Platforms
-                                            </label>
-                                            <div className="mt-2">
-                                                <label className="inline-flex items-center">
-                                                    <input
-                                                        type="checkbox"
-                                                        name="careerPage"
-                                                        checked={
-                                                            platforms.careerPage
-                                                        }
-                                                        onChange={
-                                                            handleCheckboxChange
-                                                        }
-                                                        className="form-checkbox"
-                                                    />
-                                                    <span className="ml-2">
-                                                        Career Page
-                                                    </span>
-                                                </label>
-                                            </div>
-                                            <div className="mt-2">
-                                                <label className="inline-flex items-center">
-                                                    <input
-                                                        type="checkbox"
-                                                        name="jobBoards"
-                                                        checked={
-                                                            platforms.jobBoards
-                                                        }
-                                                        onChange={
-                                                            handleCheckboxChange
-                                                        }
-                                                        className="form-checkbox"
-                                                    />
-                                                    <span className="ml-2">
-                                                        Job Boards
-                                                    </span>
-                                                </label>
-                                            </div>
-                                            <div className="mt-2">
-                                                <label className="inline-flex items-center">
-                                                    <input
-                                                        type="checkbox"
-                                                        name="socialMedia"
-                                                        checked={
-                                                            platforms.socialMedia
-                                                        }
-                                                        onChange={
-                                                            handleCheckboxChange
-                                                        }
-                                                        className="form-checkbox"
-                                                    />
-                                                    <span className="ml-2">
-                                                        Social Media
-                                                    </span>
-                                                </label>
-                                            </div>
-                                            <div className="mt-2">
-                                                <label className="inline-flex items-center">
-                                                    <input
-                                                        type="checkbox"
-                                                        name="recruitmentAgencies"
-                                                        checked={
-                                                            platforms.recruitmentAgencies
-                                                        }
-                                                        onChange={
-                                                            handleCheckboxChange
-                                                        }
-                                                        className="form-checkbox"
-                                                    />
-                                                    <span className="ml-2">
-                                                        Recruitment Agencies
-                                                    </span>
-                                                </label>
-                                            </div>
-                                        </div>
+
                                         <button
                                             type="submit"
                                             className="w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-200"
