@@ -26,20 +26,20 @@ const Index = ({ payrolls, filters, auth }) => {
                 <div className="flex flex-1">
                     <AdminSidebar />
                     <main className="flex-1 bg-gray-100">
-                        <div className="p-4">
-                            <h1 className="text-2xl font-bold mb-4">
+                        <div className="p-3">
+                            <h1 className="text-2xl font-bold mb-3">
                                 Payroll Records
                             </h1>
-                            <div className="flex justify-between items-center mb-4">
+                            <div className="flex justify-between items-center mb-3">
                                 <InertiaLink
                                     href={route("payroll.create")}
-                                    className="bg-green-500 text-white px-4 py-2 rounded inline-block hover:bg-green-400 transition"
+                                    className="bg-green-500 text-white px-3 py-2 rounded inline-block hover:bg-green-300 transition"
                                 >
                                     Create Payroll
                                 </InertiaLink>
                                 {/* <InertiaLink
                                     href={route("payroll.reports")}
-                                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-400 transition"
+                                    className="bg-blue-500 text-white px-3 py-2 rounded hover:bg-blue-300 transition"
                                 >
                                     View Payroll Reports
                                 </InertiaLink> */}
@@ -58,40 +58,40 @@ const Index = ({ payrolls, filters, auth }) => {
                                     />
                                     <button
                                         type="submit"
-                                        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-400 transition"
+                                        className="bg-blue-500 text-white px-3 py-2 rounded hover:bg-blue-300 transition"
                                     >
                                         Search
                                     </button>
                                 </form>
                             </div>
                             <table className="min-w-full divide-y divide-gray-200">
-                                <thead className="bg-gray-400">
+                                <thead className="bg-gray-300">
                                     <tr>
-                                        <th className="px-4 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
+                                        <th className="px-3 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                                             Id
                                         </th>
-                                        <th className="px-4 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
+                                        <th className="px-3 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                                             Employee
                                         </th>
-                                        <th className="px-4 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
+                                        <th className="px-3 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                                             Department
                                         </th>
-                                        <th className="px-4 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
+                                        <th className="px-3 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                                             Base Salary
                                         </th>
-                                        <th className="px-4 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
+                                        <th className="px-3 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                                             Bonus
                                         </th>
-                                        <th className="px-4 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
+                                        <th className="px-3 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                                             Deductions
                                         </th>
-                                        <th className="px-4 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
+                                        <th className="px-3 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                                             Net Salary
                                         </th>
-                                        <th className="px-4 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
+                                        <th className="px-3 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                                             Pay Date
                                         </th>
-                                        <th className="px-4 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
+                                        <th className="px-3 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                                             Actions
                                         </th>
                                     </tr>
@@ -99,48 +99,47 @@ const Index = ({ payrolls, filters, auth }) => {
                                 <tbody className="bg-white divide-y divide-gray-200">
                                     {payrolls.map((payroll) => (
                                         <tr key={payroll.id}>
-                                            <td className="px-4 py-4 whitespace-nowrap">
+                                            <td className="px-3 py-3 whitespace-nowrap">
                                                 {payroll.id}
                                             </td>
-                                            <td className="px-4 py-4 whitespace-nowrap">
+                                            <td className="px-3 py-3 whitespace-nowrap">
                                                 {payroll.user.name}
                                             </td>
-                                            <td className="px-4 py-4 whitespace-nowrap">
+                                            <td className="px-3 py-3 whitespace-nowrap">
                                                 {payroll.user.department_name}
                                             </td>
-                                            <td className="px-4 py-4 whitespace-nowrap">
+                                            <td className="px-3 py-3 whitespace-nowrap">
                                                 {payroll.base_salary}
                                             </td>
-                                            <td className="px-4 py-4 whitespace-nowrap">
+                                            <td className="px-3 py-3 whitespace-nowrap">
                                                 {payroll.bonus}
                                             </td>
-                                            <td className="px-4 py-4 whitespace-nowrap">
+                                            <td className="px-3 py-3 whitespace-nowrap">
                                                 {payroll.deductions}
                                             </td>
-                                            <td className="px-4 py-4 whitespace-nowrap">
+                                            <td className="px-3 py-3 whitespace-nowrap">
                                                 {payroll.net_salary}
                                             </td>
-                                            <td className="px-4 py-4 whitespace-nowrap">
+                                            <td className="px-3 py-3 whitespace-nowrap">
                                                 {payroll.pay_date}
                                             </td>
-                                            <td className="px-4 py-4 whitespace-nowrap">
+                                            <td className="px-3 py-3 whitespace-nowrap">
                                                 <div className="flex space-x-2">
-                                                    <InertiaLink
+                                                    {/* <InertiaLink
                                                         href={route(
                                                             "payroll.show",
                                                             payroll.id
                                                         )}
                                                         className="bg-blue-500 text-white px-2 py-2 rounded mr-1"
                                                     >
-                                                        View
-                                                    </InertiaLink>
-
+                                                        View 
+                                                    </InertiaLink>*/}
                                                     <InertiaLink
                                                         href={route(
                                                             "payroll.edit",
                                                             payroll.id
                                                         )}
-                                                        className="bg-yellow-500 text-white px-4 py-2 rounded mr-1"
+                                                        className="bg-yellow-500 text-white px-3 py-2 rounded mr-1"
                                                     >
                                                         Edit
                                                     </InertiaLink>
@@ -150,7 +149,7 @@ const Index = ({ payrolls, filters, auth }) => {
                                                                 payroll.id
                                                             )
                                                         }
-                                                        className="bg-red-500 hover:text-white px-4 py-2 rounded mr-1"
+                                                        className="bg-red-500 hover:text-white px-3 py-2 rounded mr-1"
                                                     >
                                                         Delete
                                                     </button>
@@ -159,9 +158,18 @@ const Index = ({ payrolls, filters, auth }) => {
                                                             "payslips.show",
                                                             payroll.id
                                                         )}
-                                                        className="bg-green-500 hover:text-white px-4 py-2 rounded mr-1"
+                                                        className="bg-green-500 hover:text-white px-3 py-2 rounded mr-1"
                                                     >
                                                         Payslip
+                                                    </InertiaLink>{" "}
+                                                    <InertiaLink
+                                                        href={route(
+                                                            "payslips.download",
+                                                            payroll.id
+                                                        )}
+                                                        className="bg-blue-500 text-white px-2 py-2 rounded mr-1"
+                                                    >
+                                                        Download
                                                     </InertiaLink>
                                                     {/*  */}
                                                 </div>
@@ -170,14 +178,9 @@ const Index = ({ payrolls, filters, auth }) => {
                                     ))}
                                 </tbody>
                             </table>
-                            <InertiaLink
-                                href={route("payslips.download", payroll.id)}
-                                className="bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 transition"
-                            >
-                                Download PDF
-                            </InertiaLink>
+
                             {flash.success && (
-                                <div className="bg-green-500 text-white p-2 mb-4 rounded items-center">
+                                <div className="bg-green-500 text-white p-2 mb-3 rounded items-center">
                                     {flash.success}
                                 </div>
                             )}
