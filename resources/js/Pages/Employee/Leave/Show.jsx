@@ -21,7 +21,7 @@ export default function Show({ auth }) {
                     {/* <Navbar /> */}
                     <div className="flex flex-1">
                         <EmployeeSidebar />
-                        <main className="flex-1 bg-gray-100">
+                        <main className="flex-1 px-8 bg-gray-100">
                             <h1 className="text-2xl font-bold mb-4">
                                 Leave Request
                             </h1>

@@ -130,7 +130,7 @@ function DepManagerSidebar() {
                 </li>
                 <li>
                     <Link
-                        href="/job-requisitions"
+                        href="/job-requisitions/create"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
                         <FontAwesomeIcon
