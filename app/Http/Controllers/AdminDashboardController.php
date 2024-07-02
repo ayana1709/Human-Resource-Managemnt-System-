@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
+use App\Models\Shift;
 use App\Models\Training;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -22,17 +24,21 @@ class AdminDashboardController extends Controller
                     $userCount = User::count();
                     $trainingCount = Training::count();
                     $recentTrainings = Training::latest()->take(5)->get();
+                    $departmnents = Department::count();
+                    $shift = Shift::count();
 
                     // Example data for charts
-                    $usersPerMonth = User::selectRaw('COUNT(*) as count, MONTH(created_at) as month')
-                        ->groupBy('month')
+                    $usersPerDay = User::selectRaw('COUNT(*) as count, DAY(created_at) as day')
+                        ->groupBy('day')
                         ->get();
 
                     return Inertia::render('Admin/Home', [
                         'userCount' => $userCount,
                         'trainingCount' => $trainingCount,
                         'recentTrainings' => $recentTrainings,
-                        'usersPerMonth' => $usersPerMonth
+                        'usersPerDay' => $usersPerDay,
+                        'departemnts' => $departmnents,
+                        'shift'=>  $shift,
                     ]);
 
                 case 'hr':

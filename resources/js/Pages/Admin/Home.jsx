@@ -28,21 +28,23 @@ ChartJS.register(
 
 const Home = ({ auth }) => {
     const {
-        userCount = 20,
-        trainingCount = 20,
-        recentTrainings = [23],
-        usersPerMonth = [33],
+        userCount = 0,
+        trainingCount = 0,
+        recentTrainings = [],
+        usersPerDay = [],
+        departemnts = 0,
+        shift = 0,
     } = usePage().props;
 
     // Prepare data for the chart
     const chartData = {
-        labels: usersPerMonth.map((data) => `Month ${data.month}`),
+        labels: usersPerDay.map((data) => `Day ${data.day}`),
         datasets: [
             {
-                label: "Users per Month",
-                data: usersPerMonth.map((data) => data.count),
-                backgroundColor: "rgba(75, 192, 192, 0.2)",
-                borderColor: "rgba(75, 192, 192, 1)",
+                label: "Users per Day",
+                data: usersPerDay.map((data) => data.count),
+                backgroundColor: "rgba(210, 119, 0, 0.818)",
+                borderColor: "#000000",
                 borderWidth: 1,
             },
         ],
@@ -56,7 +58,7 @@ const Home = ({ auth }) => {
             },
             title: {
                 display: true,
-                text: "User Registrations Per Month",
+                text: "User Registrations Per Day",
             },
         },
     };
@@ -67,7 +69,6 @@ const Home = ({ auth }) => {
                 <Head title="Dashboard" />
 
                 <div className="h-screen flex flex-col">
-                    {/* <Navbar /> */}
                     <div className="flex flex-1">
                         <AdminSidebar />
 
@@ -93,6 +94,22 @@ const Home = ({ auth }) => {
                                             </div>
                                             <div className="p-4 bg-gray-100 rounded-lg shadow-sm">
                                                 <h3 className="text-xl font-semibold">
+                                                    Total Departments
+                                                </h3>
+                                                <p className="text-3xl">
+                                                    {departemnts}
+                                                </p>
+                                            </div>
+                                            <div className="p-4 bg-gray-100 rounded-lg shadow-sm">
+                                                <h3 className="text-xl font-semibold">
+                                                    Shift
+                                                </h3>
+                                                <p className="text-3xl">
+                                                    {shift}
+                                                </p>
+                                            </div>
+                                            <div className="p-4 bg-gray-100 rounded-lg shadow-sm">
+                                                <h3 className="text-xl font-semibold">
                                                     Total Trainings
                                                 </h3>
                                                 <p className="text-3xl">
@@ -103,7 +120,7 @@ const Home = ({ auth }) => {
                                     </div>
 
                                     <div className="bg-white p-6 rounded-lg shadow-md mb-6">
-                                        <h2 className="text-2xl font-semibold mb-4">
+                                        <h2 className="text-xl font-semibold mb-4">
                                             Recent Trainings
                                         </h2>
                                         <ul>
@@ -131,7 +148,7 @@ const Home = ({ auth }) => {
                                         <h2 className="text-2xl font-semibold mb-4">
                                             User Registrations
                                         </h2>
-                                        {usersPerMonth.length > 0 ? (
+                                        {usersPerDay.length > 0 ? (
                                             <Bar
                                                 data={chartData}
                                                 options={chartOptions}
