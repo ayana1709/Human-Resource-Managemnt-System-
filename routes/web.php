@@ -204,10 +204,11 @@ Route::get('/payroll/{payroll}/edit', [PayrollController::class, 'edit'])->name(
 Route::put('/payroll/{payroll}', [PayrollController::class, 'update'])->name('payroll.update');
 Route::delete('/payroll/{payroll}', [PayrollController::class, 'destroy'])->name('payroll.destroy');
 //payroll report
-Route::get('/reports', [PayrollController::class, 'reports'])->name('payroll.reports.data');
-Route::get('/reports', function () {
-    return Inertia::render('Admin/Payroll/Reports');
-})->name('payroll.reports');
+// Route::get('/reports', [PayrollController::class, 'reports'])->name('payroll.reports.data');
+// Route::get('/reports', function () {
+//     return Inertia::render('Admin/Payroll/Reports');
+// })->name('payroll.reports');
+Route::get('/reports', [PayrollController::class, 'reports'])->name('reports');
 
 
 

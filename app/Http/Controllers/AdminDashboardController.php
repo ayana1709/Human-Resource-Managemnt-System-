@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Department;
+use App\Models\JobPosting;
 use App\Models\Shift;
 use App\Models\Training;
 use App\Models\User;
@@ -26,6 +27,7 @@ class AdminDashboardController extends Controller
                     $recentTrainings = Training::latest()->take(5)->get();
                     $departmnents = Department::count();
                     $shift = Shift::count();
+                    $jobs= JobPosting::latest()->take(5)->get();
 
                     // Example data for charts
                     $usersPerDay = User::selectRaw('COUNT(*) as count, DAY(created_at) as day')
@@ -39,6 +41,7 @@ class AdminDashboardController extends Controller
                         'usersPerDay' => $usersPerDay,
                         'departemnts' => $departmnents,
                         'shift'=>  $shift,
+                        'jobs'=>$jobs,
                     ]);
 
                 case 'hr':

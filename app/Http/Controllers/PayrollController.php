@@ -79,7 +79,6 @@ return Inertia::render('Admin/Payroll/Index', [
     
     public function reports()
     {
-        
         $payrolls = Payroll::with('user')->get();
     
         // Calculate total payroll costs
@@ -87,7 +86,7 @@ return Inertia::render('Admin/Payroll/Index', [
         $totalBonus = $payrolls->sum('bonus');
         $totalDeductions = $payrolls->sum('deductions');
         $totalNetSalary = $payrolls->sum('net_salary');
-
+    
         return response()->json([
             'totalBaseSalary' => $totalBaseSalary,
             'totalBonus' => $totalBonus,
