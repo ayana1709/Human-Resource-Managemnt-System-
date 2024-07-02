@@ -92,7 +92,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::get('/attendance/new-count', [AttendanceController::class, 'newAttendanceCount'])->name('attendance.new.count');
 
 
-// Route::get('/admin/notifications', [NotificationController::class, 'index'])->name('admin.notifications');
+// aaaa
 
 
 
