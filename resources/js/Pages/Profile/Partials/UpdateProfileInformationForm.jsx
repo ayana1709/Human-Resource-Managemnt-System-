@@ -12,11 +12,12 @@ export default function UpdateProfileInformation({
 }) {
     const user = usePage().props.auth.user;
 
-    const { data, setData, errors, processing, recentlySuccessful } = useForm({
-        name: user.name,
-        email: user.email,
-        profile_picture: null,
-    });
+    const { data, setData, patch, errors, processing, recentlySuccessful } =
+        useForm({
+            name: user.name,
+            email: user.email,
+            profile_picture: null,
+        });
 
     const handleChange = (e) => {
         const { id, value, files } = e.target;
@@ -37,6 +38,12 @@ export default function UpdateProfileInformation({
             data: formData,
             headers: {
                 "Content-Type": "multipart/form-data",
+            },
+            onSuccess: () => {
+                // Handle success if needed
+            },
+            onError: (errors) => {
+                console.log(errors); // Log errors to see what's being returned
             },
         });
     };
