@@ -7,7 +7,7 @@ import CallToAction from "@/component/CallToAction";
 
 import { BrowserRouter } from "react-router-dom";
 import ContactUs from "@/component/ContactUs";
-import JobPostingsCards from "./Admin/JobPosting/JobPostingCards";
+import JobPostingsCards from "./HR/JobPosting/JobPostingCards";
 
 const Welcome = ({ auth, laravelVersion, phpVersion }) => {
     const [selectedJob, setSelectedJob] = useState(null);

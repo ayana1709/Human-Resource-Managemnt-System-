@@ -154,27 +154,6 @@ function AdminSidebar() {
 
                 <li>
                     <Link
-                        href="/job-requisitions"
-                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
-                    >
-                        <FontAwesomeIcon
-                            icon={faClipboardList}
-                            className="mr-4"
-                        />
-                        Hiring Request
-                    </Link>
-                </li>
-                <li>
-                    <Link
-                        href="/job-postings"
-                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
-                    >
-                        <FontAwesomeIcon icon={faBullhorn} className="mr-4" />
-                        Job Posting
-                    </Link>
-                </li>
-                <li>
-                    <Link
                         href="/messages"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
