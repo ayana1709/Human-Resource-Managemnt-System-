@@ -31,7 +31,7 @@ class ShiftAssignmentController extends Controller
          $users = User::all();
 
 
-        return Inertia::render('Admin/Shifts/ShiftAssignment', [
+        return Inertia::render('HR/Shifts/ShiftAssignment', [
             'shiftAssignments' => $shiftAssignments,
             'shifts' => $shifts,
             'users' => $users,

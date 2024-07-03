@@ -52,7 +52,7 @@ class LeaveController extends Controller
     public function index()
     {
         $leaves = Leave::with('user')->get();
-        return Inertia::render('Admin/Leave/Index', ['leaves' => $leaves]);
+        return Inertia::render('HR/Leave/Index', ['leaves' => $leaves]);
     }
 
     // Admin approves or denies leave request

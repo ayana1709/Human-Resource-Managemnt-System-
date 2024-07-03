@@ -21,6 +21,8 @@ class UserController extends Controller
         }else if($usertype=='hr'){
             return Inertia::render('HR/UserListing', ['users' => $users]);
 
+        }else{
+            return redirect()->back();
         }
      }
  }

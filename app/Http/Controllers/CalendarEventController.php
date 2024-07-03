@@ -27,6 +27,12 @@ class CalendarEventController extends Controller
 
              
             }
+            else if($usertype=='hr'){
+
+                return Inertia::render('HR/Calander/Index', ['events' => $events]);
+
+             
+            }
             else{
                 return redirect()->back();
             }
