@@ -16,7 +16,7 @@ class HrMiddleware
     public function handle($request, Closure $next)
     {
         // Check if the authenticated user is an HR
-        if (Auth::check() && Auth::user()->user_type === 'hr') {
+        if (Auth::check() && Auth::user()->user_type === 'department_manager') {
             return $next($request);
         }
 
