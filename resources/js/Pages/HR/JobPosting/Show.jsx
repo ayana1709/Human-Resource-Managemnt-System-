@@ -12,7 +12,7 @@ export default function Show() {
             <h1 className="text-3xl font-bold mb-6 text-center">
                 Job Posting Details
             </h1>
-            <HrSidebar />
+
             <div className="bg-white p-6 rounded-lg shadow-md">
                 <h2 className="text-2xl font-bold mb-4 text-blue-600">
                     {posting.title}

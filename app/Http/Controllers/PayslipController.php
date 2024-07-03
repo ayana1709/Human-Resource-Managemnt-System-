@@ -12,7 +12,7 @@ class PayslipController extends Controller
     public function show($id)
     {
         $payroll = Payroll::with('user')->findOrFail($id);
-        return Inertia::render('Admin/Payroll/Payslip', [
+        return Inertia::render('Employee/Payroll/Payslip', [
             'payslip' => $payroll->load('user')
         ]);
     }

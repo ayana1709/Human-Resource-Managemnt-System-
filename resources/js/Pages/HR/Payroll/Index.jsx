@@ -126,15 +126,15 @@ const Index = ({ payrolls, filters, auth }) => {
                                             </td>
                                             <td className="px-3 py-3 whitespace-nowrap">
                                                 <div className="flex space-x-2">
-                                                    {/* <InertiaLink
+                                                    <InertiaLink
                                                         href={route(
                                                             "payroll.show",
                                                             payroll.id
                                                         )}
-                                                        className="bg-blue-500 text-white px-2 py-2 rounded mr-1"
+                                                        className="bg-green-500 hover:text-white px-3 py-2 rounded mr-1"
                                                     >
-                                                        View 
-                                                    </InertiaLink>*/}
+                                                        View
+                                                    </InertiaLink>
                                                     <InertiaLink
                                                         href={route(
                                                             "payroll.edit",
@@ -154,24 +154,7 @@ const Index = ({ payrolls, filters, auth }) => {
                                                     >
                                                         Delete
                                                     </button>
-                                                    <InertiaLink
-                                                        href={route(
-                                                            "payslips.show",
-                                                            payroll.id
-                                                        )}
-                                                        className="bg-green-500 hover:text-white px-3 py-2 rounded mr-1"
-                                                    >
-                                                        Payslip
-                                                    </InertiaLink>{" "}
-                                                    <InertiaLink
-                                                        href={route(
-                                                            "payslips.download",
-                                                            payroll.id
-                                                        )}
-                                                        className="bg-blue-500 text-white px-2 py-2 rounded mr-1"
-                                                    >
-                                                        Download
-                                                    </InertiaLink>
+
                                                     {/*  */}
                                                 </div>
                                             </td>

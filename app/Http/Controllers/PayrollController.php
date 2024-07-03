@@ -36,7 +36,7 @@ if ($request->has('net_salary')) {
 
 $payrolls = $query->get();
 
-return Inertia::render('Admin/Payroll/Index', [
+return Inertia::render('HR/Payroll/Index', [
     'payrolls' => $payrolls,
     'filters' => $request->all(),
 ]);
@@ -47,7 +47,7 @@ return Inertia::render('Admin/Payroll/Index', [
     public function create()
     {
         $users = User::all();
-        return Inertia::render('Admin/Payroll/Create', ['users' => $users]);
+        return Inertia::render('HR/Payroll/Create', ['users' => $users]);
     }
 
     public function store(Request $request)
@@ -102,13 +102,13 @@ return Inertia::render('Admin/Payroll/Index', [
 
     public function show(Payroll $payroll)
     {
-        return Inertia::render('Admin/Payroll/Show', ['payroll' => $payroll->load('user')]);
+        return Inertia::render('HR/Payroll/Show', ['payroll' => $payroll->load('user')]);
     }
 
     public function edit(Payroll $payroll)
     {
         $users = User::all();
-        return Inertia::render('Admin/Payroll/Edit', ['payroll' => $payroll, 'users' => $users]);
+        return Inertia::render('HR/Payroll/Edit', ['payroll' => $payroll, 'users' => $users]);
     }
 
     public function update(Request $request, Payroll $payroll)

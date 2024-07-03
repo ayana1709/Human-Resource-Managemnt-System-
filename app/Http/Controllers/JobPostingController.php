@@ -14,12 +14,12 @@ class JobPostingController extends Controller
     public function index()
     {
         $postings = JobPosting::with('creator')->get();
-        return Inertia::render('Admin/JobPosting/Index', ['postings' => $postings]);
+        return Inertia::render('HR/JobPosting/Index', ['postings' => $postings]);
     }
 
     public function create()
     {
-        return Inertia::render('Admin/JobPosting/Create');
+        return Inertia::render('HR/JobPosting/Create');
     }
 
    // app/Http/Controllers/JobPostingController.php
@@ -59,14 +59,14 @@ class JobPostingController extends Controller
     public function show($id)
     {
         $posting = JobPosting::with('creator')->findOrFail($id);
-        return Inertia::render('Admin/JobPosting/Show', ['posting' => $posting]);
+        return Inertia::render('HR/JobPosting/Show', ['posting' => $posting]);
     }
     public function showCards()
 {
     
     $postings = JobPosting::all();
 
-    return Inertia::render('Admin/JobPosting/JobPostingCards', [
+    return Inertia::render('HR/JobPosting/JobPostingCards', [
         'postings' => $postings,
         'auth' => auth()->user(),
     ]);
@@ -98,7 +98,7 @@ public function apply(Request $request, $id)
 public function showApplyForm($id)
     {
         $jobPosting = JobPosting::find($id);
-        return inertia('Admin/JobPosting/JobApplicationForm', ['jobPosting' => $jobPosting,
+        return inertia('HR/JobPosting/JobApplicationForm', ['jobPosting' => $jobPosting,
     'postingId' => $id
     
     ]);
@@ -108,7 +108,7 @@ public function showApplyForm($id)
     $jobPosting = JobPosting::findOrFail($id);
     $applications = JobApplication::where('job_posting_id', $id)->get();
 
-    return Inertia::render('Admin/JobPosting/JobApplications', [
+    return Inertia::render('HR/JobPosting/JobApplications', [
         'jobPosting' => $jobPosting,
         'applications' => $applications,
     ]);

@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class HrMiddleware
+class EmployeeMiddleware
 {
     /**
      * Handle an incoming request.

@@ -189,11 +189,7 @@ Route::post('/job-postings/{id}/apply', [JobPostingController::class, 'apply'])-
 Route::get('/job-postings/{id}/applications', [JobPostingController::class, 'viewApplications'])->name('job-postings.view-applications');
 
 
-
-
-
-
-// Custom route for approving a job requisition (if needed)
+// Hiring request or job requistion
 Route::post('job-requisitions/{id}/approve', [JobRequisitionController::class, 'approve'])->name('job-requisitions.approve');
 
 
@@ -207,12 +203,7 @@ Route::get('/payroll/{payroll}', [PayrollController::class, 'show'])->name('payr
 Route::get('/payroll/{payroll}/edit', [PayrollController::class, 'edit'])->name('payroll.edit');
 Route::put('/payroll/{payroll}', [PayrollController::class, 'update'])->name('payroll.update');
 Route::delete('/payroll/{payroll}', [PayrollController::class, 'destroy'])->name('payroll.destroy');
-//payroll report
-// Route::get('/reports', [PayrollController::class, 'reports'])->name('payroll.reports.data');
-// Route::get('/reports', function () {
-//     return Inertia::render('Admin/Payroll/Reports');
-// })->name('payroll.reports');
-Route::get('/reports', [PayrollController::class, 'reports'])->name('reports');
+// Route::get('/reports', [PayrollController::class, 'reports'])->name('reports');
 
 
 
