@@ -11,7 +11,13 @@ class JobPosting extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'description', 'roles', 'responsibilities', 'qualifications', 'skills', 'created_by'
+        'title', 
+        'description', 
+        'roles', 
+        'responsibilities', 
+        'qualifications', 
+        'skills', 
+        'created_by'
     ];
 
     public function creator()

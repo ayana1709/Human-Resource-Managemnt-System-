@@ -24,34 +24,35 @@ class JobPostingController extends Controller
 
    // app/Http/Controllers/JobPostingController.php
 
-public function store(Request $request)
-{
-    $validated = $request->validate([
-        'title' => 'required|string|max:255',
-        'description' => 'required|string',
-        'roles' => 'required|string',
-        'responsibilities' => 'required|string',
-        'qualifications' => 'required|string',
-        'skills' => 'required|string',
-       
-        'created_by' => auth()->id(),
-    ]);
+   public function store(Request $request)
+   {
+       $validated = $request->validate([
+           'title' => 'required|string|max:255',
+           'description' => 'required|string',
+           'roles' => 'required|string',
+           'responsibilities' => 'required|string',
+           'qualifications' => 'required|string',
+           'skills' => 'required|string',
+       ]);
+   
+       // Create the job posting
+       $jobPosting = JobPosting::create([
+           'title' => $validated['title'],
+           'description' => $validated['description'],
+           'roles' => $validated['roles'],
+           'responsibilities' => $validated['responsibilities'],
+           'qualifications' => $validated['qualifications'],
+           'skills' => $validated['skills'],
+           'created_by' => auth()->id(),
+       ]);
+   
+       return redirect()->route('job-postings.index')->with('success', 'Job posting created successfully!');
+   }
+   
 
-    // Create the job posting
-    $jobPosting = JobPosting::create([
-        'title' => $validated['title'],
-        'description' => $validated['description'],
-        'roles' => $validated['roles'],
-        'responsibilities' => $validated['responsibilities'],
-        'qualifications' => $validated['qualifications'],
-        'skills' => $validated['skills'],
-        'created_by' => Auth::id(),
-    ]);
 
-    
 
-    return redirect()->route('job-postings.index')->with('success', 'Job posting created successfully!');
-}
+
 
     
     
