@@ -106,37 +106,7 @@ function AdminSidebar() {
                         User List
                     </Link>
                 </li>
-                <li>
-                    <Link
-                        href="/admin/attendance"
-                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
-                    >
-                        <FontAwesomeIcon
-                            icon={faClipboardCheck}
-                            className="mr-4"
-                        />
-                        Attendance
-                        {notificationCount > 0 && (
-                            <span className="bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center ml-2">
-                                {notificationCount}
-                            </span>
-                        )}
-                    </Link>
-                </li>
-                <li className="relative">
-                    <Link
-                        href="/admin/leave"
-                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
-                    >
-                        <FontAwesomeIcon icon={faSignOut} className="mr-4" />
-                        Leave Request
-                        {newLeaveRequestsCount > 0 && (
-                            <span className="bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center ml-2">
-                                {newLeaveRequestsCount}
-                            </span>
-                        )}
-                    </Link>
-                </li>
+
                 <li>
                     <Link
                         href="/admin/user"
@@ -181,15 +151,7 @@ function AdminSidebar() {
                         Create Shift
                     </Link>
                 </li> */}
-                <li>
-                    <Link
-                        href="/shift-assignments"
-                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
-                    >
-                        <FontAwesomeIcon icon={faClock} className="mr-4" />
-                        Shift
-                    </Link>
-                </li>
+
                 <li>
                     <Link
                         href="/job-requisitions"
