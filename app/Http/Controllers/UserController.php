@@ -46,5 +46,10 @@ class UserController extends Controller
 
     return response()->json($users);
 }
-
+public function destroy(user $user)
+    {
+        
+        $user->delete();
+        return redirect()->back()->with('success', 'Payroll record deleted successfully.');
+    }
 }

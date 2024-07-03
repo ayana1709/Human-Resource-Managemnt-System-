@@ -21,6 +21,11 @@ export default function UserListing({ auth, users }) {
     const handleDepartmentChange = (e) => {
         setSelectedDepartment(e.target.value);
     };
+    const handleDelete = (id) => {
+        if (confirm("Are you sure you want to delete this user  record?")) {
+            Inertia.delete(route("Admin.destroy", id));
+        }
+    };
 
     const filteredUsers = users.filter((user) => {
         return (
@@ -113,6 +118,9 @@ export default function UserListing({ auth, users }) {
                                                     <th className="py-2 px-4 border">
                                                         Created At
                                                     </th>
+                                                    <th className="py-2 px-4 border">
+                                                        Action
+                                                    </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -139,6 +147,18 @@ export default function UserListing({ auth, users }) {
                                                             {new Date(
                                                                 user.created_at
                                                             ).toLocaleDateString()}
+                                                        </td>
+                                                        <td className="py-2 px-4 border">
+                                                            <button
+                                                                onClick={() =>
+                                                                    handleDelete(
+                                                                        user.id
+                                                                    )
+                                                                }
+                                                                className="bg-red-500 hover:text-white px-3 py-2 rounded mr-1"
+                                                            >
+                                                                Delete
+                                                            </button>
                                                         </td>
                                                     </tr>
                                                 ))}

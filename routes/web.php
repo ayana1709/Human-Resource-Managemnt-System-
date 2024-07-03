@@ -83,6 +83,8 @@ Route::middleware(['auth'])->get('/pending', [PendingController::class, 'show'])
 Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 //user list
 Route::get('/admin/users', [UserController::class, 'userlist'])->middleware(['auth', 'verified'])->name('Admin.index');
+Route::delete('/admin/users', [UserController::class, 'destroy'])->name('Admin.destroy');
+
 
 
 //Attendance
@@ -203,7 +205,7 @@ Route::get('/payroll/{payroll}', [PayrollController::class, 'show'])->name('payr
 Route::get('/payroll/{payroll}/edit', [PayrollController::class, 'edit'])->name('payroll.edit');
 Route::put('/payroll/{payroll}', [PayrollController::class, 'update'])->name('payroll.update');
 Route::delete('/payroll/{payroll}', [PayrollController::class, 'destroy'])->name('payroll.destroy');
-// Route::get('/reports', [PayrollController::class, 'reports'])->name('reports');
+Route::get('/reports', [PayrollController::class, 'reports'])->name('reports');
 
 
 
