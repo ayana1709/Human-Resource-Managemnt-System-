@@ -9,6 +9,7 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AdminSidebar from "@/Components/Sidebar/AdminSidebar";
+import HrSidebar from "@/Components/Sidebar/HrSidebar";
 
 const Index = ({ auth }) => {
     const { trainings } = usePage().props;
@@ -21,7 +22,7 @@ const Index = ({ auth }) => {
                 <div className="h-screen flex flex-col">
                     {/* <Navbar /> */}
                     <div className="flex flex-1">
-                        <AdminSidebar />
+                        <HrSidebar />
 
                         <main className="flex-1 bg-gray-100">
                             <div className="p-4">
