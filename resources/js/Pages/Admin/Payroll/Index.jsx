@@ -4,7 +4,7 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faChartLine, faCog } from "@fortawesome/free-solid-svg-icons";
-import DepManagerSidebar from "@/Components/Sidebar/DepManagerSide";
+import AdminSidebar from "@/Components/Sidebar/AdminSidebar";
 
 const Index = ({ payrolls, auth }) => {
     return (
@@ -15,7 +15,7 @@ const Index = ({ payrolls, auth }) => {
                 <div className="h-screen flex flex-col">
                     {/* <Navbar /> */}
                     <div className="flex flex-1">
-                        <DepManagerSidebar />
+                        <AdminSidebar />
 
                         <main className="flex-1 bg-gray-100">
                             <div className="container mx-auto p-4">

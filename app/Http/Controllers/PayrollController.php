@@ -144,10 +144,29 @@ return Inertia::render('HR/Payroll/Index', [
     {
         $userId = Auth::id();
         $payrolls = Payroll::where('user_id', $userId)->with('user')->get();
+        if (Auth::check()) {
+            $user = Auth::user();
+            $usertype = $user->user_type;
+            if($usertype=='admin'){
+                return Inertia::render('Admin/Payroll/Index', [
+                    'payrolls' => $payrolls,
+                ]);
 
-        return Inertia::render('Employee/Payroll/Index', [
-            'payrolls' => $payrolls,
-        ]);
+            }else if($usertype=='department_manager'){
+                return Inertia::render('Manager/Payroll/Index', [
+                    'payrolls' => $payrolls,
+                ]);
+
+            } else if($usertype=='employee'){
+                return Inertia::render('Employee/Payroll/Index', [
+                    'payrolls' => $payrolls,
+                ]);
+
+            }else{
+                return back();
+
+            }}
+        
     }
 
     // Method for department managers to view payroll of their department

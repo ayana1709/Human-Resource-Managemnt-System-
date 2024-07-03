@@ -86,7 +86,7 @@ function AdminSidebar() {
             <div className="mb-4">
                 <h2 className="text-2xl font-bold text-center">Admin Panel</h2>
             </div>
-            <UserProfile />
+            {/* <UserProfile /> */}
             <ul className="flex-1">
                 <li>
                     <Link
@@ -184,7 +184,7 @@ function AdminSidebar() {
                 </li>
                 <li>
                     <Link
-                        href="/payroll"
+                        href="/employee/payroll"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
                         <FontAwesomeIcon
