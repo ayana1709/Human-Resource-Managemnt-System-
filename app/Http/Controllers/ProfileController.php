@@ -33,7 +33,7 @@ class ProfileController extends Controller
         $user = $request->user();
     
         // Log the validated data to debug
-        \Log::info($request->all());
+        
     
         $user->fill($request->validated());
     
