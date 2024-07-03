@@ -12,22 +12,31 @@ export default function UpdateProfileInformation({
 }) {
     const user = usePage().props.auth.user;
 
-    const { data, setData, patch, errors, processing, recentlySuccessful } =
-        useForm({
-            name: user.name,
-            email: user.email,
-            profile_picture: null,
-        });
+    const { data, setData, errors, processing, recentlySuccessful } = useForm({
+        name: user.name,
+        email: user.email,
+        profile_picture: null,
+    });
+
+    const handleChange = (e) => {
+        const { id, value, files } = e.target;
+        setData(id, files ? files[0] : value);
+    };
 
     const submit = (e) => {
         e.preventDefault();
 
+        const formData = new FormData();
+        formData.append("name", data.name);
+        formData.append("email", data.email);
+        if (data.profile_picture) {
+            formData.append("profile_picture", data.profile_picture);
+        }
+
         patch(route("profile.update"), {
-            data: {
-                ...data,
-                profile_picture: data.profile_picture
-                    ? data.profile_picture
-                    : undefined,
+            data: formData,
+            headers: {
+                "Content-Type": "multipart/form-data",
             },
         });
     };
@@ -44,7 +53,11 @@ export default function UpdateProfileInformation({
                 </p>
             </header>
 
-            <form onSubmit={submit} className="mt-6 space-y-6">
+            <form
+                onSubmit={submit}
+                className="mt-6 space-y-6"
+                encType="multipart/form-data"
+            >
                 <div>
                     <InputLabel htmlFor="name" value="Name" />
 
@@ -52,7 +65,7 @@ export default function UpdateProfileInformation({
                         id="name"
                         className="mt-1 block w-full"
                         value={data.name}
-                        onChange={(e) => setData("name", e.target.value)}
+                        onChange={handleChange}
                         required
                         isFocused
                         autoComplete="name"
@@ -69,7 +82,7 @@ export default function UpdateProfileInformation({
                         type="email"
                         className="mt-1 block w-full"
                         value={data.email}
-                        onChange={(e) => setData("email", e.target.value)}
+                        onChange={handleChange}
                         required
                         autoComplete="username"
                     />
@@ -87,9 +100,7 @@ export default function UpdateProfileInformation({
                         id="profile_picture"
                         type="file"
                         className="mt-1 block w-full"
-                        onChange={(e) =>
-                            setData("profile_picture", e.target.files[0])
-                        }
+                        onChange={handleChange}
                     />
 
                     <InputError

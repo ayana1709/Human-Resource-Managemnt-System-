@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
-use Illuminate\Support\Facades\Storage;
-
 
 class ProfileController extends Controller
 {
@@ -29,28 +27,34 @@ class ProfileController extends Controller
     /**
      * Update the user's profile information.
      */
-
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
+
         $user = $request->user();
-    
+
         // Handle profile picture upload
         if ($request->hasFile('profile_picture')) {
             $path = $request->file('profile_picture')->store('profile_pictures', 'public');
             $user->profile_picture = $path;
         }
-    
-        $user->fill($request->validated());
-    
-        if ($user->isDirty('email')) {
-            $user->email_verified_at = null;
+
+        $request->user()->fill($request->validated());
+
+        if ($request->user()->isDirty('email')) {
+            $request->user()->email_verified_at = null;
         }
+
+        $request->user()->save();
+
+        
+
+       
     
-        $user->save();
+       
     
-        return Redirect::route('profile.edit')->with('success', 'Profile updated successfully!');
+
+        return Redirect::route('profile.edit');
     }
-    
 
     /**
      * Delete the user's account.

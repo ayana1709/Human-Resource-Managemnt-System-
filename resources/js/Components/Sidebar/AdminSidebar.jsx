@@ -23,6 +23,7 @@ import {
     faMoneyCheckAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import UserProfile from "@/Pages/UserProfile";
 
 function AdminSidebar() {
     const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -85,6 +86,7 @@ function AdminSidebar() {
             <div className="mb-4">
                 <h2 className="text-2xl font-bold text-center">Admin Panel</h2>
             </div>
+            <UserProfile />
             <ul className="flex-1">
                 <li>
                     <Link
