@@ -13,8 +13,16 @@ class UserController extends Controller
 
  public function userlist(){
      $users = User::all();
-        return Inertia::render('Admin/UserListing', ['users' => $users]);
+     if (Auth::check()) {
+        $user = Auth::user();
+        $usertype = $user->user_type;
+        if($usertype=='admin'){
+            return Inertia::render('Admin/UserListing', ['users' => $users]);
+        }else if($usertype=='hr'){
+            return Inertia::render('HR/UserListing', ['users' => $users]);
 
+        }
+     }
  }
 
     public function index()
