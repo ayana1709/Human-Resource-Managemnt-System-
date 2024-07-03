@@ -147,7 +147,7 @@ export default function JobPostingsCards({ auth }) {
                                     </button>
                                     <button
                                         onClick={() => setShareType("social")}
-                                        className="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 transition duration-200"
+                                        className="bg-gray-300 text-gray-800 px-6 py-2 rounded hover:bg-gray-400 transition duration-200"
                                     >
                                         Share on Social Media
                                     </button>

@@ -4,6 +4,7 @@ import { InertiaLink } from "@inertiajs/inertia-react";
 import { usePage } from "@inertiajs/react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import AdminSidebar from "@/Components/Sidebar/AdminSidebar";
+import HrSidebar from "@/Components/Sidebar/HrSidebar";
 
 const Index = ({ payrolls, filters, auth }) => {
     const { flash } = usePage().props;
@@ -24,7 +25,7 @@ const Index = ({ payrolls, filters, auth }) => {
         <AuthenticatedLayout user={auth.user}>
             <div className="h-screen flex flex-col">
                 <div className="flex flex-1">
-                    <AdminSidebar />
+                    <HrSidebar />
                     <main className="flex-1 bg-gray-100">
                         <div className="p-3">
                             <h1 className="text-2xl font-bold mb-3">

@@ -4,7 +4,7 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faChartLine, faCog } from "@fortawesome/free-solid-svg-icons";
-import AdminSidebar from "@/Components/Sidebar/AdminSidebar";
+import HrSidebar from "@/Components/Sidebar/HrSidebar";
 
 export default function ShiftAssignment({
     shiftAssignments,
@@ -34,7 +34,7 @@ export default function ShiftAssignment({
                 <div className="h-screen flex flex-col">
                     {/* <Navbar /> */}
                     <div className="flex flex-1">
-                        <AdminSidebar />
+                        <HrSidebar />
 
                         <main className="flex-1 bg-gray-100">
                             <div className="p-4">
