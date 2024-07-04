@@ -70,7 +70,31 @@ class AdminDashboardController extends Controller
                      ]);
 
                 case 'department_manager':
-                    return Inertia::render('Manager/Dashboard');
+                     // Fetch some example data
+                     $userCount = User::count();
+                     $trainingCount = Training::count();
+                     $recentTrainings = Training::latest()->take(5)->get();
+                     $departmnents = Department::count();
+                     $shift = Shift::count();
+                     $jobs= JobPosting::latest()->take(5)->get();
+ 
+                     // Example data for charts
+                     $usersPerDay = User::selectRaw('COUNT(*) as count, DAY(created_at) as day')
+                         ->groupBy('day')
+                         ->get();
+ 
+                         return Inertia::render('Manager/Dashboard',
+                         [
+                         'userCount' => $userCount,
+                         'trainingCount' => $trainingCount,
+                         'recentTrainings' => $recentTrainings,
+                         'usersPerDay' => $usersPerDay,
+                         'departemnts' => $departmnents,
+                         'shift'=>  $shift,
+                         'jobs'=> $jobs,
+                     ]);
+
+                    
 
                 case 'employee':
                     return Inertia::render('Employee/Dashboard');

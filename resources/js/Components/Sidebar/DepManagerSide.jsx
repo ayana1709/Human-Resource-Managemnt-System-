@@ -50,7 +50,7 @@ function DepManagerSidebar() {
                 </li>
                 <li>
                     <Link
-                        href="/dashboard"
+                        href="/userlist"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
                         <FontAwesomeIcon icon={faUsers} className="mr-4" />

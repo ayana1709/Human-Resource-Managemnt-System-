@@ -78,4 +78,5 @@ public function trainingSessions()
         return $this->user_type === $role;
     }
     
+    
 }

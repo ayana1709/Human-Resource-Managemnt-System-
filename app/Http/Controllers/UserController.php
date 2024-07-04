@@ -11,21 +11,43 @@ use Inertia\Inertia;
 class UserController extends Controller
 {
 
- public function userlist(){
-     $users = User::all();
-     if (Auth::check()) {
+    public function userlist()
+{
+    if (Auth::check()) {
         $user = Auth::user();
         $usertype = $user->user_type;
-        if($usertype=='admin'){
-            return Inertia::render('Admin/UserListing', ['users' => $users]);
-        }else if($usertype=='hr'){
-            return Inertia::render('HR/UserListing', ['users' => $users]);
 
-        }else{
+        if ($usertype == 'admin') {
+            $users = User::all();
+            return Inertia::render('Admin/UserListing', ['users' => $users]);
+        } elseif ($usertype == 'hr') {
+            $users = User::all();
+            return Inertia::render('HR/UserListing', ['users' => $users]);
+        } elseif ($usertype == 'department_manager') {
+            $departmentId = $user->department_id;
+            $users = User::where('department_id', $departmentId)->get();
+            return Inertia::render('Manager/Team', ['users' => $users]);
+        } else {
             return redirect()->back();
         }
-     }
- }
+    }
+}
+
+    
+//  public function team(){
+//     $user = Auth::user();
+
+//     $departmentId = $user->department_id;
+//     $departmentUsers = User::where('department_id', $departmentId)->get();
+//     return Inertia::render('Manager/Team', ['users' => $departmentUsers]);
+// //     $users = User::all()->department_name;
+//     // return Inertia::render('Manger/Team', ['users' => $users]);
+
+
+    
+// // 
+// }
+
 
     public function index()
     {
