@@ -24,8 +24,8 @@ class UserController extends Controller
             $users = User::all();
             return Inertia::render('HR/UserListing', ['users' => $users]);
         } elseif ($usertype == 'department_manager') {
-            $departmentId = $user->department_id;
-            $users = User::where('department_id', $departmentId)->get();
+            $departmentId = $user->department_name;
+            $users = User::where('department_name', $departmentId)->get();
             return Inertia::render('Manager/Team', ['users' => $users]);
         } else {
             return redirect()->back();

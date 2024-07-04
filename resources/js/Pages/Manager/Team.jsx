@@ -1,9 +1,6 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faChartLine, faCog } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
-import HrSidebar from "@/Components/Sidebar/HrSidebar";
 import DepManagerSidebar from "@/Components/Sidebar/DepManagerSide";
 
 export default function Team({ auth, users }) {
@@ -36,7 +33,7 @@ export default function Team({ auth, users }) {
     return (
         <>
             <AuthenticatedLayout user={auth.user}>
-                <Head title="Dashboard" />
+                <Head title="User List" />
 
                 <div className="h-screen flex flex-col">
                     <div className="flex flex-1">
@@ -54,43 +51,8 @@ export default function Team({ auth, users }) {
                                             value={searchTerm}
                                             onChange={handleSearchChange}
                                             placeholder="Search by name"
-                                            className="p-3 border rounded-md flex-grow md:flex-grow-1"
+                                            className="p-3 border rounded-md flex-grow md:flex-grow"
                                         />
-                                        <select
-                                            value={selectedUserType}
-                                            onChange={handleUserTypeChange}
-                                            className="p-3 border rounded-md flex-grow md:flex-grow-1"
-                                        >
-                                            <option value="">
-                                                All User Types
-                                            </option>
-                                            <option value="admin">Admin</option>
-                                            <option value="hr">HR</option>
-                                            <option value="department_manager">
-                                                Department Manager
-                                            </option>
-                                            <option value="employee">
-                                                Employee
-                                            </option>
-                                        </select>
-                                        <select
-                                            value={selectedDepartment}
-                                            onChange={handleDepartmentChange}
-                                            className="p-3 border rounded-md flex-grow md:flex-grow-1"
-                                        >
-                                            <option value="">
-                                                All Departments
-                                            </option>
-                                            <option value="Graphics Designing">
-                                                Graphics Designing
-                                            </option>
-                                            <option value="Marketing">
-                                                Marketing
-                                            </option>
-                                            <option value="Web Development">
-                                                Web Development
-                                            </option>
-                                        </select>
                                     </div>
                                     <div className="overflow-x-auto">
                                         <table className="min-w-full bg-white border">
