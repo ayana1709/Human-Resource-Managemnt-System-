@@ -81,9 +81,10 @@ Route::get('/admin/register-requests/count', [AdminController::class, 'getNewLea
 // Ensure this route uses the 'auth' middleware to only allow authenticated users
 Route::middleware(['auth'])->get('/pending', [PendingController::class, 'show'])->name('pending');
 Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+
+
 //user list
 Route::get('/userlist', [UserController::class, 'userlist']);
-// Route::get('/team', [UserController::class, 'team']);
 Route::delete('/admin/users', [UserController::class, 'destroy'])->name('Admin.destroy');
 
 
