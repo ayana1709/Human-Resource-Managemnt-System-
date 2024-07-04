@@ -127,18 +127,10 @@ function DepManagerSidebar() {
                         Calander
                     </Link>
                 </li>
-                {/* <li>
-                    <Link
-                        href="/shifts"
-                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
-                    >
-                        <FontAwesomeIcon icon={faChartLine} className="mr-4" />
-                        Create Shift
-                    </Link>
-                </li> */}
+
                 <li>
                     <Link
-                        href="/dashboard"
+                        href="/user-shifts"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
                         <FontAwesomeIcon icon={faClock} className="mr-4" />
@@ -167,15 +159,7 @@ function DepManagerSidebar() {
                         Message
                     </Link>
                 </li>
-                {/* <li>
-                    <Link
-                        href="/job-postings-cards"
-                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
-                    >
-                        <FontAwesomeIcon icon={faChartLine} className="mr-4" />
-                        Job cards
-                    </Link>
-                </li> */}
+
                 <li>
                     <Link
                         href="/dashboard"

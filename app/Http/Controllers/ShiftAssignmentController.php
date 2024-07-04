@@ -5,6 +5,7 @@ use App\Models\Shift;
 use App\Models\ShiftAssignment;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 
@@ -109,10 +110,27 @@ class ShiftAssignmentController extends Controller
             ->get();
 
         $shifts = Shift::all();
+        if (Auth::check()) {
+            $user = Auth::user();
+            $usertype = $user->user_type;
+            if($usertype=='employee'){
 
         return Inertia::render('Employee/Shifts/UserShift', [
             'shiftAssignments' => $shiftAssignments,
             'shifts' => $shifts,
         ]);
+    }else if($usertype=='department_manager'){
+        return Inertia::render('Manager/Shifts/UserShift', [
+            'shiftAssignments' => $shiftAssignments,
+            'shifts' => $shifts,
+        ]);
+
+        }else{
+            return redirect()->back();
+        }
+        
+    
+
+        }
     }
 }
