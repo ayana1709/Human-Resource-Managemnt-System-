@@ -59,7 +59,24 @@ function DepManagerSidebar() {
                 </li>
                 <li>
                     <Link
-                        href="/dashboard"
+                        href="/attendance/create"
+                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
+                    >
+                        <FontAwesomeIcon
+                            icon={faClipboardCheck}
+                            className="mr-4"
+                        />
+                        Attendance
+                        {/* {notificationCount > 0 && (
+                            <span className="bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center ml-2">
+                                {notificationCount}
+                            </span>
+                        )} */}
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        href="/admin/attendance"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
                         <FontAwesomeIcon

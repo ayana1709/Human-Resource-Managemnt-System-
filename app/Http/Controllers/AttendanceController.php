@@ -17,7 +17,20 @@ class AttendanceController extends Controller
     // Employee fills attendance
     public function create()
     {
-        return Inertia::render('Employee/Attendance/Create');
+        if (Auth::check()) {
+            $user = Auth::user();
+            $usertype = $user->user_type;
+            if($usertype=='department_manager'){
+        return Inertia::render('Manager/Attendance/Create');
+
+
+            }else if($usertype=='employee'){
+                return Inertia::render('Employee/Attendance/Create');
+
+
+            }
+
+        }
     }
 
    
@@ -74,8 +87,23 @@ class AttendanceController extends Controller
     // Admin checks attendance
     public function index()
     {
-        $attendances = Attendance::with('user')->get();
-        return Inertia::render('HR/Attendance/Index', ['attendances' => $attendances]);
+        
+        if (Auth::check()) {
+            $user = Auth::user();
+            $usertype = $user->user_type;
+    
+            if ($usertype == 'hr') {
+                $attendances = Attendance::with('user')->get();
+               return Inertia::render('HR/Attendance/Index', ['attendances' => $attendances]);
+            
+            } elseif ($usertype == 'department_manager') {
+                $departmentId = $user->department_name;
+                $users = Attendance::where('department_name', $departmentId)->get();
+                return Inertia::render('Manager/Attendance/Inde', ['attendances' => $users]);
+            } else {
+                return redirect()->back();
+            }
+        }
     }
 
 
