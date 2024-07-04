@@ -63,7 +63,7 @@ export default function Index({ auth, attendances }) {
                                         <tbody>
                                             {filteredAttendances.map(
                                                 (attendance) => (
-                                                    <tr key={attendance.id}>
+                                                    <tr key={attendance.name}>
                                                         <td className="py-2 px-4 border">
                                                             {attendance.id}
                                                         </td>

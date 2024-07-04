@@ -56,9 +56,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Leave::class);
     }
-    public function department():BelongsTo
+    public function department()
     {
-        return $this->belongsTo(Department::class);
+        return $this->belongsTo(Department::class, 'department_name', 'name');
     }
     public function payrolls()
     {

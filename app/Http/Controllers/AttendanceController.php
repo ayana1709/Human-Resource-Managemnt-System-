@@ -87,26 +87,26 @@ class AttendanceController extends Controller
     // Admin checks attendance
     public function index()
     {
-        
         if (Auth::check()) {
             $user = Auth::user();
             $usertype = $user->user_type;
     
             if ($usertype == 'hr') {
                 $attendances = Attendance::with('user')->get();
-               return Inertia::render('HR/Attendance/Index', ['attendances' => $attendances]);
-            
+                return Inertia::render('HR/Attendance/Index', ['attendances' => $attendances]);
             } elseif ($usertype == 'department_manager') {
                 $departmentName = $user->department_name;
-                $attendances = Attendance::where('department_name',  $departmentName)->with('user', 'department')
-                ->get();
-                return Inertia::render('Manager/Attendance/Index', ['attendances' =>  $attendances]);
+                $attendances = Attendance::where('department_name', $departmentName)
+                    ->with('user')
+                    ->get();
+                return Inertia::render('Manager/Attendance/Index', ['attendances' => $attendances]);
             } else {
                 return redirect()->back();
             }
         }
     }
-
+    
+    
 
     
     public function newAttendanceCount()
