@@ -198,7 +198,7 @@ Route::post('job-requisitions/{id}/approve', [JobRequisitionController::class, '
 
 
 
-//payroll
+//payroll admin
 Route::get('/payroll', [PayrollController::class, 'index'])->name('payroll.index');
 Route::get('/payroll/create', [PayrollController::class, 'create'])->name('payroll.create');
 Route::post('/payroll', [PayrollController::class, 'store'])->name('payroll.store');
@@ -215,7 +215,7 @@ Route::get('/payslips/{id}', [PayslipController::class, 'show'])->name('payslips
 Route::get('/payslips/{id}/download', [PayslipController::class, 'download'])->name('payslips.download');
 
 // For employees to view their payroll
-Route::get('/employee/payroll', [PayrollController::class, 'employeeIndex'])->name('employee.payroll.index');
+Route::get('/payrol', [PayrollController::class, 'employeeIndex'])->name('employee.payroll.index');
 
 // For department managers to view payroll of their department
 Route::get('/manager/payroll', [PayrollController::class, 'managerIndex'])->name('manager.payroll.index');

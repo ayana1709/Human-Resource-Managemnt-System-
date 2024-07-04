@@ -190,7 +190,7 @@ function DepManagerSidebar() {
                 </li>
                 <li>
                     <Link
-                        href="/dashboard"
+                        href="/payrol"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
                         <FontAwesomeIcon

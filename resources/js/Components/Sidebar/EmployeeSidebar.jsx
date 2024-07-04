@@ -70,7 +70,7 @@ const EmployeeSidebar = () => {
                         View Shift
                     </li>
                 </Link>
-                <Link href="/employee/payroll">
+                <Link href="/payrol">
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon
                             icon={faMoneyCheckAlt}

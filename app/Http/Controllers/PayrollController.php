@@ -162,7 +162,10 @@ return Inertia::render('HR/Payroll/Index', [
                     'payrolls' => $payrolls,
                 ]);
 
-            }else{
+            }else if($usertype=='department_manager'){
+            return Inertia::render('Manager/Payroll/Index', [
+                'payrolls' => $payrolls,
+            ]);}else{
                 return back();
 
             }}
