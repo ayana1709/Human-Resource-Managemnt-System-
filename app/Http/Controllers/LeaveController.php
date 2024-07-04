@@ -19,7 +19,25 @@ class LeaveController extends Controller
     // Employee creates leave request
     public function create()
     {
-        return Inertia::render('Employee/Leave/Create');
+        if (Auth::check()) {
+            $user = Auth::user();
+            $usertype = $user->user_type;
+
+              switch ($usertype) {
+                case 'department_manager':
+                    return Inertia::render('Manager/Leave/Create');
+                case 'employee':
+                    return Inertia::render('Employee/Leave/Create');
+                 default:
+                     return back();   
+
+
+       
+                }
+            }
+           
+
+        
     }
 
     public function store(Request $request)

@@ -97,9 +97,10 @@ class AttendanceController extends Controller
                return Inertia::render('HR/Attendance/Index', ['attendances' => $attendances]);
             
             } elseif ($usertype == 'department_manager') {
-                $departmentId = $user->department_name;
-                $users = Attendance::where('department_name', $departmentId)->get();
-                return Inertia::render('Manager/Attendance/Inde', ['attendances' => $users]);
+                $departmentName = $user->department_name;
+                $attendances = Attendance::where('department_name',  $departmentName)->with('user', 'department')
+                ->get();
+                return Inertia::render('Manager/Attendance/Index', ['attendances' =>  $attendances]);
             } else {
                 return redirect()->back();
             }

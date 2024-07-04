@@ -14,7 +14,7 @@ class AdminController extends Controller
         $users = User::where('approved', false)->get();
         $departments = Department::all();
 
-        return Inertia::render('Users', [
+        return Inertia::render('Admin/Users', [
             'users' => $users,
             'departments' => $departments,
             'pendingUserId' => Session::get('redirect_pending_to_dashboard'),

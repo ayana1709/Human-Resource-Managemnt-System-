@@ -91,9 +91,9 @@ function DepManagerSidebar() {
                         )} */}
                     </Link>
                 </li>
-                <li className="/dashboard">
+                <li>
                     <Link
-                        href="/dashboard"
+                        href="/leave/create"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
                         <FontAwesomeIcon icon={faSignOut} className="mr-4" />
@@ -120,7 +120,7 @@ function DepManagerSidebar() {
                 </li> */}
                 <li>
                     <Link
-                        href="/dashboard"
+                        href="/calendarevents"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
                         <FontAwesomeIcon icon={faCalendar} className="mr-4" />

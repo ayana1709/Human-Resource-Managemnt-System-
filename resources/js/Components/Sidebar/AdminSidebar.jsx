@@ -99,7 +99,7 @@ function AdminSidebar() {
                 </li>
                 <li>
                     <Link
-                        href="/userlist"
+                        href="userlist"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
                         <FontAwesomeIcon icon={faList} className="mr-4" />

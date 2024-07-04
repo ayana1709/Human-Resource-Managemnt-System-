@@ -33,6 +33,12 @@ class CalendarEventController extends Controller
 
              
             }
+            else if($usertype=='department_manager'){
+
+                return Inertia::render('Manager/Calander/Index', ['events' => $events]);
+
+             
+            }
             else{
                 return redirect()->back();
             }
