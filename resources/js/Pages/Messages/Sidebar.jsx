@@ -26,7 +26,7 @@ const Sidebar = ({ onUserSelect }) => {
     }, []);
 
     return (
-        <div className="w-1/4 bg-gray-200 p-4">
+        <div className="w-1/4 bg-gray-200 p-4 h-screen overflow-hidden">
             {currentUser && (
                 <div className="mb-4">
                     <h2 className="text-lg font-bold">Profile</h2>
@@ -37,24 +37,26 @@ const Sidebar = ({ onUserSelect }) => {
                 </div>
             )}
             <h2 className="text-lg font-bold mb-4">Users</h2>
-            <ul>
-                {Array.isArray(users) &&
-                    users.map((user) => (
-                        <li key={user.id} className="mb-2">
-                            <button
-                                className="w-full text-left p-2 bg-white rounded shadow relative"
-                                onClick={() => onUserSelect(user)}
-                            >
-                                {user.name}
-                                {unreadCounts[user.id] > 0 && (
-                                    <span className="absolute top-1 right-1 bg-red-500 text-white rounded-full w-6 h-6 flex justify-center items-center">
-                                        {unreadCounts[user.id]}
-                                    </span>
-                                )}
-                            </button>
-                        </li>
-                    ))}
-            </ul>
+            <div className="overflow-y-auto h-full">
+                <ul>
+                    {Array.isArray(users) &&
+                        users.map((user) => (
+                            <li key={user.id} className="mb-2">
+                                <button
+                                    className="w-full text-left p-2 bg-white rounded shadow relative"
+                                    onClick={() => onUserSelect(user)}
+                                >
+                                    {user.name}
+                                    {unreadCounts[user.id] > 0 && (
+                                        <span className="absolute top-1 right-1 bg-red-500 text-white rounded-full w-6 h-6 flex justify-center items-center">
+                                            {unreadCounts[user.id]}
+                                        </span>
+                                    )}
+                                </button>
+                            </li>
+                        ))}
+                </ul>
+            </div>
         </div>
     );
 };
