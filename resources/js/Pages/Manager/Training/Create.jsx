@@ -5,9 +5,6 @@ import { useForm } from "@inertiajs/inertia-react";
 import { usePage } from "@inertiajs/react";
 
 const Create = () => {
-    const [searchTerm, setSearchTerm] = useState("");
-    const [selectedUserType, setSelectedUserType] = useState("");
-    const [selectedDepartment, setSelectedDepartment] = useState("");
     const { users } = usePage().props;
     const { data, setData, post, processing, errors } = useForm({
         title: "",
@@ -29,20 +26,6 @@ const Create = () => {
                 : data.users.filter((userId) => userId !== value)
         );
     };
-
-    const handleDepartmentChange = (e) => {
-        setSelectedDepartment(e.target.value);
-    };
-
-    const filteredUsers = users.filter((user) => {
-        return (
-            user.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-            (selectedUserType ? user.user_type === selectedUserType : true) &&
-            (selectedDepartment
-                ? user.department_name === selectedDepartment
-                : true)
-        );
-    });
 
     return (
         <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
@@ -85,19 +68,7 @@ const Create = () => {
                     <label className="block text-gray-700 font-semibold mb-2">
                         Select Users
                     </label>
-                    <select
-                        value={selectedDepartment}
-                        onChange={handleDepartmentChange}
-                        className="p-3 border rounded-md flex-grow md:flex-grow-1"
-                    >
-                        <option value="">All Departments</option>
-                        <option value="Graphics Designing">
-                            Graphics Designing
-                        </option>
-                        <option value="Marketing">Marketing</option>
-                        <option value="Web Development">Web Development</option>
-                    </select>
-                    {filteredUsers.map((user) => (
+                    {users.map((user) => (
                         <div key={user.id} className="mb-2">
                             <label className="inline-flex items-center">
                                 <input

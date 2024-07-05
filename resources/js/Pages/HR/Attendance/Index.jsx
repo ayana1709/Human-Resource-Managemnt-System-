@@ -1,20 +1,56 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head, Link } from "@inertiajs/react";
+import { Head } from "@inertiajs/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faChartLine, faCog } from "@fortawesome/free-solid-svg-icons";
+import {
+    faCheckCircle,
+    faTimesCircle,
+} from "@fortawesome/free-solid-svg-icons";
 import HrSidebar from "@/Components/Sidebar/HrSidebar";
+import axios from "axios";
 
-export default function Index({ auth, attendances }) {
+export default function Index({ auth }) {
     const [searchDate, setSearchDate] = useState("");
+    const [users, setUsers] = useState([]);
+    const [attendances, setAttendances] = useState([]);
+
+    useEffect(() => {
+        // Fetch users
+        axios
+            .get(route("users.index"))
+            .then((response) => {
+                console.log("Users fetched:", response.data.users);
+                setUsers(response.data.users);
+            })
+            .catch((error) => console.error("Error fetching users:", error));
+
+        // Fetch attendances
+        axios
+            .get(route("attendances.index"))
+            .then((response) => {
+                console.log("Attendances fetched:", response.data.attendances);
+                setAttendances(response.data.attendances);
+            })
+            .catch((error) =>
+                console.error("Error fetching attendances:", error)
+            );
+    }, []);
 
     const handleDateChange = (e) => {
         setSearchDate(e.target.value);
     };
 
-    const filteredAttendances = attendances.filter((attendance) => {
-        return searchDate ? attendance.date === searchDate : true;
-    });
+    const getUserAttendanceForDate = (userId, date) => {
+        return attendances.find(
+            (attendance) =>
+                attendance.user_id === userId && attendance.date === date
+        );
+    };
+
+    const uniqueDates =
+        attendances.length > 0
+            ? [...new Set(attendances.map((attendance) => attendance.date))]
+            : [];
 
     return (
         <>
@@ -30,62 +66,95 @@ export default function Index({ auth, attendances }) {
                                 <h1 className="text-2xl font-bold mb-4">
                                     Attendance Records
                                 </h1>
-                                <div className="mb-4 flex flex-wrap gap-4">
-                                    <input
-                                        type="date"
-                                        value={searchDate}
-                                        onChange={handleDateChange}
-                                        className="p-3 border rounded-md flex-grow md:flex-grow-0"
-                                    />
-                                </div>
+
                                 <div className="overflow-x-auto">
                                     <table className="min-w-full bg-white border">
                                         <thead className="bg-gray-400">
                                             <tr>
                                                 <th className="py-2 px-4 border">
-                                                    ID
-                                                </th>
-                                                <th className="py-2 px-4 border">
                                                     User
                                                 </th>
-                                                <th className="py-2 px-4 border">
-                                                    Date
-                                                </th>
-                                                <th className="py-2 px-4 border">
-                                                    Check In
-                                                </th>
-                                                <th className="py-2 px-4 border">
-                                                    Check Out
-                                                </th>
+                                                {uniqueDates.map((date) => (
+                                                    <th
+                                                        key={date}
+                                                        className="py-2 px-4 border"
+                                                    >
+                                                        {date}
+                                                    </th>
+                                                ))}
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {filteredAttendances.map(
-                                                (attendance) => (
-                                                    <tr key={attendance.id}>
+                                            {users.length > 0 ? (
+                                                users.map((user) => (
+                                                    <tr key={user.id}>
                                                         <td className="py-2 px-4 border">
-                                                            {attendance.id}
+                                                            {user.name}
                                                         </td>
-                                                        <td className="py-2 px-4 border">
-                                                            {
-                                                                attendance.user
-                                                                    .name
+                                                        {uniqueDates.map(
+                                                            (date) => {
+                                                                const attendance =
+                                                                    getUserAttendanceForDate(
+                                                                        user.id,
+                                                                        date
+                                                                    );
+                                                                return (
+                                                                    <td
+                                                                        key={
+                                                                            date
+                                                                        }
+                                                                        className="py-2 px-4 border"
+                                                                    >
+                                                                        {attendance ? (
+                                                                            <>
+                                                                                <FontAwesomeIcon
+                                                                                    icon={
+                                                                                        faCheckCircle
+                                                                                    }
+                                                                                    className="text-green-500"
+                                                                                />
+                                                                                <div className="text-xs text-gray-500">
+                                                                                    <div>
+                                                                                        Check
+                                                                                        In:{" "}
+                                                                                        {
+                                                                                            attendance.check_in
+                                                                                        }
+                                                                                    </div>
+                                                                                    <div>
+                                                                                        Check
+                                                                                        Out:{" "}
+                                                                                        {attendance.check_out ||
+                                                                                            "N/A"}
+                                                                                    </div>
+                                                                                </div>
+                                                                            </>
+                                                                        ) : (
+                                                                            <FontAwesomeIcon
+                                                                                icon={
+                                                                                    faTimesCircle
+                                                                                }
+                                                                                className="text-red-500"
+                                                                            />
+                                                                        )}
+                                                                    </td>
+                                                                );
                                                             }
-                                                        </td>
-                                                        <td className="py-2 px-4 border">
-                                                            {attendance.date}
-                                                        </td>
-                                                        <td className="py-2 px-4 border">
-                                                            {
-                                                                attendance.check_in
-                                                            }
-                                                        </td>
-                                                        <td className="py-2 px-4 border">
-                                                            {attendance.check_out ||
-                                                                "N/A"}
-                                                        </td>
+                                                        )}
                                                     </tr>
-                                                )
+                                                ))
+                                            ) : (
+                                                <tr>
+                                                    <td
+                                                        colSpan={
+                                                            uniqueDates.length +
+                                                            1
+                                                        }
+                                                        className="py-2 px-4 border"
+                                                    >
+                                                        No users found.
+                                                    </td>
+                                                </tr>
                                             )}
                                         </tbody>
                                     </table>

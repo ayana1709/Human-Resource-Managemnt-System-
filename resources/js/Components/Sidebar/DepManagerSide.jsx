@@ -67,11 +67,6 @@ function DepManagerSidebar() {
                             className="mr-4"
                         />
                         Attendance
-                        {/* {notificationCount > 0 && (
-                            <span className="bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center ml-2">
-                                {notificationCount}
-                            </span>
-                        )} */}
                     </Link>
                 </li>
                 <li>
@@ -83,12 +78,7 @@ function DepManagerSidebar() {
                             icon={faClipboardCheck}
                             className="mr-4"
                         />
-                        Attendance
-                        {/* {notificationCount > 0 && (
-                            <span className="bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center ml-2">
-                                {notificationCount}
-                            </span>
-                        )} */}
+                        Team Attendance
                     </Link>
                 </li>
                 <li>
@@ -98,26 +88,9 @@ function DepManagerSidebar() {
                     >
                         <FontAwesomeIcon icon={faSignOut} className="mr-4" />
                         Leave
-                        {/* {newLeaveRequestsCount > 0 && (
-                            <span className="bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center ml-2">
-                                {newLeaveRequestsCount}
-                            </span>
-                        )} */}
                     </Link>
                 </li>
 
-                {/* <li>
-                    <Link
-                        href="/calendar-events/create"
-                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
-                    >
-                        <FontAwesomeIcon
-                            icon={faCalendarPlus}
-                            className="mr-4"
-                        />
-                        Create Calendar
-                    </Link>
-                </li> */}
                 <li>
                     <Link
                         href="/calendarevents"
@@ -162,7 +135,7 @@ function DepManagerSidebar() {
 
                 <li>
                     <Link
-                        href="/dashboard"
+                        href="/trainings"
                         className="flex items-center p-2 hover:bg-gray-700 rounded transition"
                     >
                         <FontAwesomeIcon

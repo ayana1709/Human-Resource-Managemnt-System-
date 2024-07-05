@@ -47,6 +47,12 @@ class UserController extends Controller
     
 // // 
 // }
+public function inde()
+    {
+        $users = User::all();
+        return response()->json(['users' => $users]);
+    }
+
 
 
     public function index()

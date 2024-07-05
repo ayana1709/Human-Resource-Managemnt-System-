@@ -11,7 +11,7 @@ class Training extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'description',
+        'title', 'description',  'created_by',
     ];
 
     public function users()

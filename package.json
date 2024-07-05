@@ -32,6 +32,7 @@
         "chart.js": "^4.4.3",
         "react-chartjs-2": "^5.2.0",
         "react-router-dom": "^6.24.0",
+        "react-tooltip": "^5.27.1",
         "sweetalert2": "^11.11.1"
     }
 }

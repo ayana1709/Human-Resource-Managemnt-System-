@@ -9,16 +9,31 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Notifications\TrainingAssigned;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
 
 
 class TrainingController extends Controller
 {
     public function index()
-    {
-        $trainings = Training::with('users')->get();
-        return Inertia::render('Admin/Training/Index', ['trainings' => $trainings]);
+{
+    $trainings = Training::with('users')->get();
+    if (Auth::check()) {
+        $user = Auth::user();
+        $usertype = $user->user_type;
+        if($usertype == 'admin'){
+            return Inertia::render('Admin/Training/Index', ['trainings' => $trainings]);
+        } else if($usertype == 'hr'){
+            return Inertia::render('HR/Training/Index', ['trainings' => $trainings]);
+         } else if($usertype == 'department_manager'){
+            $managerTrainings = Training::with('users')->where('created_by', $user->id)->get();
+            return Inertia::render('Manager/Training/Index', ['trainings' => $managerTrainings]);
+        }  else {
+            return redirect()->back();
+        }
     }
+}
+
 
     public function create()
     {
@@ -34,22 +49,25 @@ class TrainingController extends Controller
             'users' => 'array',
             'users.*' => 'exists:users,id',
         ]);
-
-        $training = Training::create($request->only(['title', 'description']));
+    
+        $training = Training::create([
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
+            'created_by' => Auth::id(),
+        ]);
+    
         $training->users()->sync($request->input('users', []));
-        
-
-
+    
         if ($request->has('users')) {
             $users = User::whereIn('id', $request->users)->get();
             foreach ($users as $user) {
                 $user->notify(new TrainingAssigned($training));
             }
         }
-
-
+    
         return redirect()->route('trainings.index')->with('success', 'Training created successfully.');
     }
+    
 
     
 

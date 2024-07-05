@@ -1,23 +1,20 @@
-// resources/js/Pages/Trainings/Create.jsx
+// resources/js/Pages/Trainings/Edit.jsx
 
 import React, { useState } from "react";
 import { useForm } from "@inertiajs/inertia-react";
 import { usePage } from "@inertiajs/react";
 
-const Create = () => {
-    const [searchTerm, setSearchTerm] = useState("");
-    const [selectedUserType, setSelectedUserType] = useState("");
-    const [selectedDepartment, setSelectedDepartment] = useState("");
-    const { users } = usePage().props;
-    const { data, setData, post, processing, errors } = useForm({
-        title: "",
-        description: "",
-        users: [],
+const Edit = () => {
+    const { training, users } = usePage().props;
+    const { data, setData, put, processing, errors } = useForm({
+        title: training.title,
+        description: training.description,
+        users: training.users.map((user) => user.id),
     });
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route("trainings.store"));
+        put(route("trainings.update", training.id));
     };
 
     const handleCheckboxChange = (e) => {
@@ -30,24 +27,10 @@ const Create = () => {
         );
     };
 
-    const handleDepartmentChange = (e) => {
-        setSelectedDepartment(e.target.value);
-    };
-
-    const filteredUsers = users.filter((user) => {
-        return (
-            user.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-            (selectedUserType ? user.user_type === selectedUserType : true) &&
-            (selectedDepartment
-                ? user.department_name === selectedDepartment
-                : true)
-        );
-    });
-
     return (
         <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
             <h1 className="text-3xl font-bold mb-6 text-center">
-                Create Training
+                Edit Training
             </h1>
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
@@ -85,24 +68,13 @@ const Create = () => {
                     <label className="block text-gray-700 font-semibold mb-2">
                         Select Users
                     </label>
-                    <select
-                        value={selectedDepartment}
-                        onChange={handleDepartmentChange}
-                        className="p-3 border rounded-md flex-grow md:flex-grow-1"
-                    >
-                        <option value="">All Departments</option>
-                        <option value="Graphics Designing">
-                            Graphics Designing
-                        </option>
-                        <option value="Marketing">Marketing</option>
-                        <option value="Web Development">Web Development</option>
-                    </select>
-                    {filteredUsers.map((user) => (
+                    {users.map((user) => (
                         <div key={user.id} className="mb-2">
                             <label className="inline-flex items-center">
                                 <input
                                     type="checkbox"
                                     value={user.id}
+                                    checked={data.users.includes(user.id)}
                                     onChange={handleCheckboxChange}
                                     className="form-checkbox"
                                 />
@@ -121,11 +93,11 @@ const Create = () => {
                     className="btn btn-primary px-4 py-2 bg-blue-500 text-white rounded-md shadow hover:bg-blue-600 transition duration-300"
                     disabled={processing}
                 >
-                    Create
+                    Update
                 </button>
             </form>
         </div>
     );
 };
 
-export default Create;
+export default Edit;
