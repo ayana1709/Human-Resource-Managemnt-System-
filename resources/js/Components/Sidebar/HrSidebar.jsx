@@ -86,7 +86,7 @@ function HrSidebar() {
             <div className="mb-4">
                 <h2 className="text-2xl font-bold text-center">HR Panel</h2>
             </div>
-            {/* <UserProfile /> */}
+            <UserProfile />
             <ul className="flex-1">
                 <li>
                     <Link
