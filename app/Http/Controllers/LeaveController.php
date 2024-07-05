@@ -28,11 +28,10 @@ class LeaveController extends Controller
                     return Inertia::render('Manager/Leave/Create');
                 case 'employee':
                     return Inertia::render('Employee/Leave/Create');
+                case 'admin':
+                        return Inertia::render('Admin/Leave/Create');   
                  default:
                      return back();   
-
-
-       
                 }
             }
            
@@ -44,8 +43,6 @@ class LeaveController extends Controller
     {
         // dd($request->all());
         $request->validate([
-           
-
             'start_date' => 'required',
             'end_date' => 'required',
             'reason' => 'required|string|max:255',
@@ -74,9 +71,6 @@ class LeaveController extends Controller
     }
 
     // Admin approves or denies leave request
-   // app/Http/Controllers/LeaveController.php
-
-
    public function update(Request $request, Leave $leave)
    {
        $request->validate([

@@ -1,5 +1,3 @@
-// resources/js/Pages/Trainings/Edit.jsx
-
 import React, { useState } from "react";
 import { useForm } from "@inertiajs/inertia-react";
 import { usePage } from "@inertiajs/react";
@@ -24,6 +22,13 @@ const Edit = () => {
             checked
                 ? [...data.users, value]
                 : data.users.filter((userId) => userId !== value)
+        );
+    };
+
+    const handleRemoveUser = (userId) => {
+        setData(
+            "users",
+            data.users.filter((id) => id !== userId)
         );
     };
 
@@ -87,6 +92,33 @@ const Edit = () => {
                             {errors.users}
                         </div>
                     )}
+                </div>
+                <div className="mb-4">
+                    <label className="block text-gray-700 font-semibold mb-2">
+                        Selected Users
+                    </label>
+                    <div className="flex flex-wrap gap-2">
+                        {data.users.map((userId) => {
+                            const user = users.find((u) => u.id === userId);
+                            return (
+                                <div
+                                    key={user.id}
+                                    className="bg-gray-200 px-4 py-2 rounded-full flex items-center space-x-2"
+                                >
+                                    <span>{user.name}</span>
+                                    <button
+                                        type="button"
+                                        onClick={() =>
+                                            handleRemoveUser(user.id)
+                                        }
+                                        className="text-red-500 hover:text-red-700"
+                                    >
+                                        &times;
+                                    </button>
+                                </div>
+                            );
+                        })}
+                    </div>
                 </div>
                 <button
                     type="submit"

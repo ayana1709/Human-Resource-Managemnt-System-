@@ -70,14 +70,7 @@ export default function Index({ auth }) {
                                 <h1 className="text-2xl font-bold mb-4">
                                     Attendance Records
                                 </h1>
-                                <div className="mb-4 flex flex-wrap gap-4">
-                                    <input
-                                        type="date"
-                                        value={searchDate}
-                                        onChange={handleDateChange}
-                                        className="p-3 border rounded-md flex-grow md:flex-grow-0"
-                                    />
-                                </div>
+
                                 <div className="overflow-x-auto">
                                     <table className="min-w-full bg-white border">
                                         <thead className="bg-gray-400">

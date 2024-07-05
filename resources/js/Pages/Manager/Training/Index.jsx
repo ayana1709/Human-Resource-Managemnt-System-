@@ -32,11 +32,20 @@ const Index = ({ auth }) => {
                                         Trainings
                                     </h1>
                                     <div className="flex justify-left mb-6">
+                                        <div className="flex items-end flex-grow md:flex-grow-1">
+                                            <InertiaLink
+                                                href={route("trainings.create")}
+                                                className="btn btn-primary px-4 py-2 bg-blue-500 text-white rounded-md shadow hover:bg-blue-600 transition duration-300 "
+                                            >
+                                                Create Training
+                                            </InertiaLink>
+                                        </div>
+
                                         <InertiaLink
-                                            href={route("trainings.create")}
-                                            className="btn btn-primary px-4 py-2 bg-blue-500 text-white rounded-md shadow hover:bg-blue-600 transition duration-300"
+                                            href={"/notification"}
+                                            className="btn btn-primary px-4 py-2 bg-green-500 text-white rounded-md shadow hover:bg-blue-600 transition duration-300"
                                         >
-                                            Create Training
+                                            Assigned Trainings
                                         </InertiaLink>
                                     </div>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
