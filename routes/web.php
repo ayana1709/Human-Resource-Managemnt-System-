@@ -96,10 +96,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/attendance/store', [AttendanceController::class, 'store'])->name('attendance.store');
     // Admin routes
     Route::get('/admin/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
+    
+
 });
 Route::get('/attendance/new-count', [AttendanceController::class, 'newAttendanceCount'])->name('attendance.new.count');
-
-
+Route::get('/attendances', [AttendanceController::class, 'inde'])->name('attendances.index');
+Route::get('/users', [UserController::class, 'inde'])->name('users.inde');
 // aaaa
 
 
