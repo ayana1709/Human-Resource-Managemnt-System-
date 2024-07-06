@@ -138,18 +138,6 @@ function HrSidebar() {
                     </Link>
                 </li>
 
-                {/* <li>
-                    <Link
-                        href="/calendar-events/create"
-                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
-                    >
-                        <FontAwesomeIcon
-                            icon={faCalendarPlus}
-                            className="mr-4"
-                        />
-                        Create Calendar
-                    </Link>
-                </li> */}
                 <li>
                     <Link
                         href="/calendarevents"
@@ -159,15 +147,7 @@ function HrSidebar() {
                         Calander
                     </Link>
                 </li>
-                {/* <li>
-                    <Link
-                        href="/shifts"
-                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
-                    >
-                        <FontAwesomeIcon icon={faChartLine} className="mr-4" />
-                        Create Shift
-                    </Link>
-                </li> */}
+
                 <li>
                     <Link
                         href="/shift-assignments"
@@ -207,15 +187,7 @@ function HrSidebar() {
                         Message
                     </Link>
                 </li>
-                {/* <li>
-                    <Link
-                        href="/job-postings-cards"
-                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
-                    >
-                        <FontAwesomeIcon icon={faChartLine} className="mr-4" />
-                        Job cards
-                    </Link>
-                </li> */}
+
                 <li>
                     <Link
                         href="/trainings"
