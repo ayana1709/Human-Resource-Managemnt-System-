@@ -3,6 +3,7 @@ import { usePage } from "@inertiajs/react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 import AdminSidebar from "@/Components/Sidebar/AdminSidebar";
+import HrSidebar from "@/Components/Sidebar/HrSidebar";
 
 export default function Users({ auth }) {
     const { users, departments } = usePage().props;
@@ -14,7 +15,7 @@ export default function Users({ auth }) {
 
             <div className="h-screen flex flex-col">
                 <div className="flex flex-1">
-                    <AdminSidebar />
+                    <HrSidebar />
 
                     <main className="flex-1 bg-gray-100 p-4">
                         <div className="container mx-auto">

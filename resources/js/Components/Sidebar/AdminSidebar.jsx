@@ -107,20 +107,7 @@ function AdminSidebar() {
                     </Link>
                 </li>
 
-                <li>
-                    <Link
-                        href="/admin/user"
-                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
-                    >
-                        <FontAwesomeIcon icon={faUserPlus} className="mr-4" />
-                        New Register
-                        {newRegisterRequestsCount > 0 && (
-                            <span className="bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center ml-2">
-                                {newRegisterRequestsCount}
-                            </span>
-                        )}
-                    </Link>
-                </li>
+              
                 {/* <li>
                     <Link
                         href="/calendar-events/create"

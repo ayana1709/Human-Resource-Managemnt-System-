@@ -13,9 +13,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
 {
+    Department::create(['name' => 'Human Resourse']);
     Department::create(['name' => 'Web Development']);
     Department::create(['name' => 'Graphics Designing']);
     Department::create(['name' => 'Marketing']);
+
     // add more departments as needed
 }
 }

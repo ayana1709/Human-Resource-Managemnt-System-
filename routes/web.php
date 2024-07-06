@@ -70,7 +70,7 @@ Route::get('/pending', function () {
 
 //approvement
 
-Route::middleware(['auth', 'admin'])->group(function () {
+Route::middleware(['auth', 'hr'])->group(function () {
     Route::get('/admin/user', [AdminController::class, 'index'])->name('admin.users');
     Route::post('/admin/users/approve', [AdminController::class, 'approve'])
     ->name('admin.users.approve');
