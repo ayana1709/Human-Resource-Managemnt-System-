@@ -92,11 +92,6 @@ const EmployeeSidebar = () => {
                             className="mr-4"
                         />
                         Training
-                        {/* {unreadNotificationsCount > 0 && (
-                            <span className="bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center ml-2">
-                                {unreadNotificationsCount}
-                            </span>
-                        )} */}
                     </li>
                 </Link>
             </ul>
