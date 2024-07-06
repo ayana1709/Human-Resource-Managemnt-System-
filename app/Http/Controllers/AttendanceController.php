@@ -28,6 +28,12 @@ class AttendanceController extends Controller
                 return Inertia::render('Employee/Attendance/Create');
 
 
+            }else if($usertype=='hr'){
+                return Inertia::render('HR/Attendance/Create');
+
+
+            }else{
+                return redirect()->back();
             }
 
         }
