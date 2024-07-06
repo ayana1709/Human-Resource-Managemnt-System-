@@ -3,6 +3,7 @@ import { useForm } from "@inertiajs/inertia-react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 import EmployeeSidebar from "@/Components/Sidebar/EmployeeSidebar";
+import HrSidebar from "@/Components/Sidebar/HrSidebar";
 
 export default function Create({ auth }) {
     const { data, setData, post, processing, errors } = useForm({
@@ -58,7 +59,7 @@ export default function Create({ auth }) {
 
             <div className="h-screen flex flex-col">
                 <div className="flex flex-1">
-                    <EmployeeSidebar />
+                    <HrSidebar />
                     <main className="flex-1 bg-gray-100">
                         <div className="p-4">
                             <h1 className="text-2xl font-bold mb-4">

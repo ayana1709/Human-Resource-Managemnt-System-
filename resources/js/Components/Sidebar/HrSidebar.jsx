@@ -240,6 +240,16 @@ function HrSidebar() {
                         Payroll
                     </Link>
                 </li>
+                <div>hr ...</div>
+                <Link href="/attendance/create">
+                    <li className="flex items-center p-2 hover:bg-gray-700">
+                        <FontAwesomeIcon
+                            icon={faClipboardCheck}
+                            className="mr-4"
+                        />
+                        Attendance
+                    </li>
+                </Link>
             </ul>
         </div>
     );
