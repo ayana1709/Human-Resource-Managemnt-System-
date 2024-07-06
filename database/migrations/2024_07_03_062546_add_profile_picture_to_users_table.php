@@ -10,17 +10,18 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up()
-    {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('profile_picture')->nullable();
-        });
-    }
-    
-    public function down()
-    {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('profile_picture');
-        });
-    }
+{
+    Schema::table('users', function (Blueprint $table) {
+        $table->string('profile_picture')->nullable()->after('email');
+    });
+}
+
+public function down()
+{
+    Schema::table('users', function (Blueprint $table) {
+        $table->dropColumn('profile_picture');
+    });
+}
+
     
 };
