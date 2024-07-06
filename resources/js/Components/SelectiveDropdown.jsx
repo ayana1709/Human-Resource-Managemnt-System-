@@ -11,8 +11,8 @@ const SelectiveDropdown = ({ value, onChange }) => {
             onChange={handleChange}
             className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
         >
-            <option value="admin">Admin</option>
-            <option value="hr">HR</option>
+            {/* <option value="admin">Admin</option>
+            <option value="hr">HR</option> */}
             <option value="department_manager">Department Manager</option>
             <option value="employee">Employee </option>
 
