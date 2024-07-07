@@ -12,9 +12,9 @@ import back from "../assets/images/back.jpg";
 const App = () => {
     return (
         <div className="bg-white min-h-screen">
-            <Header />
-            <Services />
             <SupportSection />
+            {/* <Header />
+            <Services /> */}
         </div>
     );
 };

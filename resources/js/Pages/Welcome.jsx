@@ -10,6 +10,7 @@ import ContactUs from "@/component/ContactUs";
 import JobPostingsCards from "./HR/JobPosting/JobPostingCards";
 import App from "@/component/App";
 import Footer from "@/component/Footer";
+import Job from "@/component/Job";
 
 const Welcome = ({ auth, laravelVersion, phpVersion }) => {
     const [selectedJob, setSelectedJob] = useState(null);
@@ -105,7 +106,7 @@ const Welcome = ({ auth, laravelVersion, phpVersion }) => {
 
                                     <Link
                                         href="/job-postings-cards"
-                                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
+                                        className="text-gray-900 dark:text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                                     >
                                         Job cards
                                     </Link>
@@ -183,6 +184,7 @@ const Welcome = ({ auth, laravelVersion, phpVersion }) => {
             <Testimonial />
             {/* <JobPostingsCards /> */}
             {/* <ContactUs /> */}
+            <Job />
 
             <Footer />
         </BrowserRouter>
