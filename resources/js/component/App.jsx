@@ -64,7 +64,7 @@ const ServiceCard = ({ title, color, icon }) => (
 
 const SupportSection = () => (
     <div className="py-20 bg-gray-100 flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-start">
-        <div className="relative w-full lg:w-1/2 flex justify-center lg:justify-end lg:">
+        <div className="relative w-full lg:w-1/2 flex justify-center lg:justify-center lg:">
             <img
                 src={back}
                 alt="Support team"
@@ -77,7 +77,7 @@ const SupportSection = () => (
             />
         </div>
         <div className="lg:w-1/2 text-center lg:text-left lg:pl-10 mt-10 lg:mt-0">
-            <h2 className="text-6xl font-bold px-5">
+            <h2 className="text-6xl font-bold ">
                 Unbeatable Support Meets{" "}
                 <span className="text-red-500">Innovative</span> Technology
             </h2>
