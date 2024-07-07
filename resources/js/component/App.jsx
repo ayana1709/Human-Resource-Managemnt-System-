@@ -10,6 +10,7 @@ import {
 import back from "../assets/images/a5.jpg";
 import a3 from "../assets/images/a3.jpg";
 import Features from "./Features";
+import { InertiaLink } from "@inertiajs/inertia-react";
 
 const App = () => {
     return (
@@ -80,7 +81,7 @@ const SupportSection = () => (
             />
         </div>
         <div className="lg:w-1/2 text-center lg:text-left lg:pl-10 mt-10 lg:mt-0">
-            <h2 className="text-5xl font-bold ">
+            <h2 className="text-5xl font-bold pb-4">
                 Comprehensive HR Management{" "}
                 <span className="text-red-500">Solutions</span> for Modern
                 Businesses
@@ -93,8 +94,12 @@ const SupportSection = () => (
                 development, and performance evaluations.
             </p>
             <div className="flex justify-center lg:justify-start space-x-4 mt-8 px-7">
-                <Button text="Small Businesses" color="bg-orange-500" />
-                <Button text="Midsize Businesses" color="bg-red-500" />
+                <InertiaLink
+                    href={route("login")}
+                    className="bg-orange-500 text-white px-3 py-2 rounded inline-block hover:bg-green-300 transition"
+                >
+                    View More
+                </InertiaLink>
             </div>
         </div>
     </div>

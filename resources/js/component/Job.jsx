@@ -1,6 +1,7 @@
 import React from "react";
 
 import a3 from "../assets/images/a7.jpg";
+import { InertiaLink } from "@inertiajs/inertia-react";
 
 const Job = () => {
     return (
@@ -24,9 +25,12 @@ const MainSection = () => (
                 individuals to join our dynamic team and contribute to our
                 ongoing success.
             </p>
-            <button className="bg-teal-500 text-white px-6 py-3 rounded-lg font-semibold">
-                Get Started
-            </button>
+            <InertiaLink
+                href={"/job-postings-cards"}
+                className="bg-teal-500 text-white px-3 py-2 rounded inline-block hover:bg-green-300 transition"
+            >
+                APPLY A job
+            </InertiaLink>
         </div>
         <div className="w-full lg:w-1/2 flex justify-center ">
             <img src={a3} alt="Illustration" className="w-3/4 lg:w-full " />
