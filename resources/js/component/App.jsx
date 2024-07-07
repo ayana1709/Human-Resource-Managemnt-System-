@@ -14,11 +14,10 @@ import Features from "./Features";
 const App = () => {
     return (
         <div className="bg-white min-h-screen">
-            <SupportSection />
-            <Features />
-
             <Header />
             <Services />
+            <Features />
+            <SupportSection />
         </div>
     );
 };
@@ -51,11 +50,6 @@ const Services = () => (
         />
         <ServiceCard
             title="HR Support and Technology"
-            color="bg-orange-500"
-            icon={<FaLaptop />}
-        />
-        <ServiceCard
-            title="HR Support and "
             color="bg-orange-500"
             icon={<FaLaptop />}
         />
