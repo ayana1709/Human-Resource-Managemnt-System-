@@ -9,6 +9,7 @@ import { BrowserRouter } from "react-router-dom";
 import ContactUs from "@/component/ContactUs";
 import JobPostingsCards from "./HR/JobPosting/JobPostingCards";
 import App from "@/component/App";
+import Footer from "@/component/Footer";
 
 const Welcome = ({ auth, laravelVersion, phpVersion }) => {
     const [selectedJob, setSelectedJob] = useState(null);
@@ -183,9 +184,7 @@ const Welcome = ({ auth, laravelVersion, phpVersion }) => {
             {/* <JobPostingsCards /> */}
             {/* <ContactUs /> */}
 
-            <footer className="w-full bg-gray-800 text-white py-6 mt-12 text-center">
-                <p>&copy; 2024 HRMS Company. All rights reserved.</p>
-            </footer>
+            <Footer />
         </BrowserRouter>
     );
 };

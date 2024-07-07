@@ -7,6 +7,7 @@ import {
     FaLaptop,
     FaArrowRight,
 } from "react-icons/fa";
+import back from "../assets/images/back.jpg";
 
 const App = () => {
     return (
@@ -49,17 +50,12 @@ const Services = () => (
             color="bg-orange-500"
             icon={<FaLaptop />}
         />
-        <ServiceCard
-            title="Browse All"
-            color="bg-red-500"
-            icon={<FaArrowRight />}
-        />
     </div>
 );
 
 const ServiceCard = ({ title, color, icon }) => (
     <div
-        className={`${color} text-white p-6 rounded-lg shadow-lg flex flex-col items-center`}
+        className={`${color} text-white p-6 rounded-lg shadow-lg flex flex-col items-center h-40`}
     >
         <div className="text-3xl mb-4">{icon}</div>
         <h2 className="text-xl font-semibold">{title}</h2>
@@ -67,30 +63,30 @@ const ServiceCard = ({ title, color, icon }) => (
 );
 
 const SupportSection = () => (
-    <div className="py-10 bg-gray-100 flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-start">
-        <div className="relative w-full lg:w-1/2 flex justify-center lg:justify-end lg:pl-10">
+    <div className="py-20 bg-gray-100 flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-start">
+        <div className="relative w-full lg:w-1/2 flex justify-center lg:justify-end lg:">
             <img
-                src="path/to/your/image1.jpg"
+                src={back}
                 alt="Support team"
                 className="w-3/4 lg:w-2/3 rounded-lg shadow-lg"
             />
             <img
-                src="path/to/your/image2.jpg"
+                src={back}
                 alt="Meeting"
                 className="absolute bottom-0 right-0 w-1/4 lg:w-1/3 rounded-lg shadow-lg transform translate-x-6 translate-y-6 lg:translate-x-10 lg:translate-y-10"
             />
         </div>
         <div className="lg:w-1/2 text-center lg:text-left lg:pl-10 mt-10 lg:mt-0">
-            <h2 className="text-3xl font-bold">
+            <h2 className="text-6xl font-bold px-5">
                 Unbeatable Support Meets{" "}
                 <span className="text-red-500">Innovative</span> Technology
             </h2>
-            <p className="mt-4 text-gray-600 max-w-lg mx-auto lg:mx-0">
+            <p className="mt-4 text-gray-600 max-w-lg mx-auto lg:mx-0 px-7">
                 Unmatched Support: At Paragroup, we believe that exceptional
                 customer support is the cornerstone of a successful business.
                 Our dedicated team of professionals...
             </p>
-            <div className="flex justify-center lg:justify-start space-x-4 mt-8">
+            <div className="flex justify-center lg:justify-start space-x-4 mt-8 px-7">
                 <Button text="Small Businesses" color="bg-orange-500" />
                 <Button text="Midsize Businesses" color="bg-red-500" />
             </div>
