@@ -8,6 +8,7 @@ import CallToAction from "@/component/CallToAction";
 import { BrowserRouter } from "react-router-dom";
 import ContactUs from "@/component/ContactUs";
 import JobPostingsCards from "./HR/JobPosting/JobPostingCards";
+import App from "@/component/App";
 
 const Welcome = ({ auth, laravelVersion, phpVersion }) => {
     const [selectedJob, setSelectedJob] = useState(null);
@@ -143,6 +144,7 @@ const Welcome = ({ auth, laravelVersion, phpVersion }) => {
 
             {/*  */}
             <Hero />
+            <App />
             <Features />
             {/*  */}
             <div

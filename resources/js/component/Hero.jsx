@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 import back from "../assets/images/back.jpg";
+import { InertiaLink } from "@inertiajs/inertia-react";
 
 const Hero = () => {
     return (
@@ -10,14 +11,21 @@ const Hero = () => {
                 {/* Left Item */}
                 <div className="flex flex-col mb-32 space-y-12 md:w-1/2">
                     <h1 className="max-w-md text-4xl font-bold text-center md:text-5xl md:text-left">
-                        Bring everyone together to build better products
+                        The Easiest Way to Automate The HR Task.
                     </h1>
                     <p className="max-w-sm text-center text-darkGrayishBlue md:text-left">
-                        Manage makes it simple for software teams to plan
-                        day-to-day tasks while keeping the larger team goals in
-                        view.
+                        Our HRMS transforms complexity into clarity, ensuring
+                        seamless management of your most valuable asset—your
+                        people
                     </p>
                     <div className="flex justify-center md:justify-start">
+                        <InertiaLink
+                            href={route("register")}
+                            className="bg-green-500 text-white px-3 py-2 rounded inline-block hover:bg-green-300 transition"
+                        >
+                            Get Started
+                        </InertiaLink>
+
                         <Link
                             to="#"
                             className="p-3 px-6 pt-2 text-white bg-brightRed rounded-full baseline hover:bg-brightRedLight"
