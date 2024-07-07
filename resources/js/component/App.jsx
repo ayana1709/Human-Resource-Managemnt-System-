@@ -7,14 +7,18 @@ import {
     FaLaptop,
     FaArrowRight,
 } from "react-icons/fa";
-import back from "../assets/images/back.jpg";
+import back from "../assets/images/a5.jpg";
+import a3 from "../assets/images/a3.jpg";
+import Features from "./Features";
 
 const App = () => {
     return (
         <div className="bg-white min-h-screen">
             <SupportSection />
-            {/* <Header />
-            <Services /> */}
+            <Features />
+
+            <Header />
+            <Services />
         </div>
     );
 };
@@ -50,6 +54,11 @@ const Services = () => (
             color="bg-orange-500"
             icon={<FaLaptop />}
         />
+        <ServiceCard
+            title="HR Support and "
+            color="bg-orange-500"
+            icon={<FaLaptop />}
+        />
     </div>
 );
 
@@ -63,7 +72,7 @@ const ServiceCard = ({ title, color, icon }) => (
 );
 
 const SupportSection = () => (
-    <div className="py-20 bg-gray-100 flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-start">
+    <div className="py-20 bg-gray-50 flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-start">
         <div className="relative w-full lg:w-1/2 flex justify-center lg:justify-center lg:">
             <img
                 src={back}
@@ -71,7 +80,7 @@ const SupportSection = () => (
                 className="w-3/4 lg:w-2/3 rounded-lg shadow-lg"
             />
             <img
-                src={back}
+                src={a3}
                 alt="Meeting"
                 className="absolute bottom-0 right-0 w-1/4 lg:w-1/3 rounded-lg shadow-lg transform translate-x-6 translate-y-6 lg:translate-x-10 lg:translate-y-10"
             />

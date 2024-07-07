@@ -147,41 +147,9 @@ const Welcome = ({ auth, laravelVersion, phpVersion }) => {
             {/*  */}
             <Hero />
             <App />
-            <Features />
             {/*  */}
-            <div
-                className="w-full white:bg-gray-900 text-dark py-16 text-center"
-                style={{ height: "90vh", margin: "" }}
-            >
-                <h1 className="text-4xl font-bold">Our Service</h1>
-                <p className="mt-4 text-xl"></p>
 
-                <div className="min-h-60 white:bg-gray-900 flex flex-col items-center w-80% p-6">
-                    <h1 className="text-4xl font-bold text-dark mb-8">
-                        Uses of Human Resource Management
-                    </h1>
-                    <div className="bg-dark-800 flex overflow-hidden space-x-6 px-4 ">
-                        {hrmUses.map((use, index) => (
-                            <div
-                                key={index}
-                                className="bg-white p-6 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-xl"
-                                style={{
-                                    minWidth: "300px",
-                                    minHeight: "350px",
-                                }}
-                            >
-                                <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                                    {use.title}
-                                </h2>
-                                <p className="text-gray-700">
-                                    {use.description}
-                                </p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-            <Testimonial />
+            {/* <Testimonial /> */}
             {/* <JobPostingsCards /> */}
             {/* <ContactUs /> */}
             <Job />
