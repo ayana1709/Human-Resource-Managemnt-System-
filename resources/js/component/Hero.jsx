@@ -13,10 +13,9 @@ const Hero = () => {
                     <h1 className="max-w-md text-4xl font-bold text-center md:text-5xl md:text-left">
                         The Easiest Way to Automate The HR Task.
                     </h1>
-                    <p className="max-w-sm text-center text-darkGrayishBlue md:text-left">
+                    <p className="max-w-sm  text-gray-800 text-center text-xl text-darkGrayishBlue md:text-left">
                         Our HRMS transforms complexity into clarity, ensuring
-                        seamless management of your most valuable asset—your
-                        people
+                        seamless management of your most valuable asset.
                     </p>
                     <div className="flex justify-center md:justify-start">
                         <InertiaLink
