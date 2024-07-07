@@ -12,6 +12,8 @@ import AdminSidebar from "@/Components/Sidebar/AdminSidebar";
 import HrSidebar from "@/Components/Sidebar/HrSidebar";
 
 const Index = ({ auth }) => {
+    const { flash } = usePage().props;
+
     const { trainings } = usePage().props;
 
     return (
@@ -47,6 +49,12 @@ const Index = ({ auth }) => {
                                             Assigned Trainings
                                         </InertiaLink>
                                     </div>
+                                    {flash.success && (
+                                        <div className="bg-green-500 text-white p-2 mb-3 rounded items-center">
+                                            {flash.success}
+                                        </div>
+                                    )}
+
                                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                                         {trainings.map((training) => (
                                             <div

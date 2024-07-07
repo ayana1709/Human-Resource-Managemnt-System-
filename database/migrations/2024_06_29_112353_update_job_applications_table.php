@@ -18,6 +18,7 @@ class UpdateJobApplicationsTable extends Migration
     {
         Schema::table('job_applications', function (Blueprint $table) {
             // Revert the user_id column to not nullable (if you want to revert this change)
+            $table->string('resume')->nullable();
             $table->unsignedBigInteger('user_id')->nullable(false)->change();
         });
     }

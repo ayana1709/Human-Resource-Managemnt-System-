@@ -17,6 +17,8 @@ import HrSidebar from "@/Components/Sidebar/HrSidebar";
 const Create = ({ auth }) => {
     const { trainings } = usePage().props;
     const { users } = usePage().props;
+    const { flash } = usePage().props;
+
     const { data, setData, post, processing, errors } = useForm({
         title: "",
         description: "",
@@ -54,6 +56,7 @@ const Create = ({ auth }) => {
                                     <h1 className="text-3xl font-bold mb-6 text-center">
                                         Create Training
                                     </h1>
+
                                     <form onSubmit={handleSubmit}>
                                         <div className="mb-4">
                                             <label className="block text-gray-700 font-semibold mb-2">

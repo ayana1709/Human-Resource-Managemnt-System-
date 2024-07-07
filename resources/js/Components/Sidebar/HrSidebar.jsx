@@ -226,7 +226,7 @@ function HrSidebar() {
                         Payroll
                     </Link>
                 </li>
-                <div>hr ...</div>
+                {/* <div>hr ...</div>
                 <Link href="/attendance/create">
                     <li className="flex items-center p-2 hover:bg-gray-700">
                         <FontAwesomeIcon
@@ -235,7 +235,7 @@ function HrSidebar() {
                         />
                         Attendance
                     </li>
-                </Link>
+                </Link> */}
             </ul>
         </div>
     );

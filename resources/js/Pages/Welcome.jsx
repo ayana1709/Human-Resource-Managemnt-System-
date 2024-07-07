@@ -86,29 +86,29 @@ const Welcome = ({ auth, laravelVersion, phpVersion }) => {
                             <div className="hidden sm:block sm:ml-6 ">
                                 <div className="flex justify-center space-x-10">
                                     <Link
-                                        href="#"
+                                        href="#home"
                                         className="text-gray-900 dark:text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                                     >
                                         Home
                                     </Link>
                                     <Link
-                                        href="#vision"
+                                        href="#service"
                                         className="text-gray-900 dark:text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                                     >
-                                        Vision
+                                        Our Service
                                     </Link>
                                     <Link
-                                        href="#mission"
+                                        href="#solution"
                                         className="text-gray-900 dark:text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                                     >
-                                        Mission
+                                        Features
                                     </Link>
 
                                     <Link
-                                        href="/job-postings-cards"
+                                        href="#jobs"
                                         className="text-gray-900 dark:text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                                     >
-                                        Job cards
+                                        Jobs
                                     </Link>
                                 </div>
 
@@ -145,14 +145,14 @@ const Welcome = ({ auth, laravelVersion, phpVersion }) => {
             </nav>
 
             {/*  */}
-            <Hero />
-            <App />
+            <Hero id="home" />
+            <App id="service" />
             {/*  */}
 
             {/* <Testimonial /> */}
             {/* <JobPostingsCards /> */}
             {/* <ContactUs /> */}
-            <Job />
+            <Job id="jobs" />
 
             <Footer />
         </BrowserRouter>
