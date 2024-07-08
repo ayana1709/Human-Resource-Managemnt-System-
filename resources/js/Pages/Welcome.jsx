@@ -5,7 +5,7 @@ import Features from "@/component/Features";
 import Testimonial from "@/component/Testimonial";
 import CallToAction from "@/component/CallToAction";
 
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ContactUs from "@/component/ContactUs";
 import JobPostingsCards from "./HR/JobPosting/JobPostingCards";
 import App from "@/component/App";
@@ -86,7 +86,7 @@ const Welcome = ({ auth, laravelVersion, phpVersion }) => {
                             <div className="hidden sm:block sm:ml-6 ">
                                 <div className="flex justify-center space-x-10">
                                     <Link
-                                        href="#home"
+                                        href={Hero}
                                         className="text-gray-900 dark:text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                                     >
                                         Home
@@ -105,7 +105,7 @@ const Welcome = ({ auth, laravelVersion, phpVersion }) => {
                                     </Link>
 
                                     <Link
-                                        href="#jobs"
+                                        to="Job"
                                         className="text-gray-900 dark:text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                                     >
                                         Jobs
