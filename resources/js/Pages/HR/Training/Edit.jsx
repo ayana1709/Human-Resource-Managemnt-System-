@@ -1,4 +1,4 @@
-// resources/js/Pages/Trainings/Edit.jsx
+
 
 import React, { useState } from "react";
 import { useForm } from "@inertiajs/inertia-react";

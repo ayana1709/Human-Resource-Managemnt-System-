@@ -1,5 +1,3 @@
-// resources/js/Pages/Trainings/Show.jsx
-
 import React from "react";
 import { InertiaLink } from "@inertiajs/inertia-react";
 import { usePage } from "@inertiajs/react";

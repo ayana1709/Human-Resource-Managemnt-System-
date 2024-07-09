@@ -1,5 +1,3 @@
-// resources/js/Pages/Dashboard.jsx
-
 import { usePage } from "@inertiajs/react";
 import React from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";

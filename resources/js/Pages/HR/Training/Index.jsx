@@ -1,4 +1,4 @@
-// resources/js/Pages/Trainings/Index.jsx
+
 
 import React from "react";
 import { InertiaLink } from "@inertiajs/inertia-react";
