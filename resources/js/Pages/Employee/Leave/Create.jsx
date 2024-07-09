@@ -22,7 +22,6 @@ export default function Create({ auth }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         post(route("leave.store"));
-        // console.log(data);
     };
 
     return (
@@ -30,7 +29,6 @@ export default function Create({ auth }) {
             <Head title="Dashboard" />
 
             <div className="h-screen flex flex-col">
-                {/* <Navbar /> */}
                 <div className="flex flex-1">
                     <EmployeeSidebar />
                     <main className="flex-1 bg-gray-100">
