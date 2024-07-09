@@ -1,7 +1,5 @@
 import { usePage } from "@inertiajs/react";
 import React from "react";
-// import { usePage } from "@inertiajs/inertia-react";
-// import DashboardLayout from '../../Layouts/DashboardLayout';
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
