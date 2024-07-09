@@ -107,7 +107,6 @@ function AdminSidebar() {
                     </Link>
                 </li>
 
-              
                 {/* <li>
                     <Link
                         href="/calendar-events/create"
@@ -129,15 +128,6 @@ function AdminSidebar() {
                         Calander
                     </Link>
                 </li>
-                {/* <li>
-                    <Link
-                        href="/shifts"
-                        className="flex items-center p-2 hover:bg-gray-700 rounded transition"
-                    >
-                        <FontAwesomeIcon icon={faChartLine} className="mr-4" />
-                        Create Shift
-                    </Link>
-                </li> */}
 
                 <li>
                     <Link
