@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "@inertiajs/inertia-react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head } from "@inertiajs/react";
+import { Head, usePage } from "@inertiajs/react";
 import DepManagerSidebar from "@/Components/Sidebar/DepManagerSide";
 
 export default function Create({ auth }) {
+    const { flash } = usePage().props;
+
     const { data, setData, post, processing, errors } = useForm({
         date: formatDate(new Date()), // Initialize date with today's date
         check_in_time: null,
@@ -64,6 +66,11 @@ export default function Create({ auth }) {
                             <h1 className="text-2xl font-bold mb-4">
                                 Record Attendance
                             </h1>
+                            {flash.success && (
+                                <div className="bg-green-500 text-white p-2 mb-4 rounded items-center  ">
+                                    {flash.success}
+                                </div>
+                            )}
                             <form onSubmit={handleSubmit}>
                                 <div className="mb-4">
                                     <label className="block mb-2">Date</label>
