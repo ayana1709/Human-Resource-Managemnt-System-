@@ -82,10 +82,6 @@ class AttendanceController extends Controller
 
 
 
-
-
-
-
     public function inde()
     {
         $attendances = Attendance::with('user')->get();
