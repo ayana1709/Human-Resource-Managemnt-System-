@@ -55,7 +55,9 @@ class AttendanceController extends Controller
 
         if ($existingAttendance) {
             // If it exists, return a 409 conflict response
-            return response()->json(['error' => 'Attendance record already exists for this date.'], 409);
+            // return response()->json(['error' => 'Attendance record already exists for this date.'], 409);
+        return redirect()->route('attendance.create')->with('error', 'Attendance record already exists for this date.', 409);
+
         }
 
         // Create new attendance record
@@ -66,9 +68,10 @@ class AttendanceController extends Controller
         $attendance->check_out = $validatedData['check_out_time'];
         $attendance->save();
 
-        return response()->json(['success' => 'Attendance filled successfully']);
+        // return response()->json(['success' => 'Attendance filled successfully']);
         // $admin = User::user_type('admin');
         // $admin->notify(new AttendanceFilled($attendance));
+        return redirect()->route('attendance.create')->with('success', 'Attendance filled successfully');
     
         // return redirect()->back()->with('success', 'Attendance filled successfully');
     }

@@ -66,6 +66,16 @@ export default function Create({ auth }) {
                             <h1 className="text-2xl font-bold mb-4">
                                 Record Attendance
                             </h1>
+                            {flash.success && (
+                                <div className="bg-green-500 text-white p-2 mb-4 rounded items-center  ">
+                                    {flash.success}{" "}
+                                </div>
+                            )}
+                            {flash.error && (
+                                <div className="bg-red-500 text-white p-2 mb-4 rounded items-center  ">
+                                    {flash.error}{" "}
+                                </div>
+                            )}
                             <form onSubmit={handleSubmit}>
                                 <div className="mb-4">
                                     <label className="block mb-2">Date</label>
