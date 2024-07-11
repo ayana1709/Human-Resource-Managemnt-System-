@@ -1,9 +1,6 @@
 <?php
 
-// app/Http/Controllers/AttendanceController.php
-
 namespace App\Http\Controllers;
-
 use App\Models\Attendance;
 use App\Models\User;
 use AttendanceFilled;
@@ -47,7 +44,6 @@ class AttendanceController extends Controller
             'check_in_time' => 'nullable|string',
             'check_out_time' => 'nullable|string',
         ]);
-
         // Check if an attendance record already exists for the user and date
         $existingAttendance = Attendance::where('user_id', auth()->id())
                                         ->where('date', $validatedData['date'])
@@ -57,9 +53,7 @@ class AttendanceController extends Controller
             // If it exists, return a 409 conflict response
             // return response()->json(['error' => 'Attendance record already exists for this date.'], 409);
         return redirect()->route('attendance.create')->with('error', 'Attendance record already exists for this date.', 409);
-
         }
-
         // Create new attendance record
         $attendance = new Attendance();
         $attendance->user_id = auth()->id(); // Assuming the user is authenticated
@@ -67,18 +61,12 @@ class AttendanceController extends Controller
         $attendance->check_in = $validatedData['check_in_time'];
         $attendance->check_out = $validatedData['check_out_time'];
         $attendance->save();
-
         // return response()->json(['success' => 'Attendance filled successfully']);
         // $admin = User::user_type('admin');
         // $admin->notify(new AttendanceFilled($attendance));
         return redirect()->route('attendance.create')->with('success', 'Attendance filled successfully');
-    
         // return redirect()->back()->with('success', 'Attendance filled successfully');
     }
-
-
-
-
 
 
 
@@ -87,9 +75,6 @@ class AttendanceController extends Controller
         $attendances = Attendance::with('user')->get();
         return response()->json(['attendances' => $attendances]);
     }
-
-
-
 
 
 
@@ -118,11 +103,11 @@ class AttendanceController extends Controller
     
 
     
-    public function newAttendanceCount()
+public function newAttendanceCount()
 {
-    // $newAttendanceCount = Attendance::where('status', 'pending')->count();
-    $newAttendanceCount = Attendance::where('created_at', '>=', Carbon::now()->subDay())->count();
+// $newAttendanceCount = Attendance::where('status', 'pending')->count();
 
+    $newAttendanceCount = Attendance::where('created_at', '>=', Carbon::now()->subDay())->count();
     return response()->json([
         'newAttendanceCount' => $newAttendanceCount,
     ]);

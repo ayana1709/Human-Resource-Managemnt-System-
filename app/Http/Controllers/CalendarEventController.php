@@ -1,6 +1,5 @@
 <?php
 
-// app/Http/Controllers/CalendarEventController.php
 
 namespace App\Http\Controllers;
 
