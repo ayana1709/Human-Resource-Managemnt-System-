@@ -37,7 +37,7 @@ const Sidebar = ({ onUserSelect }) => {
                 </div>
             )}
             <h2 className="text-lg font-bold mb-4">Users</h2>
-            <div className="overflow-y-auto h-full">
+            <div className="overflow-y-visible h-full">
                 <ul>
                     {Array.isArray(users) &&
                         users.map((user) => (

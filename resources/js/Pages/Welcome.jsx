@@ -11,6 +11,7 @@ import JobPostingsCards from "./HR/JobPosting/JobPostingCards";
 import App from "@/component/App";
 import Footer from "@/component/Footer";
 import Job from "@/component/Job";
+import SupportSection from "@/component/SupportSection";
 
 const Welcome = ({ auth, laravelVersion, phpVersion }) => {
     const [selectedJob, setSelectedJob] = useState(null);
@@ -86,7 +87,7 @@ const Welcome = ({ auth, laravelVersion, phpVersion }) => {
                             <div className="hidden sm:block sm:ml-6 ">
                                 <div className="flex justify-center space-x-10">
                                     <Link
-                                        href={Hero}
+                                        href="#home"
                                         className="text-gray-900 dark:text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                                     >
                                         Home
@@ -105,7 +106,7 @@ const Welcome = ({ auth, laravelVersion, phpVersion }) => {
                                     </Link>
 
                                     <Link
-                                        to="Job"
+                                        href="#jobs"
                                         className="text-gray-900 dark:text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                                     >
                                         Jobs
@@ -145,16 +146,24 @@ const Welcome = ({ auth, laravelVersion, phpVersion }) => {
             </nav>
 
             {/*  */}
-            <Hero id="home" />
-            <App id="service" />
-            {/*  */}
+            <section id="home">
+                {" "}
+                <Hero />{" "}
+            </section>
+            <section id="service">
+                <App />
+            </section>
+            <section id="solution">
+                <SupportSection />
+            </section>
 
+            <section id="jobs">
+                <Job />
+            </section>
+            <Footer />
             {/* <Testimonial /> */}
             {/* <JobPostingsCards /> */}
             {/* <ContactUs /> */}
-            <Job id="jobs" />
-
-            <Footer />
         </BrowserRouter>
     );
 };
