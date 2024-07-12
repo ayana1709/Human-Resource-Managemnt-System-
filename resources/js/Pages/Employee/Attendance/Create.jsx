@@ -72,7 +72,7 @@ export default function Create({ auth }) {
                                 </div>
                             )}
                             {flash.error && (
-                                <div className="bg-red-500 text-white p-2 mb-4 rounded items-center  ">
+                                <div className="bg-orange-500 text-white p-2 mb-4 rounded items-center  ">
                                     {flash.error}{" "}
                                 </div>
                             )}
