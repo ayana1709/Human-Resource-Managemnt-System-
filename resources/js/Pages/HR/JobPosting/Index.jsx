@@ -12,6 +12,8 @@ import { faHome, faChartLine, faCog } from "@fortawesome/free-solid-svg-icons";
 import HrSidebar from "@/Components/Sidebar/HrSidebar";
 
 export default function Index({ auth }) {
+    const { flash } = usePage().props;
+
     const { postings } = usePage().props;
 
     return (
@@ -137,6 +139,11 @@ export default function Index({ auth }) {
                                                 ))}
                                             </tbody>
                                         </table>
+                                        {flash.success && (
+                                            <div className="bg-green-500 text-white p-2 mb-4 rounded items-center  ">
+                                                {flash.success}
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>

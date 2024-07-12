@@ -56,7 +56,6 @@ export default function Create({ auth }) {
     return (
         <AuthenticatedLayout user={auth.user}>
             <Head title="Record Attendance" />
-
             <div className="h-screen flex flex-col">
                 <div className="flex flex-1">
                     <HrSidebar />

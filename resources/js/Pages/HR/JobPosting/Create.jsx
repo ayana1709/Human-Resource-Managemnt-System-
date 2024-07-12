@@ -1,13 +1,14 @@
-// resources/js/Pages/JobPostings/Create.jsx
 import React, { useState } from "react";
 import { Inertia } from "@inertiajs/inertia";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head, Link } from "@inertiajs/react";
+import { Head, Link, usePage } from "@inertiajs/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faChartLine, faCog } from "@fortawesome/free-solid-svg-icons";
 import HrSidebar from "@/Components/Sidebar/HrSidebar";
 
 export default function Create({ auth }) {
+    const { flash } = usePage().props;
+
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [roles, setRoles] = useState("");
@@ -42,9 +43,7 @@ export default function Create({ auth }) {
         <>
             <AuthenticatedLayout user={auth.user}>
                 <Head title="Dashboard" />
-
                 <div className="h-screen flex flex-col">
-                    {/* <Navbar /> */}
                     <div className="flex flex-1">
                         <HrSidebar />
 
@@ -54,6 +53,7 @@ export default function Create({ auth }) {
                                     <h1 className="text-2xl font-bold mb-6">
                                         Create Job Posting
                                     </h1>
+                                    
                                     <form onSubmit={handleSubmit}>
                                         <div className="mb-4">
                                             <label className="block text-gray-700">
