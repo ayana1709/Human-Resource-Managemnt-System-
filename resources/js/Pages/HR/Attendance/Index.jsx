@@ -9,8 +9,11 @@ import {
 import HrSidebar from "@/Components/Sidebar/HrSidebar";
 import axios from "axios";
 
+// Optional: Add the icons to the library if needed
+import { library } from "@fortawesome/fontawesome-svg-core";
+library.add(faCheckCircle, faTimesCircle);
+
 export default function Index({ auth }) {
-    const [searchDate, setSearchDate] = useState("");
     const [users, setUsers] = useState([]);
     const [attendances, setAttendances] = useState([]);
 
@@ -35,10 +38,6 @@ export default function Index({ auth }) {
                 console.error("Error fetching attendances:", error)
             );
     }, []);
-
-    const handleDateChange = (e) => {
-        setSearchDate(e.target.value);
-    };
 
     const getUserAttendanceForDate = (userId, date) => {
         return attendances.find(

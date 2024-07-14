@@ -35,3 +35,7 @@ return new class extends Migration
         Schema::dropIfExists('users');
     }
 };
+// localhost
+// rekikajk_project3
+// rekikajk_project3
+// j2VaJYDZN2KUETc4pFn9
