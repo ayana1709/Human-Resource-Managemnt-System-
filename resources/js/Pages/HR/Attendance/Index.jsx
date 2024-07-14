@@ -9,7 +9,6 @@ import {
 import HrSidebar from "@/Components/Sidebar/HrSidebar";
 import axios from "axios";
 
-// Optional: Add the icons to the library if needed
 import { library } from "@fortawesome/fontawesome-svg-core";
 library.add(faCheckCircle, faTimesCircle);
 
