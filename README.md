@@ -57,9 +57,14 @@ The HRMS supports the following roles:
 
 Below are some screenshots of the HRMS in action:
 
+### Landing page
+
+![landin gpage](p1.png)
+![landin gpage](p2.png)
+
 ### Dashboard
 
-![Dashboard](p1.png)
+![Dashboard](p3.png)
 
 ### Payroll Management
 
@@ -72,6 +77,10 @@ Below are some screenshots of the HRMS in action:
 ### Chat Feature
 
 ![Chat Feature](p7.png)
+
+### Job Posting
+
+![Chat Feature](p6.png)
 
 ## Technology Stack
 
