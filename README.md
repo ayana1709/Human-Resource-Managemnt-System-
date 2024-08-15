@@ -59,19 +59,19 @@ Below are some screenshots of the HRMS in action:
 
 ### Dashboard
 
-![Dashboard](./)
+![Dashboard](p1.png)
 
 ### Payroll Management
 
-![Payroll Management](./screenshots/payroll-management.png)
+![Payroll Management](p5.png)
 
 ### Attendance Tracking
 
-![Attendance Tracking](./screenshots/attendance-tracking.png)
+![Attendance Tracking](p4.png)
 
 ### Chat Feature
 
-![Chat Feature](./screenshots/chat-feature.png)
+![Chat Feature](p7.png)
 
 ## Technology Stack
 
