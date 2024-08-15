@@ -1,4 +1,3 @@
-
 # HRMS (Human Resource Management System)
 
 ## Overview
@@ -26,6 +25,46 @@ The HRMS (Human Resource Management System) is a comprehensive application desig
 - **Job Postings:**
   - Display job postings on the HR dashboard.
   - Card layout for job applicants to view and apply.
+
+## Roles
+
+The HRMS supports the following roles:
+
+1. **Admin:** 
+   - Full access to all features and settings.
+   - Manage users, roles, and permissions.
+
+2. **HR Manager:**
+   - Oversee payroll, attendance, and training management.
+   - Generate reports and notifications.
+
+3. **Department Manager:**
+   - View and manage team attendance records.
+   - Schedule and track training for team members.
+
+4. **Employee:**
+   - Access personal payroll and attendance information.
+   - Participate in training sessions and view job postings.
+
+## Screenshots
+
+Below are some screenshots of the HRMS in action:
+
+### Dashboard
+
+![Dashboard](./)
+
+### Payroll Management
+
+![Payroll Management](./screenshots/payroll-management.png)
+
+### Attendance Tracking
+
+![Attendance Tracking](./screenshots/attendance-tracking.png)
+
+### Chat Feature
+
+![Chat Feature](./screenshots/chat-feature.png)
 
 ## Technology Stack
 
