@@ -113,8 +113,4 @@ Below are some screenshots of the HRMS in action:
 -   Node.js (>= 14.x)
 -   npm or Yarn
 
-## Group Member
-    Name                     Id
-1. Ayana Basha ----------------0505/13
-2. Nathenael Engliz------------2155/13
-3. Yohanis Dawit---------------2922/13
+
